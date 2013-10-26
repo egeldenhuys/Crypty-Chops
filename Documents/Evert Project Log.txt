@@ -27,3 +27,8 @@ Prototypes:
 Changed the problem definition to be more simple and describe the 
 process the user needs to go through to encrypt/decrypt a single file.
 Can still be improved.
+
+## Markdown Test
+- A
+- B
+- C
