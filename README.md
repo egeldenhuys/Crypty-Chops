@@ -1,6 +1,7 @@
 # Crypty Chops
 
 Crypty Chops is a file encryption program.
+It will encrypt your sensitive files so you can only decrypt them with the correct password.
 
 ####Features:
 * Encrypt and Decrypt files
