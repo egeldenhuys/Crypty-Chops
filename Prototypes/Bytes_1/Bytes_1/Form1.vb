@@ -11,7 +11,7 @@ Public Class Form1
     Private Sub btnOpen_Click(sender As System.Object, e As System.EventArgs) Handles btnOpen.Click
 
         ' Get byte array
-        Dim bytes() As Byte = GetBytes("C:\users\Evert\Desktop\Byte Me.txt")
+        Dim bytes() As Byte = GetBytes(txtPath.Text)
 
         Dim tmpNum As String
 
