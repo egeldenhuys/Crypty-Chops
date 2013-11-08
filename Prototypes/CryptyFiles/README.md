@@ -1,5 +1,9 @@
 ##CryptyFiles Prototype
 
+**Modules:**
+* CryptyFileManager
+* CryptyFile
+
 Prototype of File Management
 
 * File management
