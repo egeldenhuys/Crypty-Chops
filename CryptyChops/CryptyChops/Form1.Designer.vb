@@ -33,7 +33,6 @@ Partial Class Form1
         Me.ModifyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnDelete = New System.Windows.Forms.Button()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnOpenLoc = New System.Windows.Forms.Button()
         Me.btnRemove = New System.Windows.Forms.Button()
@@ -60,7 +59,6 @@ Partial Class Form1
         Me.lblStatus = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.GroupBox1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -124,31 +122,16 @@ Partial Class Form1
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(202, 48)
+        Me.btnDelete.Location = New System.Drawing.Point(174, 377)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(75, 23)
         Me.btnDelete.TabIndex = 9
         Me.btnDelete.Text = "Delete File"
         Me.btnDelete.UseVisualStyleBackColor = True
         '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.btnDelete)
-        Me.GroupBox1.Controls.Add(Me.btnAdd)
-        Me.GroupBox1.Controls.Add(Me.btnOpenLoc)
-        Me.GroupBox1.Controls.Add(Me.btnRemove)
-        Me.GroupBox1.Controls.Add(Me.btnEdit)
-        Me.GroupBox1.Controls.Add(Me.btnEncrypt)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 351)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(303, 108)
-        Me.GroupBox1.TabIndex = 14
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "File Operations"
-        '
         'btnAdd
         '
-        Me.btnAdd.Location = New System.Drawing.Point(121, 19)
+        Me.btnAdd.Location = New System.Drawing.Point(93, 348)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(75, 23)
         Me.btnAdd.TabIndex = 3
@@ -157,7 +140,7 @@ Partial Class Form1
         '
         'btnOpenLoc
         '
-        Me.btnOpenLoc.Location = New System.Drawing.Point(150, 79)
+        Me.btnOpenLoc.Location = New System.Drawing.Point(255, 348)
         Me.btnOpenLoc.Name = "btnOpenLoc"
         Me.btnOpenLoc.Size = New System.Drawing.Size(106, 23)
         Me.btnOpenLoc.TabIndex = 8
@@ -166,7 +149,7 @@ Partial Class Form1
         '
         'btnRemove
         '
-        Me.btnRemove.Location = New System.Drawing.Point(202, 19)
+        Me.btnRemove.Location = New System.Drawing.Point(174, 348)
         Me.btnRemove.Name = "btnRemove"
         Me.btnRemove.Size = New System.Drawing.Size(75, 23)
         Me.btnRemove.TabIndex = 4
@@ -175,7 +158,7 @@ Partial Class Form1
         '
         'btnEdit
         '
-        Me.btnEdit.Location = New System.Drawing.Point(121, 48)
+        Me.btnEdit.Location = New System.Drawing.Point(93, 377)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(75, 23)
         Me.btnEdit.TabIndex = 5
@@ -184,7 +167,7 @@ Partial Class Form1
         '
         'btnEncrypt
         '
-        Me.btnEncrypt.Location = New System.Drawing.Point(6, 41)
+        Me.btnEncrypt.Location = New System.Drawing.Point(12, 348)
         Me.btnEncrypt.Name = "btnEncrypt"
         Me.btnEncrypt.Size = New System.Drawing.Size(75, 23)
         Me.btnEncrypt.TabIndex = 6
@@ -307,7 +290,7 @@ Partial Class Form1
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblStatus, Me.ToolStripStatusLabel2, Me.ToolStripProgressBar1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 503)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 413)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(738, 24)
         Me.StatusStrip1.TabIndex = 11
@@ -334,14 +317,18 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(738, 527)
+        Me.ClientSize = New System.Drawing.Size(738, 437)
+        Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.lstFiles)
+        Me.Controls.Add(Me.btnAdd)
+        Me.Controls.Add(Me.btnOpenLoc)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.btnRemove)
+        Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.StatusStrip1)
+        Me.Controls.Add(Me.btnEncrypt)
         Me.Name = "Form1"
         Me.Text = "Crypty Chops"
-        Me.GroupBox1.ResumeLayout(False)
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ContextMenuStrip1.ResumeLayout(False)
@@ -361,7 +348,6 @@ Partial Class Form1
     Friend WithEvents ModifyToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AddToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents btnDelete As System.Windows.Forms.Button
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents btnAdd As System.Windows.Forms.Button
     Friend WithEvents btnOpenLoc As System.Windows.Forms.Button
     Friend WithEvents btnRemove As System.Windows.Forms.Button
