@@ -69,7 +69,7 @@ Partial Class Form1
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'RemoveToolStripMenuItem
@@ -88,13 +88,13 @@ Partial Class Form1
         'ViewHelpToolStripMenuItem
         '
         Me.ViewHelpToolStripMenuItem.Name = "ViewHelpToolStripMenuItem"
-        Me.ViewHelpToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
+        Me.ViewHelpToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ViewHelpToolStripMenuItem.Text = "View Help"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'EditToolStripMenuItem
@@ -106,20 +106,20 @@ Partial Class Form1
         'DecryptToolStripMenuItem
         '
         Me.DecryptToolStripMenuItem.Name = "DecryptToolStripMenuItem"
-        Me.DecryptToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
+        Me.DecryptToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.DecryptToolStripMenuItem.Text = "Decrypt"
         '
         'ModifyToolStripMenuItem
         '
         Me.ModifyToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditToolStripMenuItem, Me.RemoveToolStripMenuItem})
         Me.ModifyToolStripMenuItem.Name = "ModifyToolStripMenuItem"
-        Me.ModifyToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
+        Me.ModifyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ModifyToolStripMenuItem.Text = "Modify"
         '
         'AddToolStripMenuItem
         '
         Me.AddToolStripMenuItem.Name = "AddToolStripMenuItem"
-        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
+        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.AddToolStripMenuItem.Text = "Add"
         '
         'btnDelete
@@ -194,7 +194,7 @@ Partial Class Form1
         'EncryptToolStripMenuItem
         '
         Me.EncryptToolStripMenuItem.Name = "EncryptToolStripMenuItem"
-        Me.EncryptToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
+        Me.EncryptToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.EncryptToolStripMenuItem.Text = "Encrypt"
         '
         'FileToolStripMenuItem
@@ -220,11 +220,14 @@ Partial Class Form1
         '
         'lstFiles
         '
+        Me.lstFiles.Activation = System.Windows.Forms.ItemActivation.OneClick
         Me.lstFiles.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.FileNameColumn, Me.StatusColumn, Me.SizeColumn, Me.PathColumn, Me.DateModifiedColumn})
         Me.lstFiles.ContextMenuStrip = Me.ContextMenuStrip1
+        Me.lstFiles.Dock = System.Windows.Forms.DockStyle.Top
         Me.lstFiles.FullRowSelect = True
         Me.lstFiles.GridLines = True
-        Me.lstFiles.Location = New System.Drawing.Point(0, 27)
+        Me.lstFiles.HoverSelection = True
+        Me.lstFiles.Location = New System.Drawing.Point(0, 24)
         Me.lstFiles.Name = "lstFiles"
         Me.lstFiles.Size = New System.Drawing.Size(738, 318)
         Me.lstFiles.TabIndex = 12
@@ -332,9 +335,9 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(738, 527)
-        Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.lstFiles)
+        Me.Controls.Add(Me.MenuStrip1)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Name = "Form1"
         Me.Text = "Crypty Chops"
