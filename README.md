@@ -19,4 +19,5 @@ It allows you to encrypt files with a password using a number of different algor
 * Option to automatically check for updates
 * Password protect your list of files
 
-
+####Attributions
+Icons by [Yusuke Kamiyamane](http://p.yusukekamiyamane.com/). Licensed under a [Creative Commons Attribution 3.0 License](http://creativecommons.org/licenses/by/3.0/).
