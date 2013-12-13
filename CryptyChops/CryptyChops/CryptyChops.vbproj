@@ -117,6 +117,48 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\105.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\106.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder-horizontal-open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock-unlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wrench.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
