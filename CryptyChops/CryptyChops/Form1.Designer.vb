@@ -67,7 +67,7 @@ Partial Class Form1
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'RemoveToolStripMenuItem
@@ -86,13 +86,13 @@ Partial Class Form1
         'ViewHelpToolStripMenuItem
         '
         Me.ViewHelpToolStripMenuItem.Name = "ViewHelpToolStripMenuItem"
-        Me.ViewHelpToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ViewHelpToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.ViewHelpToolStripMenuItem.Text = "View Help"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'EditToolStripMenuItem
@@ -104,80 +104,98 @@ Partial Class Form1
         'DecryptToolStripMenuItem
         '
         Me.DecryptToolStripMenuItem.Name = "DecryptToolStripMenuItem"
-        Me.DecryptToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DecryptToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.DecryptToolStripMenuItem.Text = "Decrypt"
         '
         'ModifyToolStripMenuItem
         '
         Me.ModifyToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditToolStripMenuItem, Me.RemoveToolStripMenuItem})
         Me.ModifyToolStripMenuItem.Name = "ModifyToolStripMenuItem"
-        Me.ModifyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ModifyToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.ModifyToolStripMenuItem.Text = "Modify"
         '
         'AddToolStripMenuItem
         '
         Me.AddToolStripMenuItem.Name = "AddToolStripMenuItem"
-        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.AddToolStripMenuItem.Text = "Add"
         '
         'btnDelete
         '
+        Me.btnDelete.Image = Global.CryptyChops.My.Resources.Resources.bin
+        Me.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnDelete.Location = New System.Drawing.Point(174, 377)
         Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(75, 23)
+        Me.btnDelete.Size = New System.Drawing.Size(91, 24)
         Me.btnDelete.TabIndex = 9
         Me.btnDelete.Text = "Delete File"
+        Me.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnDelete.UseVisualStyleBackColor = True
         '
         'btnAdd
         '
+        Me.btnAdd.Image = Global.CryptyChops.My.Resources.Resources.plus
+        Me.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnAdd.Location = New System.Drawing.Point(93, 348)
         Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(75, 23)
+        Me.btnAdd.Size = New System.Drawing.Size(75, 24)
         Me.btnAdd.TabIndex = 3
         Me.btnAdd.Text = "Add File"
+        Me.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnAdd.UseVisualStyleBackColor = True
         '
         'btnOpenLoc
         '
-        Me.btnOpenLoc.Location = New System.Drawing.Point(255, 348)
+        Me.btnOpenLoc.Image = Global.CryptyChops.My.Resources.Resources.folder_horizontal_open
+        Me.btnOpenLoc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnOpenLoc.Location = New System.Drawing.Point(271, 348)
         Me.btnOpenLoc.Name = "btnOpenLoc"
-        Me.btnOpenLoc.Size = New System.Drawing.Size(106, 23)
+        Me.btnOpenLoc.Size = New System.Drawing.Size(121, 24)
         Me.btnOpenLoc.TabIndex = 8
         Me.btnOpenLoc.Text = "Open File Location"
+        Me.btnOpenLoc.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnOpenLoc.UseVisualStyleBackColor = True
         '
         'btnRemove
         '
+        Me.btnRemove.Image = Global.CryptyChops.My.Resources.Resources.minus
+        Me.btnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnRemove.Location = New System.Drawing.Point(174, 348)
         Me.btnRemove.Name = "btnRemove"
-        Me.btnRemove.Size = New System.Drawing.Size(75, 23)
+        Me.btnRemove.Size = New System.Drawing.Size(91, 24)
         Me.btnRemove.TabIndex = 4
         Me.btnRemove.Text = "Remove File"
+        Me.btnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnRemove.UseVisualStyleBackColor = True
         '
         'btnEdit
         '
+        Me.btnEdit.Image = Global.CryptyChops.My.Resources.Resources.pencil
+        Me.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnEdit.Location = New System.Drawing.Point(93, 377)
         Me.btnEdit.Name = "btnEdit"
-        Me.btnEdit.Size = New System.Drawing.Size(75, 23)
+        Me.btnEdit.Size = New System.Drawing.Size(75, 24)
         Me.btnEdit.TabIndex = 5
         Me.btnEdit.Text = "Edit File"
+        Me.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnEdit.UseVisualStyleBackColor = True
         '
         'btnEncrypt
         '
+        Me.btnEncrypt.Image = Global.CryptyChops.My.Resources.Resources.lock
+        Me.btnEncrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnEncrypt.Location = New System.Drawing.Point(12, 348)
         Me.btnEncrypt.Name = "btnEncrypt"
-        Me.btnEncrypt.Size = New System.Drawing.Size(75, 23)
+        Me.btnEncrypt.Size = New System.Drawing.Size(75, 24)
         Me.btnEncrypt.TabIndex = 6
         Me.btnEncrypt.Text = "Encrypt"
+        Me.btnEncrypt.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnEncrypt.UseVisualStyleBackColor = True
         '
         'EncryptToolStripMenuItem
         '
         Me.EncryptToolStripMenuItem.Name = "EncryptToolStripMenuItem"
-        Me.EncryptToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.EncryptToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.EncryptToolStripMenuItem.Text = "Encrypt"
         '
         'FileToolStripMenuItem
