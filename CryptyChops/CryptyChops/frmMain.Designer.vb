@@ -32,12 +32,6 @@ Partial Class frmMain
         Me.DecryptToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ModifyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnDelete = New System.Windows.Forms.Button()
-        Me.btnAdd = New System.Windows.Forms.Button()
-        Me.btnOpenLoc = New System.Windows.Forms.Button()
-        Me.btnRemove = New System.Windows.Forms.Button()
-        Me.btnEdit = New System.Windows.Forms.Button()
-        Me.btnEncrypt = New System.Windows.Forms.Button()
         Me.EncryptToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileNameColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -59,6 +53,13 @@ Partial Class frmMain
         Me.lblStatus = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.btnDelete = New System.Windows.Forms.Button()
+        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.btnOpenLoc = New System.Windows.Forms.Button()
+        Me.btnRemove = New System.Windows.Forms.Button()
+        Me.btnEdit = New System.Windows.Forms.Button()
+        Me.btnEncrypt = New System.Windows.Forms.Button()
+        Me.btnDecrypt = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -119,78 +120,6 @@ Partial Class frmMain
         Me.AddToolStripMenuItem.Name = "AddToolStripMenuItem"
         Me.AddToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.AddToolStripMenuItem.Text = "Add"
-        '
-        'btnDelete
-        '
-        Me.btnDelete.Image = Global.CryptyChops.My.Resources.Resources.bin
-        Me.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDelete.Location = New System.Drawing.Point(174, 377)
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(91, 24)
-        Me.btnDelete.TabIndex = 9
-        Me.btnDelete.Text = "Delete File"
-        Me.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnDelete.UseVisualStyleBackColor = True
-        '
-        'btnAdd
-        '
-        Me.btnAdd.Image = Global.CryptyChops.My.Resources.Resources.plus
-        Me.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAdd.Location = New System.Drawing.Point(93, 348)
-        Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(75, 24)
-        Me.btnAdd.TabIndex = 3
-        Me.btnAdd.Text = "Add File"
-        Me.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnAdd.UseVisualStyleBackColor = True
-        '
-        'btnOpenLoc
-        '
-        Me.btnOpenLoc.Image = Global.CryptyChops.My.Resources.Resources.folder_horizontal_open
-        Me.btnOpenLoc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnOpenLoc.Location = New System.Drawing.Point(271, 348)
-        Me.btnOpenLoc.Name = "btnOpenLoc"
-        Me.btnOpenLoc.Size = New System.Drawing.Size(121, 24)
-        Me.btnOpenLoc.TabIndex = 8
-        Me.btnOpenLoc.Text = "Open File Location"
-        Me.btnOpenLoc.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnOpenLoc.UseVisualStyleBackColor = True
-        '
-        'btnRemove
-        '
-        Me.btnRemove.Image = Global.CryptyChops.My.Resources.Resources.minus
-        Me.btnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnRemove.Location = New System.Drawing.Point(174, 348)
-        Me.btnRemove.Name = "btnRemove"
-        Me.btnRemove.Size = New System.Drawing.Size(91, 24)
-        Me.btnRemove.TabIndex = 4
-        Me.btnRemove.Text = "Remove File"
-        Me.btnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnRemove.UseVisualStyleBackColor = True
-        '
-        'btnEdit
-        '
-        Me.btnEdit.Image = Global.CryptyChops.My.Resources.Resources.pencil
-        Me.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEdit.Location = New System.Drawing.Point(93, 377)
-        Me.btnEdit.Name = "btnEdit"
-        Me.btnEdit.Size = New System.Drawing.Size(75, 24)
-        Me.btnEdit.TabIndex = 5
-        Me.btnEdit.Text = "Edit File"
-        Me.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnEdit.UseVisualStyleBackColor = True
-        '
-        'btnEncrypt
-        '
-        Me.btnEncrypt.Image = Global.CryptyChops.My.Resources.Resources.lock
-        Me.btnEncrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEncrypt.Location = New System.Drawing.Point(12, 348)
-        Me.btnEncrypt.Name = "btnEncrypt"
-        Me.btnEncrypt.Size = New System.Drawing.Size(75, 24)
-        Me.btnEncrypt.TabIndex = 6
-        Me.btnEncrypt.Text = "Encrypt"
-        Me.btnEncrypt.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnEncrypt.UseVisualStyleBackColor = True
         '
         'EncryptToolStripMenuItem
         '
@@ -331,11 +260,96 @@ Partial Class frmMain
         '
         Me.OpenFileDialog1.Filter = "All Files (*.*)|*.*"
         '
-        'Form1
+        'btnDelete
+        '
+        Me.btnDelete.Image = Global.CryptyChops.My.Resources.Resources.bin
+        Me.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnDelete.Location = New System.Drawing.Point(174, 377)
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(91, 24)
+        Me.btnDelete.TabIndex = 9
+        Me.btnDelete.Text = "Delete File"
+        Me.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnDelete.UseVisualStyleBackColor = True
+        '
+        'btnAdd
+        '
+        Me.btnAdd.Image = Global.CryptyChops.My.Resources.Resources.plus
+        Me.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnAdd.Location = New System.Drawing.Point(93, 348)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(75, 24)
+        Me.btnAdd.TabIndex = 3
+        Me.btnAdd.Text = "Add File"
+        Me.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnAdd.UseVisualStyleBackColor = True
+        '
+        'btnOpenLoc
+        '
+        Me.btnOpenLoc.Image = Global.CryptyChops.My.Resources.Resources.folder_horizontal_open
+        Me.btnOpenLoc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnOpenLoc.Location = New System.Drawing.Point(271, 348)
+        Me.btnOpenLoc.Name = "btnOpenLoc"
+        Me.btnOpenLoc.Size = New System.Drawing.Size(121, 24)
+        Me.btnOpenLoc.TabIndex = 8
+        Me.btnOpenLoc.Text = "Open File Location"
+        Me.btnOpenLoc.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnOpenLoc.UseVisualStyleBackColor = True
+        '
+        'btnRemove
+        '
+        Me.btnRemove.Image = Global.CryptyChops.My.Resources.Resources.minus
+        Me.btnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnRemove.Location = New System.Drawing.Point(174, 348)
+        Me.btnRemove.Name = "btnRemove"
+        Me.btnRemove.Size = New System.Drawing.Size(91, 24)
+        Me.btnRemove.TabIndex = 4
+        Me.btnRemove.Text = "Remove File"
+        Me.btnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnRemove.UseVisualStyleBackColor = True
+        '
+        'btnEdit
+        '
+        Me.btnEdit.Image = Global.CryptyChops.My.Resources.Resources.pencil
+        Me.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnEdit.Location = New System.Drawing.Point(93, 377)
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Size = New System.Drawing.Size(75, 24)
+        Me.btnEdit.TabIndex = 5
+        Me.btnEdit.Text = "Edit File"
+        Me.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnEdit.UseVisualStyleBackColor = True
+        '
+        'btnEncrypt
+        '
+        Me.btnEncrypt.Image = Global.CryptyChops.My.Resources.Resources.lock
+        Me.btnEncrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnEncrypt.Location = New System.Drawing.Point(12, 348)
+        Me.btnEncrypt.Name = "btnEncrypt"
+        Me.btnEncrypt.Size = New System.Drawing.Size(75, 24)
+        Me.btnEncrypt.TabIndex = 6
+        Me.btnEncrypt.Text = "Encrypt"
+        Me.btnEncrypt.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnEncrypt.UseVisualStyleBackColor = True
+        '
+        'btnDecrypt
+        '
+        Me.btnDecrypt.Image = Global.CryptyChops.My.Resources.Resources.lock_unlock
+        Me.btnDecrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnDecrypt.Location = New System.Drawing.Point(12, 377)
+        Me.btnDecrypt.Name = "btnDecrypt"
+        Me.btnDecrypt.Size = New System.Drawing.Size(75, 23)
+        Me.btnDecrypt.TabIndex = 14
+        Me.btnDecrypt.Text = "Decrypt"
+        Me.btnDecrypt.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnDecrypt.UseVisualStyleBackColor = True
+        '
+        'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(738, 437)
+        Me.Controls.Add(Me.btnDecrypt)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.lstFiles)
         Me.Controls.Add(Me.btnAdd)
@@ -345,7 +359,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.btnEncrypt)
-        Me.Name = "Form1"
+        Me.Name = "frmMain"
         Me.Text = "Crypty Chops"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
@@ -392,5 +406,6 @@ Partial Class frmMain
     Friend WithEvents lblStatus As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel2 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
+    Friend WithEvents btnDecrypt As System.Windows.Forms.Button
 
 End Class

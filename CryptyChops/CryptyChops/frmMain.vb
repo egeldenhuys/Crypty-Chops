@@ -19,4 +19,8 @@
     End Sub
 
 
+    Private Sub btnEncrypt_Click(sender As System.Object, e As System.EventArgs) Handles btnEncrypt.Click
+        frmEncrypt.Show()
+
+    End Sub
 End Class
