@@ -27,4 +27,9 @@
         frmDecrypt.Show()
 
     End Sub
+
+    Private Sub AboutToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles AboutToolStripMenuItem.Click
+        frmAbout.Show()
+
+    End Sub
 End Class
