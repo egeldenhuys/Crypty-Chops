@@ -1,11 +1,7 @@
 ﻿Public Class ListViewManager
     ' This class is used to manage the ListView Control
-    ' Add items
-    ' Delete Items
-    ' Get items
-    ' Edit items
-    ' Columns
-    ' etc
+    ' Any functions that make using the controll faster or easier should be\
+    ' added in here
 
     Private _parent As ListView
     Private _items() As ListViewItem
