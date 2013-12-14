@@ -8,11 +8,14 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("CryptyChops")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("Microsoft")> 
-<Assembly: AssemblyProduct("CryptyChops")> 
-<Assembly: AssemblyCopyright("Copyright © Microsoft 2013")> 
+<Assembly: AssemblyTitle("Crypty Chops")> 
+<Assembly: AssemblyDescription("Developers: Evert Geldenhuys and Robert Gracy." + vbCrlf + _
+"Crypty Chops allows you to ecnrypt and decrypt files." + vbCrlf + _
+"Icons by Yusuke Kamiyamane (http://p.yusukekamiyamane.com/)")> 
+
+<Assembly: AssemblyCompany("Choppy Chops")> 
+<Assembly: AssemblyProduct("Crypty Chops")> 
+<Assembly: AssemblyCopyright("Copyright © Choppy Chops 2013")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
