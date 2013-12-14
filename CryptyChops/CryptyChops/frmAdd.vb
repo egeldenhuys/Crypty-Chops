@@ -25,11 +25,6 @@ Public Class frmAdd
 
     End Sub
 
-    Private Sub lstInfo_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles lstInfo.SelectedIndexChanged
-
-
-    End Sub
-
     Private Sub txtName_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtName.TextChanged
 
         lstInfo.Items("name").SubItems(1).Text = txtName.Text

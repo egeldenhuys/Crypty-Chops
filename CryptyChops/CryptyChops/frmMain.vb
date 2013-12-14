@@ -1,6 +1,7 @@
 ﻿Public Class frmMain
     ' This is the main form of the program
     ' It is where all functions are initiated from
+    ' TODO: Managing the file list
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
@@ -12,6 +13,7 @@
 
         Dim path As String = OpenFileDialog1.FileName
 
+        'If the user does not select a file do not display the next window
         If path <> "" Then
             frmAdd.ShowFileInfo(path)
         End If
