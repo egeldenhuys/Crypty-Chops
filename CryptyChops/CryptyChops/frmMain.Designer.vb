@@ -53,13 +53,13 @@ Partial Class frmMain
         Me.lblStatus = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.btnDecrypt = New System.Windows.Forms.Button()
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnOpenLoc = New System.Windows.Forms.Button()
         Me.btnRemove = New System.Windows.Forms.Button()
         Me.btnEdit = New System.Windows.Forms.Button()
         Me.btnEncrypt = New System.Windows.Forms.Button()
-        Me.btnDecrypt = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -260,6 +260,18 @@ Partial Class frmMain
         '
         Me.OpenFileDialog1.Filter = "All Files (*.*)|*.*"
         '
+        'btnDecrypt
+        '
+        Me.btnDecrypt.Image = Global.CryptyChops.My.Resources.Resources.lock_unlock
+        Me.btnDecrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnDecrypt.Location = New System.Drawing.Point(12, 377)
+        Me.btnDecrypt.Name = "btnDecrypt"
+        Me.btnDecrypt.Size = New System.Drawing.Size(75, 23)
+        Me.btnDecrypt.TabIndex = 14
+        Me.btnDecrypt.Text = "Decrypt"
+        Me.btnDecrypt.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnDecrypt.UseVisualStyleBackColor = True
+        '
         'btnDelete
         '
         Me.btnDelete.Image = Global.CryptyChops.My.Resources.Resources.bin
@@ -331,18 +343,6 @@ Partial Class frmMain
         Me.btnEncrypt.Text = "Encrypt"
         Me.btnEncrypt.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnEncrypt.UseVisualStyleBackColor = True
-        '
-        'btnDecrypt
-        '
-        Me.btnDecrypt.Image = Global.CryptyChops.My.Resources.Resources.lock_unlock
-        Me.btnDecrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDecrypt.Location = New System.Drawing.Point(12, 377)
-        Me.btnDecrypt.Name = "btnDecrypt"
-        Me.btnDecrypt.Size = New System.Drawing.Size(75, 23)
-        Me.btnDecrypt.TabIndex = 14
-        Me.btnDecrypt.Text = "Decrypt"
-        Me.btnDecrypt.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnDecrypt.UseVisualStyleBackColor = True
         '
         'frmMain
         '

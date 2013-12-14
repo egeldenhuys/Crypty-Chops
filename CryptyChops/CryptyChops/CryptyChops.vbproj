@@ -78,6 +78,12 @@
     <Compile Include="frmAdd.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmDecrypt.Designer.vb">
+      <DependentUpon>frmDecrypt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDecrypt.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmEncrypt.Designer.vb">
       <DependentUpon>frmEncrypt.vb</DependentUpon>
     </Compile>
@@ -111,6 +117,9 @@
   <ItemGroup>
     <EmbeddedResource Include="frmAdd.resx">
       <DependentUpon>frmAdd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDecrypt.resx">
+      <DependentUpon>frmDecrypt.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEncrypt.resx">
       <DependentUpon>frmEncrypt.vb</DependentUpon>
