@@ -32,4 +32,9 @@
         frmAbout.Show()
 
     End Sub
+
+    Private Sub btnDelete_Click(sender As System.Object, e As System.EventArgs) Handles btnDelete.Click
+        frmDelConfirm.Show()
+
+    End Sub
 End Class

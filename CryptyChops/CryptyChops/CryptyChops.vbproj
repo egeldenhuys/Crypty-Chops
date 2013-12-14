@@ -90,6 +90,12 @@
     <Compile Include="frmDecrypt.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmDelConfirm.Designer.vb">
+      <DependentUpon>frmDelConfirm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDelConfirm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmEncrypt.Designer.vb">
       <DependentUpon>frmEncrypt.vb</DependentUpon>
     </Compile>
@@ -129,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDecrypt.resx">
       <DependentUpon>frmDecrypt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDelConfirm.resx">
+      <DependentUpon>frmDelConfirm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEncrypt.resx">
       <DependentUpon>frmEncrypt.vb</DependentUpon>
