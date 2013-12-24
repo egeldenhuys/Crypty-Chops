@@ -1,7 +1,12 @@
 ﻿Public Class frmMain
     ' This is the main form of the program
     ' It is where all functions are initiated from
-    ' TODO: Managing the file list
+
+    ' TODO: 
+    ' Managing the ListView and CryptyFiles
+    ' Tooltip
+    ' Status Strip
+    ' Pass the selected CryptyFile object to the function form
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
@@ -9,6 +14,7 @@
 
     Private Sub btnAdd_Click(sender As System.Object, e As System.EventArgs) Handles btnAdd.Click
 
+        ' Collect the path
         OpenFileDialog1.ShowDialog()
 
         Dim path As String = OpenFileDialog1.FileName
