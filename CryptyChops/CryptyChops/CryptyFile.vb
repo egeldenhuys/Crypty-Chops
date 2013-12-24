@@ -9,6 +9,13 @@ Public Class CryptyFile
     Private _name As String ' The name of the object, not the actual file name.
     Private _fileInfo As FileInfo
     Private _key As String
+    Private _status As String = "NOT IMPLEMENTED"
+    Private _path As String
+
+    Public Sub New(path As String)
+        Me.Path = path
+
+    End Sub
 
     ''' <summary>
     ''' Encrypt this file with the key property
@@ -84,6 +91,34 @@ Public Class CryptyFile
         Get
             Return _fileInfo
         End Get
+    End Property
+
+    ''' <summary>
+    ''' The status of the file. Encrypted or Decrypted
+    ''' </summary>
+    ''' <value></value>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Property Status() As String
+        Get
+            Return _status
+        End Get
+        Set(ByVal value As String)
+            _status = value
+        End Set
+    End Property
+
+    Public Property Path() As String
+        Get
+            Return _path
+        End Get
+        Set(ByVal value As String)
+            _path = value
+
+            ' Get FileInfo
+            _fileInfo = New FileInfo(_path)
+
+        End Set
     End Property
 
 #End Region

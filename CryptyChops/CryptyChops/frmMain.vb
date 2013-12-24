@@ -8,7 +8,11 @@
     ' Status Strip
     ' Pass the selected CryptyFile object to the function form
 
+    Public cryptyListObj As CryptyList
+
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+
+        cryptyListObj = New CryptyList(lstFiles)
 
     End Sub
 

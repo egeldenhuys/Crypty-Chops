@@ -3,6 +3,8 @@
 Public Class frmAdd
     ' This form is used to add a CryptyFile to the list
 
+    Dim tmpFileInfo As FileInfo
+
     Private Sub frmAdd_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         ' Clear the items in the ListView that are used for reference in the designer
         lstInfo.Items.Clear()
@@ -16,6 +18,8 @@ Public Class frmAdd
     ''' <remarks></remarks>
     Public Sub ShowFileInfo(ByVal path As String)
         Me.Show()
+
+        tmpFileInfo = New FileInfo(path)
 
         'TODO:
         ' Show file information
@@ -45,7 +49,12 @@ Public Class frmAdd
 
     Private Sub btnAdd_Click(sender As System.Object, e As System.EventArgs) Handles btnAdd.Click
         'TODO:
-        ' Create a cryptyFile object and add it the the CryptyList.
-        ' Close Form
+
+        Dim tmpItem As New CryptyFile(tmpFileInfo.FullName)
+
+        tmpItem.Name = txtName.Text
+
+        frmMain.cryptyListObj.Add(tmpItem)
+
     End Sub
 End Class
