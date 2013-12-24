@@ -156,7 +156,6 @@ Partial Class frmMain
         Me.lstFiles.Dock = System.Windows.Forms.DockStyle.Top
         Me.lstFiles.FullRowSelect = True
         Me.lstFiles.GridLines = True
-        Me.lstFiles.HoverSelection = True
         Me.lstFiles.Location = New System.Drawing.Point(0, 24)
         Me.lstFiles.Name = "lstFiles"
         Me.lstFiles.Size = New System.Drawing.Size(738, 318)
