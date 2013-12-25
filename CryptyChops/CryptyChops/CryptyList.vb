@@ -24,7 +24,7 @@
         ' Add the item to the list
         _fileList.Add(item)
 
-        ' Add the item to the ListView
+        ' Add all items from the fileList to the ListView
         Refresh()
 
     End Sub
@@ -32,13 +32,38 @@
     ''' <summary>
     ''' Removes the specified object from the list
     ''' </summary>
-    ''' <param name="itemName"></param>
+    ''' <param name="itemName">The name (identifier) of the item to remove</param>
     ''' <remarks></remarks>
     Public Sub Remove(itemName As String)
 
         ' Remove the item from the List
+        For i As Integer = 0 To _fileList.Count - 1
+            If _fileList.Item(i).Name = itemName Then
+                _fileList.RemoveAt(i)
 
-        ' Remove the item from the ListView
+                ' Exit the loop, as the number of indices in _fileList has now changed.
+                Exit For
+            End If
+        Next
+
+        ' Add all items from the fileList to the ListView
+        Refresh()
+
+    End Sub
+
+    ''' <summary>
+    ''' Removes the specified object from the list
+    ''' </summary>
+    ''' <param name="index">The index of the item in the list to remove</param>
+    ''' <remarks></remarks>
+    Public Sub Remove(index As Integer)
+
+        ' Remove the item from the List
+        _fileList.RemoveAt(index)
+
+        ' Add all items from the fileList to the ListView
+        Refresh()
+
     End Sub
 
     ''' <summary>

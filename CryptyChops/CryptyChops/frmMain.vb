@@ -49,4 +49,16 @@
         frmDelConfirm.Show()
 
     End Sub
+
+    Private Sub btnRemove_Click(sender As System.Object, e As System.EventArgs) Handles btnRemove.Click
+
+        ' Get the name of the selected item
+        Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
+
+        ' Remove all selected items
+        For i As Integer = 0 To selItems.Count - 1
+            cryptyListObj.Remove(selItems(i).Name)
+        Next
+
+    End Sub
 End Class
