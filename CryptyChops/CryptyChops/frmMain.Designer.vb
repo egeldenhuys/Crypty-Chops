@@ -151,7 +151,7 @@ Partial Class frmMain
         'lstFiles
         '
         Me.lstFiles.Activation = System.Windows.Forms.ItemActivation.OneClick
-        Me.lstFiles.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.FileNameColumn, Me.StatusColumn, Me.SizeColumn, Me.PathColumn, Me.DateModifiedColumn})
+        Me.lstFiles.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.FileNameColumn, Me.StatusColumn, Me.SizeColumn, Me.DateModifiedColumn, Me.PathColumn})
         Me.lstFiles.ContextMenuStrip = Me.ContextMenuStrip1
         Me.lstFiles.Dock = System.Windows.Forms.DockStyle.Top
         Me.lstFiles.FullRowSelect = True
@@ -174,13 +174,11 @@ Partial Class frmMain
         '
         'PathColumn
         '
-        Me.PathColumn.DisplayIndex = 4
         Me.PathColumn.Text = "Path"
         Me.PathColumn.Width = 203
         '
         'DateModifiedColumn
         '
-        Me.DateModifiedColumn.DisplayIndex = 3
         Me.DateModifiedColumn.Text = "Date Modified"
         Me.DateModifiedColumn.Width = 207
         '

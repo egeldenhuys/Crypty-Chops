@@ -91,12 +91,11 @@
             ' Size
             tmpItem.SubItems.Add(_fileList.Item(i).FileInfo.Length.ToString)
 
-            ' Path
-            tmpItem.SubItems.Add(_fileList.Item(i).FileInfo.FullName)
-
             ' Date Modified
             tmpItem.SubItems.Add(_fileList.Item(i).FileInfo.LastWriteTime.ToString)
 
+            ' Path
+            tmpItem.SubItems.Add(_fileList.Item(i).FileInfo.FullName)
 
             ' Add the item to the ListView
             _listView.Items.Add(tmpItem)
