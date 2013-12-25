@@ -8,7 +8,8 @@
 
         Dim cryptyObj As New CryptyEncrypt
 
-        lblStatus.Text = "Encrypting"
+        lblStatus.Text = "Encrypting..."
+        Me.Refresh()
 
         cryptyObj.ApplyAlgorithm(txtPathIn.Text, txtPathOut.Text, txtKey.Text)
 
@@ -20,7 +21,7 @@
         OpenFileDialog1.ShowDialog()
 
         txtPathIn.Text = OpenFileDialog1.FileName
-        txtPathOut.Text = txtPathIn.Text & "_Encrypted"
+        txtPathOut.Text = txtPathIn.Text & "_NEW"
 
     End Sub
 End Class

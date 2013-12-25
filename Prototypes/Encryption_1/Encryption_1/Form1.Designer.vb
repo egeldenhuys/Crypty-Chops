@@ -24,7 +24,6 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.txtPathIn = New System.Windows.Forms.TextBox()
         Me.btnEncrypt = New System.Windows.Forms.Button()
-        Me.btnDecrypt = New System.Windows.Forms.Button()
         Me.lblStatus = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnIn = New System.Windows.Forms.Button()
@@ -49,26 +48,17 @@ Partial Class Form1
         '
         'btnEncrypt
         '
-        Me.btnEncrypt.Location = New System.Drawing.Point(13, 171)
+        Me.btnEncrypt.Location = New System.Drawing.Point(212, 171)
         Me.btnEncrypt.Name = "btnEncrypt"
-        Me.btnEncrypt.Size = New System.Drawing.Size(75, 23)
+        Me.btnEncrypt.Size = New System.Drawing.Size(87, 23)
         Me.btnEncrypt.TabIndex = 1
-        Me.btnEncrypt.Text = "Encrypt"
+        Me.btnEncrypt.Text = "Apply Algorithm"
         Me.btnEncrypt.UseVisualStyleBackColor = True
-        '
-        'btnDecrypt
-        '
-        Me.btnDecrypt.Location = New System.Drawing.Point(94, 171)
-        Me.btnDecrypt.Name = "btnDecrypt"
-        Me.btnDecrypt.Size = New System.Drawing.Size(75, 23)
-        Me.btnDecrypt.TabIndex = 2
-        Me.btnDecrypt.Text = "Decrypt"
-        Me.btnDecrypt.UseVisualStyleBackColor = True
         '
         'lblStatus
         '
         Me.lblStatus.Font = New System.Drawing.Font("Consolas", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblStatus.Location = New System.Drawing.Point(12, 215)
+        Me.lblStatus.Location = New System.Drawing.Point(12, 197)
         Me.lblStatus.Name = "lblStatus"
         Me.lblStatus.Size = New System.Drawing.Size(485, 32)
         Me.lblStatus.TabIndex = 4
@@ -149,12 +139,11 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(509, 256)
+        Me.ClientSize = New System.Drawing.Size(509, 231)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.lblStatus)
-        Me.Controls.Add(Me.btnDecrypt)
         Me.Controls.Add(Me.btnEncrypt)
         Me.Name = "Form1"
         Me.Text = "Encryption_1"
@@ -169,7 +158,6 @@ Partial Class Form1
     End Sub
     Friend WithEvents txtPathIn As System.Windows.Forms.TextBox
     Friend WithEvents btnEncrypt As System.Windows.Forms.Button
-    Friend WithEvents btnDecrypt As System.Windows.Forms.Button
     Friend WithEvents lblStatus As System.Windows.Forms.Label
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents btnIn As System.Windows.Forms.Button

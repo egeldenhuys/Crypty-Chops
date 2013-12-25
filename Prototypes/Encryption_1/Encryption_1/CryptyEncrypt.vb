@@ -14,6 +14,7 @@ Public Class CryptyEncrypt
     ''' <remarks></remarks>
     Public Sub ApplyAlgorithm(path As String, outPath As String, key As String)
 
+
         ' Convert the key to bytes
         Dim keyBytes As Byte() = New UTF8Encoding(True).GetBytes(key)
 
@@ -21,19 +22,31 @@ Public Class CryptyEncrypt
 
         ' Create filesteam and Buffer array
         Dim fs As New FileStream(path, FileMode.Open)
-        Dim b(bufferSize) As Byte
+        Dim b(bufferSize - 1) As Byte ' Array to store the bytes read from the file
+
+        Dim bytesLeft As Long = fs.Length ' How many bytes we still have to read
 
         ' Create filestream for writing the encrypted file
-        Dim fsOut As New FileStream(outPath, FileMode.Append)
+        Dim fsOut As New FileStream(outPath, FileMode.Create)
 
-        Dim bOut(bufferSize) As Byte 'Array to use for storage of encrypted bytes
+        Dim bOut(bufferSize -1) As Byte 'Array to use for storage of encrypted bytes
 
+        Dim n As Integer = 0 ' Variable to store how many bytes was read
 
         ' Read blocks until all bytes have been read
-        Do While fs.Read(b, 0, b.Length - 1) > 0
+        While (bytesLeft > 0)
+
+            ' Read block of bytes and store how many was read in 'n'
+            n = fs.Read(b, 0, b.Length)
+            bytesLeft -= n
+
+            ' If we read less bytes than the buffer size, resize the array to avoid empty bytes
+            If n < b.Length Then
+                ReDim bOut(n - 1)
+            End If
 
             ' XOR each of the bytes in the block with a byte from they key.
-            For i As Integer = 0 To b.Length - 1
+            For i As Integer = 0 To n - 1
 
                 ' Perform XOR
                 bOut(i) = b(i) Xor keyBytes(keyCount)
@@ -48,8 +61,9 @@ Public Class CryptyEncrypt
             Next
 
             ' Write the encrypted bytes to the stream
-            fsOut.Write(bOut, 0, bOut.Length - 1)
-        Loop
+            fsOut.Write(bOut, 0, bOut.Length)
+
+        End While
 
         ' Close streams
         fs.Close()
