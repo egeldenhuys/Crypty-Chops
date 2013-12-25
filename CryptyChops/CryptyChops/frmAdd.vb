@@ -6,8 +6,6 @@ Public Class frmAdd
     Dim tmpFileInfo As FileInfo
 
     Private Sub frmAdd_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        ' Clear the items in the ListView that are used for reference in the designer
-        lstInfo.Items.Clear()
 
     End Sub
 
@@ -21,18 +19,31 @@ Public Class frmAdd
 
         tmpFileInfo = New FileInfo(path)
 
-        'TODO:
-        ' Show file information
+        ' Name
+        lstInfo.Items(0).SubItems.Add(tmpFileInfo.Name)
+
+        ' Path
+        lstInfo.Items(1).SubItems.Add(tmpFileInfo.FullName)
+
+        ' Size
+        lstInfo.Items(2).SubItems.Add(tmpFileInfo.Length.ToString)
+
+        ' Populate Textbox
+        txtName.Text = tmpFileInfo.Name
+
 
     End Sub
 
     Private Sub txtName_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtName.TextChanged
-        ' TODO:
-        ' Update the text in the ListView
+
+        lstInfo.Items(0).SubItems(1).Text = txtName.Text
+
     End Sub
 
     Private Sub btnCancel_Click(sender As System.Object, e As System.EventArgs) Handles btnCancel.Click
-        ' Close Form
+
+        Me.Close()
+
     End Sub
 
     Private Sub btnEncrypt_Click(sender As System.Object, e As System.EventArgs) Handles btnEncrypt.Click
@@ -48,13 +59,14 @@ Public Class frmAdd
     End Sub
 
     Private Sub btnAdd_Click(sender As System.Object, e As System.EventArgs) Handles btnAdd.Click
-        'TODO:
 
         Dim tmpItem As New CryptyFile(tmpFileInfo.FullName)
 
         tmpItem.Name = txtName.Text
 
         frmMain.cryptyListObj.Add(tmpItem)
+
+        Me.Close()
 
     End Sub
 End Class
