@@ -1,4 +1,6 @@
-﻿Public Class frmMain
+﻿Imports System.IO
+
+Public Class frmMain
     ' This is the main form of the program
     ' It is where all functions are initiated from
 
@@ -58,6 +60,24 @@
         ' Remove all selected items
         For i As Integer = 0 To selItems.Count - 1
             cryptyListObj.Remove(selItems(i).Name)
+        Next
+
+    End Sub
+
+    Private Sub btnOpenLoc_Click(sender As System.Object, e As System.EventArgs) Handles btnOpenLoc.Click
+
+        ' Get all selected items
+        Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
+
+        ' Open the folder of each selected item
+        For i As Integer = 0 To selItems.Count - 1
+
+            ' Get file info
+            Dim tmpFileInfo As New FileInfo(selItems(i).SubItems(4).Text)
+
+            ' Pass the Directory path of the file to explorer
+            Process.Start("explorer.exe", tmpFileInfo.DirectoryName)
+
         Next
 
     End Sub
