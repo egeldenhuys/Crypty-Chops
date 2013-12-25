@@ -1,14 +1,24 @@
 ﻿Public Class frmMain
     ' This is the main form of the program
     ' It is where all functions are initiated from
-    ' TODO: Managing the file list
+
+    ' TODO: 
+    ' Managing the ListView and CryptyFiles
+    ' Tooltip
+    ' Status Strip
+    ' Pass the selected CryptyFile object to the function form
+
+    Public cryptyListObj As CryptyList
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+
+        cryptyListObj = New CryptyList(lstFiles)
 
     End Sub
 
     Private Sub btnAdd_Click(sender As System.Object, e As System.EventArgs) Handles btnAdd.Click
 
+        ' Collect the path
         OpenFileDialog1.ShowDialog()
 
         Dim path As String = OpenFileDialog1.FileName
@@ -37,6 +47,18 @@
 
     Private Sub btnDelete_Click(sender As System.Object, e As System.EventArgs) Handles btnDelete.Click
         frmDelConfirm.Show()
+
+    End Sub
+
+    Private Sub btnRemove_Click(sender As System.Object, e As System.EventArgs) Handles btnRemove.Click
+
+        ' Get the name of the selected item
+        Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
+
+        ' Remove all selected items
+        For i As Integer = 0 To selItems.Count - 1
+            cryptyListObj.Remove(selItems(i).Name)
+        Next
 
     End Sub
 End Class
