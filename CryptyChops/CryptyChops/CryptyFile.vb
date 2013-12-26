@@ -6,6 +6,8 @@ Public Class CryptyFile
     ' TODO:
     ' Paths for encryption and compression
     ' Using a file as the key
+    ' Move Hash function to a separate class
+
 
     Private _name As String ' The name of the object, not the actual file name.
     Private _fileInfo As FileInfo
@@ -13,7 +15,13 @@ Public Class CryptyFile
     Private _status As String = ""
     Private _path As String
     Private _header As CryptyHeader
+    Private _compress As Boolean
 
+    ''' <summary>
+    ''' Create a new CryptyFile object
+    ''' </summary>
+    ''' <param name="path">The path of the crypty File</param>
+    ''' <remarks></remarks>
     Public Sub New(path As String)
         Me.Path = path
         _header = New CryptyHeader(path)
@@ -45,6 +53,9 @@ Public Class CryptyFile
     ''' <remarks></remarks>
     Public Sub Encrypt()
 
+        ' TODO:
+        ' Implement Encryption
+
     End Sub
 
     ''' <summary>
@@ -53,26 +64,54 @@ Public Class CryptyFile
     ''' <remarks></remarks>
     Public Sub Decrypt()
 
+        ' TODO:
+        ' Implement Decryption
+
     End Sub
 
     ''' <summary>
     ''' Compress this file
     ''' </summary>
     ''' <remarks></remarks>
-    Public Sub Compress()
+    Public Sub CompressData()
 
+        ' TODO:
+        ' Implement Compression
     End Sub
 
     ''' <summary>
     ''' Extract this file
     ''' </summary>
     ''' <remarks></remarks>
-    Public Sub Extract()
+    Public Sub ExtractData()
 
+        ' TODO:
+        ' Implement Extraction
     End Sub
 
 #Region "Properties"
 
+    ''' <summary>
+    ''' Should the file be compressed before encryption
+    ''' </summary>
+    ''' <value></value>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Property Compress() As Boolean
+        Get
+            Return _compress
+        End Get
+        Set(ByVal value As Boolean)
+            _compress = value
+        End Set
+    End Property
+
+    ''' <summary>
+    ''' The header associated with the Crypty File
+    ''' </summary>
+    ''' <value></value>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Property Header() As CryptyHeader
         Get
             Return _header
@@ -139,6 +178,12 @@ Public Class CryptyFile
         End Set
     End Property
 
+    ''' <summary>
+    ''' The path of the Crypty File
+    ''' </summary>
+    ''' <value></value>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Property Path() As String
         Get
             Return _path

@@ -10,12 +10,12 @@ Public Class CryptyHeader
 
     Private _fileName() As Byte
     Private _hash() As Byte
-    Private _hashC() As Byte
+    Private _hashCompressed() As Byte
     Private _path As String
     Private _partNum() As Byte
     Private _partsTotal() As Byte
     Private _compressed() As Byte
-    Private _version() As Byte
+    Private _version() As Byte = {&H1, &H0, &H0, &H0}
 
     Const BUFFER_SIZE As Integer = 1024
 
@@ -75,7 +75,7 @@ Public Class CryptyHeader
         ReDim b(HASH_C_COUNT - 1)
         ' compressed data hash
         fs.Read(b, 0, HASH_C_COUNT)
-        _hashC = b
+        _hashCompressed = b
 
         ReDim b(PART_NUM_COUNT - 1)
         ' Part Num
@@ -105,7 +105,7 @@ Public Class CryptyHeader
     ''' Create a header for the Crypty File
     ''' </summary>
     ''' <remarks></remarks>
-    Public Sub WriteHeader()
+    Public Sub Write()
 
         ' Process
         ' Write header to tmpFile
@@ -128,7 +128,7 @@ Public Class CryptyHeader
         fsTmp.Write(_hash, 0, HASH_COUNT)
 
         ' compressed data Hash
-        fsTmp.Write(_hashC, 0, HASH_C_COUNT)
+        fsTmp.Write(_hashCompressed, 0, HASH_C_COUNT)
 
         ' Part Num
         fsTmp.Write(_partNum, 0, PART_NUM_COUNT)
@@ -167,7 +167,7 @@ Public Class CryptyHeader
     ''' Remove the header from the current file. Do not use if there is no header.
     ''' </summary>
     ''' <remarks></remarks>
-    Public Sub StripHeader()
+    Public Sub Remove()
 
         ' Write data to tmpFile, excluding the header
         ' Replace original file with tmpFile
@@ -248,14 +248,14 @@ Public Class CryptyHeader
     ''' <value></value>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Property Hash() As String
+    Public Property Hash() As Byte()
         Get
-            Return BitConverter.ToString(_hash)
-
+            'Return BitConverter.ToString(_hash)
+            Return _hash
         End Get
 
-        Set(ByVal value As String)
-            _hash = HashToByte(value)
+        Set(ByVal value As Byte())
+            _hash = value
         End Set
 
     End Property
@@ -266,12 +266,14 @@ Public Class CryptyHeader
     ''' <value></value>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Property HashCompressed() As String
+    Public Property HashCompressed() As Byte()
         Get
-            Return BitConverter.ToString(_hashC)
+            'Return BitConverter.ToString(_hashCompressed)
+            Return _hashCompressed
         End Get
-        Set(ByVal value As String)
-            _hashC = HashToByte(value)
+
+        Set(ByVal value As Byte())
+            _hashCompressed = value
         End Set
     End Property
 
