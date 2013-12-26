@@ -197,6 +197,29 @@ Public Class CryptyHeader
 
     End Sub
 
+    ''' <summary>
+    ''' Convert SHA1 hash to an array of bytes
+    ''' </summary>
+    ''' <param name="value">The hash as a string to convert</param>
+    ''' <returns>The hash byte array</returns>
+    ''' <remarks>For strings in the format of FF-AA-41...</remarks>
+    Private Function HashToByte(value As String) As Byte()
+
+        ' Split the string
+        Dim subStrings() As String = value.Split(CChar("-"))
+
+        ' Array for storing bytes
+        Dim bytes(subStrings.Length - 1) As Byte
+
+        ' Convert each HEX value from the string to int, then byte
+        For i As Integer = 0 To subStrings.Length - 1
+            bytes(i) = CByte(Convert.ToInt32(subStrings(i), 16))
+        Next
+
+        Return bytes
+
+    End Function
+
 #Region "Properties"
 
     ''' <summary>
@@ -207,11 +230,13 @@ Public Class CryptyHeader
     ''' <remarks></remarks>
     Public Property FileName() As String
         Get
-
+            Return BitConverter.ToString(_fileName)
         End Get
-        Set(ByVal value As String)
 
+        Set(ByVal value As String)
+            _fileName = Encoding.UTF8.GetBytes(value)
         End Set
+
     End Property
 
     ''' <summary>
@@ -222,11 +247,14 @@ Public Class CryptyHeader
     ''' <remarks></remarks>
     Public Property Hash() As String
         Get
+            Return BitConverter.ToString(_hash)
 
         End Get
-        Set(ByVal value As String)
 
+        Set(ByVal value As String)
+            _hash = HashToByte(value)
         End Set
+
     End Property
 
     ''' <summary>
@@ -237,10 +265,10 @@ Public Class CryptyHeader
     ''' <remarks></remarks>
     Public Property HashCompressed() As String
         Get
-
+            Return BitConverter.ToString(_hashC)
         End Get
         Set(ByVal value As String)
-
+            _hashC = HashToByte(value)
         End Set
     End Property
 
@@ -267,11 +295,13 @@ Public Class CryptyHeader
     ''' <remarks></remarks>
     Public Property PartNum() As Integer
         Get
-
+            Return Convert.ToInt32(_partNum)
         End Get
-        Set(ByVal value As Integer)
 
+        Set(ByVal value As Integer)
+            _partNum = BitConverter.GetBytes(value)
         End Set
+
     End Property
 
     ''' <summary>
@@ -282,10 +312,10 @@ Public Class CryptyHeader
     ''' <remarks></remarks>
     Public Property PartsTotal() As Integer
         Get
-
+            Return Convert.ToInt32(_partsTotal)
         End Get
         Set(ByVal value As Integer)
-
+            _partsTotal = BitConverter.GetBytes(value)
         End Set
     End Property
 
@@ -297,10 +327,11 @@ Public Class CryptyHeader
     ''' <remarks></remarks>
     Public Property Compressed() As Boolean
         Get
-
+            Return Convert.ToBoolean(_compressed)
         End Get
-        Set(ByVal value As Boolean)
 
+        Set(ByVal value As Boolean)
+            _compressed = BitConverter.GetBytes(value)
         End Set
     End Property
 
@@ -312,10 +343,10 @@ Public Class CryptyHeader
     ''' <remarks></remarks>
     Public Property Version() As Integer
         Get
-
+            Return Convert.ToInt32(_version)
         End Get
         Set(ByVal value As Integer)
-
+            _version = BitConverter.GetBytes(value)
         End Set
     End Property
 #End Region
