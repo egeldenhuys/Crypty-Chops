@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Security.Cryptography
 
 Public Class CryptyFile
 
@@ -18,6 +19,25 @@ Public Class CryptyFile
         _header = New CryptyHeader(path)
 
     End Sub
+
+    ''' <summary>
+    ''' Get the SHA1 Hash of the file at the given path
+    ''' </summary>
+    ''' <param name="path">The path of the file to hash</param>
+    ''' <returns>Byte array of the Hash</returns>
+    ''' <remarks></remarks>
+    Public Function GetSHA1(path As String) As Byte()
+        Dim sha1Obj As New SHA1CryptoServiceProvider
+        Dim bytes() As Byte
+
+        Dim fs As New FileStream(path, FileMode.Open)
+
+        ' Get hash
+        bytes = sha1Obj.ComputeHash(fs)
+
+        Return bytes
+
+    End Function
 
     ''' <summary>
     ''' Encrypt this file with the key property
