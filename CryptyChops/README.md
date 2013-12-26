@@ -1,1 +1,1 @@
-This is the main project
+This is the main project directory.
