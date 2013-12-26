@@ -25,7 +25,7 @@ Public Class FileReader
     Private _bytesleft As Long
     Private _path As String
 
-    Private fs As FileStream
+    Public fs As FileStream
 
     ''' <summary>
     ''' Create a new
