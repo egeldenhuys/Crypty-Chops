@@ -114,44 +114,48 @@ Public Class CryptyHeader
 
         Dim tmpPath As String = System.IO.Path.GetTempFileName
 
-        Dim fs As New FileStream(tmpPath, FileMode.Create)
+        Dim fsTmp As New FileStream(tmpPath, FileMode.Create)
 
-        ' FileName
-        fs.Write(_fileName, 0, FILE_NAME_COUNT)
+        Try
+            ' FileName
+            fsTmp.Write(_fileName, 0, FILE_NAME_COUNT)
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
 
         ' plain-text Hash
-        fs.Write(_hash, 0, HASH_COUNT)
+        fsTmp.Write(_hash, 0, HASH_COUNT)
 
         ' compressed data Hash
-        fs.Write(_hashC, 0, HASH_C_COUNT)
+        fsTmp.Write(_hashC, 0, HASH_C_COUNT)
 
         ' Part Num
-        fs.Write(_partNum, 0, PART_NUM_COUNT)
+        fsTmp.Write(_partNum, 0, PART_NUM_COUNT)
 
         ' Parts Total
-        fs.Write(_partsTotal, 0, PART_TOTAL_COUNT)
+        fsTmp.Write(_partsTotal, 0, PART_TOTAL_COUNT)
 
         ' Compressed
-        fs.Write(_compressed, 0, COMPRESSED_COUNT)
+        fsTmp.Write(_compressed, 0, COMPRESSED_COUNT)
 
         ' Version
-        fs.Write(_version, 0, VERSION_COUNT)
+        fsTmp.Write(_version, 0, VERSION_COUNT)
 
         ' Write the plain-text data to the tmp file with the header
-        Dim fsData As New FileReader(_path, BUFFER_SIZE)
+        Dim fsOrig As New FileReader(_path, BUFFER_SIZE)
 
         Dim b() As Byte
 
         ' Read and write blocks until there are no more bytes left
-        While fsData.Finished = False
-            b = fsData.ReadBlock
-            fs.Write(b, 0, b.Length)
+        While fsOrig.Finished = False
+            b = fsOrig.ReadBlock
+            fsTmp.Write(b, 0, b.Length)
         End While
 
         ' Clean up
-        fsData.Close()
-        fsData = Nothing
-        fs.Close()
+        fsOrig.Close()
+        fsTmp.Close()
 
         ' Replace Files
         System.IO.File.Delete(_path)
@@ -202,18 +206,13 @@ Public Class CryptyHeader
     ''' </summary>
     ''' <param name="value">The hash as a string to convert</param>
     ''' <returns>The hash byte array</returns>
-    ''' <remarks>For strings in the format of FF-AA-41...</remarks>
+    ''' <remarks>For strings in the format of e05fba3cae3eb002ea8480bc08c1fbc147004abb</remarks>
     Private Function HashToByte(value As String) As Byte()
 
-        ' Split the string
-        Dim subStrings() As String = value.Split(CChar("-"))
+        Dim bytes(19) As Byte
 
-        ' Array for storing bytes
-        Dim bytes(subStrings.Length - 1) As Byte
-
-        ' Convert each HEX value from the string to int, then byte
-        For i As Integer = 0 To subStrings.Length - 1
-            bytes(i) = CByte(Convert.ToInt32(subStrings(i), 16))
+        For i As Integer = 0 To 19
+            bytes(i) = CByte(Convert.ToUInt16(value(i) & value(i + 1), 16))
         Next
 
         Return bytes
@@ -235,6 +234,10 @@ Public Class CryptyHeader
 
         Set(ByVal value As String)
             _fileName = Encoding.UTF8.GetBytes(value)
+
+            ' Resize the array to make it the correct length again
+            ReDim Preserve _fileName(FILE_NAME_COUNT - 1)
+
         End Set
 
     End Property
@@ -300,6 +303,8 @@ Public Class CryptyHeader
 
         Set(ByVal value As Integer)
             _partNum = BitConverter.GetBytes(value)
+            ReDim Preserve _partNum(PART_NUM_COUNT - 1)
+
         End Set
 
     End Property
@@ -316,6 +321,8 @@ Public Class CryptyHeader
         End Get
         Set(ByVal value As Integer)
             _partsTotal = BitConverter.GetBytes(value)
+            ReDim Preserve _partsTotal(PART_TOTAL_COUNT - 1)
+
         End Set
     End Property
 
@@ -332,6 +339,7 @@ Public Class CryptyHeader
 
         Set(ByVal value As Boolean)
             _compressed = BitConverter.GetBytes(value)
+
         End Set
     End Property
 
@@ -347,6 +355,8 @@ Public Class CryptyHeader
         End Get
         Set(ByVal value As Integer)
             _version = BitConverter.GetBytes(value)
+            ReDim Preserve _version(VERSION_COUNT - 1)
+
         End Set
     End Property
 #End Region
