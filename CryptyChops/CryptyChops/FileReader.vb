@@ -25,7 +25,7 @@ Public Class FileReader
     Private _bytesleft As Long
     Private _path As String
 
-    Public fs As FileStream
+    Public fileStream As FileStream
 
     ''' <summary>
     ''' Create a new
@@ -38,8 +38,8 @@ Public Class FileReader
         _bufferSize = bufferSize
 
         ' Initialize FileStream
-        fs = New FileStream(path, FileMode.Open)
-        _bytesleft = fs.Length
+        fileStream = New FileStream(path, FileMode.Open)
+        _bytesleft = fileStream.Length
 
     End Sub
 
@@ -48,7 +48,7 @@ Public Class FileReader
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub Close()
-        fs.Close()
+        fileStream.Close()
 
     End Sub
 
@@ -59,7 +59,7 @@ Public Class FileReader
 
         ' n is how many bytes was read
         ' Read the block of bytes into b()
-        n = fs.Read(b, 0, _bufferSize)
+        n = fileStream.Read(b, 0, _bufferSize)
 
         ' No bytes were read, so we are at the end of the file
         If n = 0 Then

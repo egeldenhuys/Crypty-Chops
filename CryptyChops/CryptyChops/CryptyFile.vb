@@ -113,7 +113,7 @@ Public Class CryptyFile
         ' Copy data to temporary file
 
         Dim fReader As New FileReader(_path, 1024)
-        fReader.fs.Seek(117, SeekOrigin.Begin)
+        fReader.fileStream.Seek(117, SeekOrigin.Begin)
 
         Dim b() As Byte
 

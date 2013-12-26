@@ -182,7 +182,7 @@ Public Class CryptyHeader
         Dim fReader As New FileReader(_path, BUFFER_SIZE)
 
         ' Skip the header.
-        fReader.fs.Seek(DATA_OFFSET, SeekOrigin.Begin)
+        fReader.fileStream.Seek(DATA_OFFSET, SeekOrigin.Begin)
 
         Dim b() As Byte
 
