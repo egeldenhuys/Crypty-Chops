@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CryptyFile.vb" />
+    <Compile Include="CryptyHeader.vb" />
     <Compile Include="CryptyList.vb" />
     <Compile Include="frmAbout.Designer.vb">
       <DependentUpon>frmAbout.vb</DependentUpon>

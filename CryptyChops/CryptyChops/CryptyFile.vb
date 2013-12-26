@@ -9,11 +9,13 @@ Public Class CryptyFile
     Private _name As String ' The name of the object, not the actual file name.
     Private _fileInfo As FileInfo
     Private _key As String
-    Private _status As String = "NOT IMPLEMENTED"
+    Private _status As String = ""
     Private _path As String
+    Private _header As CryptyHeader
 
     Public Sub New(path As String)
         Me.Path = path
+        _header = New CryptyHeader(path)
 
     End Sub
 
@@ -50,6 +52,15 @@ Public Class CryptyFile
     End Sub
 
 #Region "Properties"
+
+    Public Property Header() As CryptyHeader
+        Get
+            Return _header
+        End Get
+        Set(ByVal value As CryptyHeader)
+            _header = value
+        End Set
+    End Property
 
     ''' <summary>
     ''' The Key that will be used to encrypt and decrypt the file
@@ -123,4 +134,6 @@ Public Class CryptyFile
 
 #End Region
 
+
 End Class
+
