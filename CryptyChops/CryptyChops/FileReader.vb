@@ -7,7 +7,6 @@ Public Class FileReader
     ' Usage:
 
     ''Dim fReader As New FileReader("C:\MyFile.exe", 1024)
-    'fReader.Open() ' Open the file for reading
 
     'Dim b() As Byte ' Array to store the read bytes
 
@@ -38,13 +37,8 @@ Public Class FileReader
         _path = path
         _bufferSize = bufferSize
 
-    End Sub
-    ''' <summary>
-    ''' Open the FileStream
-    ''' </summary>
-    ''' <remarks></remarks>
-    Public Sub Open()
-        fs = New FileStream(Path, FileMode.Open)
+        ' Initialize FileStream
+        fs = New FileStream(path, FileMode.Open)
         _bytesleft = fs.Length
 
     End Sub
