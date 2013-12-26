@@ -33,12 +33,46 @@ Public Class frmMain
     End Sub
 
     Private Sub btnEncrypt_Click(sender As System.Object, e As System.EventArgs) Handles btnEncrypt.Click
-        frmEncrypt.Show()
+
+        ' TODO:
+        ' Implement Encryption
+
+        ' False Encryption for each selected file
+
+        ' Get all the selected items
+        Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
+        Dim index As Integer = 0
+
+        ' Encrypt all the selected items
+        For i As Integer = 0 To selItems.Count - 1
+            index = cryptyListObj.GetIndex(selItems.Item(i).Name)
+
+            cryptyListObj.FileList.Item(index).Encrypt()
+
+        Next
+
+        cryptyListObj.refresh()
 
     End Sub
 
     Private Sub btnDecrypt_Click(sender As System.Object, e As System.EventArgs) Handles btnDecrypt.Click
-        frmDecrypt.Show()
+
+        ' TODO:
+        ' Implement Deryption
+
+        ' Get all the selected items
+        Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
+        Dim index As Integer = 0
+
+        ' Decrypt all the selected items
+        For i As Integer = 0 To selItems.Count - 1
+            index = cryptyListObj.GetIndex(selItems.Item(i).Name)
+
+            cryptyListObj.FileList.Item(index).Decrypt()
+
+        Next
+
+        cryptyListObj.Refresh()
 
     End Sub
 

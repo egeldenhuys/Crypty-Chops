@@ -59,7 +59,7 @@ Public Class CryptyHeader
     ''' Read the values from the header
     ''' </summary>
     ''' <remarks></remarks>
-    Public Sub ReadHeader()
+    Public Sub Read()
         Dim fs As New FileStream(_path, FileMode.Open)
 
         Dim b(FILE_NAME_COUNT - 1) As Byte
@@ -126,6 +126,10 @@ Public Class CryptyHeader
 
         ' plain-text Hash
         fsTmp.Write(_hash, 0, HASH_COUNT)
+
+        If _hashCompressed Is Nothing Then
+            ReDim _hashCompressed(HASH_C_COUNT - 1)
+        End If
 
         ' compressed data Hash
         fsTmp.Write(_hashCompressed, 0, HASH_C_COUNT)
@@ -336,7 +340,7 @@ Public Class CryptyHeader
     ''' <remarks></remarks>
     Public Property Compressed() As Boolean
         Get
-            Return Convert.ToBoolean(_compressed)
+            Return Convert.ToBoolean(_compressed(0))
         End Get
 
         Set(ByVal value As Boolean)

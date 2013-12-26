@@ -43,6 +43,8 @@ Public Class CryptyFile
         ' Get hash
         bytes = sha1Obj.ComputeHash(fs)
 
+        fs.Close()
+
         Return bytes
 
     End Function
@@ -56,6 +58,38 @@ Public Class CryptyFile
         ' TODO:
         ' Implement Encryption
 
+        ' Hash the original data
+        Header.Hash = GetSHA1(_path)
+
+        If Compress = True Then
+
+            ' !! Compress !!
+
+            ' Hash the compressed data
+            Header.HashCompressed = GetSHA1(_path)
+            Header.Compressed = True
+
+        Else
+            Header.Compressed = False
+        End If
+
+        ' Set header values
+        Header.FileName = _fileInfo.Name
+        Header.PartNum = 0
+        Header.PartsTotal = 0
+
+        ' Add the header to the file
+        Header.Write()
+
+        ' !! Encrypt Data !!
+
+        ' TODO:
+        ' Implement Encryption
+
+
+        Status = "Encrypted"
+
+
     End Sub
 
     ''' <summary>
@@ -63,9 +97,61 @@ Public Class CryptyFile
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub Decrypt()
+        Dim bytes() As Byte
+        Dim tmpData As String = System.IO.Path.GetTempFileName
+
+        Dim fsTmpData As New FileStream(tmpData, FileMode.Create)
 
         ' TODO:
         ' Implement Decryption
+
+        ' !! Decrypt Data !!
+
+        ' Get Header Information
+        Header.Read()
+
+        ' Copy data to temporary file
+
+        Dim fReader As New FileReader(_path, 1024)
+        fReader.fs.Seek(117, SeekOrigin.Begin)
+
+        Dim b() As Byte
+
+        While fReader.Finished = False
+            b = fReader.ReadBlock
+            fsTmpData.Write(b, 0, b.Length)
+        End While
+
+        fsTmpData.Close()
+        fReader.Close()
+
+        ' Get hash of temporary data file
+
+        ' Get hash for compressed data and compare
+        If Header.Compressed = True Then
+            bytes = GetSHA1(tmpData)
+
+            If BitConverter.ToString(bytes) = BitConverter.ToString(Header.HashCompressed) Then
+                MsgBox("Compressed data Hashes match")
+            Else
+                MsgBox("Compressed Data DOES NOT MATCH")
+            End If
+
+            ' !! Decompress !!
+        End If
+
+        ' Get hash for original data and compare
+        bytes = GetSHA1(tmpData)
+
+        If BitConverter.ToString(bytes) = BitConverter.ToString(Header.Hash) Then
+            MsgBox("plain-text data Hashes match")
+            Header.Remove()
+        Else
+            MsgBox("plain-text data DOES NOT MATCH")
+        End If
+
+        Status = "Decrypted"
+
 
     End Sub
 
