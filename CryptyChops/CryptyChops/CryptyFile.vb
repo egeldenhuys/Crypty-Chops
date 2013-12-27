@@ -8,7 +8,7 @@ Public Class CryptyFile
     ' Using a file as the key
     ' Move Hash function to a separate class
     ' Implement Encryption and Decryption
-
+    ' Break up Encryption and Decryption into more separate functions
 
     Private _name As String ' The name of the object, not the actual file name.
     Private _fileInfo As FileInfo
@@ -199,17 +199,21 @@ Public Class CryptyFile
     ''' <remarks></remarks>
     Private Function CompareByteArray(arrayA() As Byte, arrayB() As Byte) As Boolean
 
+        ' If they are not the same length, the cannot be the same
         If arrayA.Length <> arrayB.Length Then
             Return False
         End If
 
+        ' Compare each byte of each array with the corresponding byte of the other.
         For i As Integer = 0 To arrayA.Length - 1
             If arrayA(i) <> arrayB(i) Then
                 Return False
             End If
         Next
 
+        ' If we have reached this point, both arrays are the same
         Return True
+
     End Function
     ''' <summary>
     ''' Compress this file
