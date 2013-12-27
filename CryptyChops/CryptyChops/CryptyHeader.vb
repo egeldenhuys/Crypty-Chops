@@ -41,7 +41,7 @@ Public Class CryptyHeader
     Const VERSION_OFFSET = COMPRESSED_OFFSET + COMPRESSED_COUNT
     Const VERSION_COUNT = 4
 
-    Const DATA_OFFSET = VERSION_OFFSET + VERSION_COUNT
+    Public Const DATA_OFFSET = VERSION_OFFSET + VERSION_COUNT
 #End Region
 
     ''' <summary>
@@ -107,63 +107,72 @@ Public Class CryptyHeader
     ''' <remarks></remarks>
     Public Sub Write()
 
-        ' Process
-        ' Write header to tmpFile
-        ' Write data to tmpFile
-        ' Overwrite original file with tmpFile
-
-        Dim tmpPath As String = System.IO.Path.GetTempFileName
-
-        Dim fsTmp As New FileStream(tmpPath, FileMode.Create)
-
-        Try
-            ' FileName
-            fsTmp.Write(_fileName, 0, FILE_NAME_COUNT)
-
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-
-        ' plain-text Hash
-        fsTmp.Write(_hash, 0, HASH_COUNT)
+        ' Check values
 
         If _hashCompressed Is Nothing Then
             ReDim _hashCompressed(HASH_C_COUNT - 1)
         End If
 
-        ' compressed data Hash
-        fsTmp.Write(_hashCompressed, 0, HASH_C_COUNT)
+        If _partNum Is Nothing Then
+            ReDim _partNum(PART_NUM_COUNT - 1)
+        End If
 
-        ' Part Num
-        fsTmp.Write(_partNum, 0, PART_NUM_COUNT)
+        If _partsTotal Is Nothing Then
+            ReDim _partsTotal(PART_TOTAL_COUNT - 1)
+        End If
 
-        ' Parts Total
-        fsTmp.Write(_partsTotal, 0, PART_TOTAL_COUNT)
+        If _compressed Is Nothing Then
+            ReDim _compressed(COMPRESSED_COUNT - 1)
+        End If
 
-        ' Compressed
-        fsTmp.Write(_compressed, 0, COMPRESSED_COUNT)
+        ' Process
+        ' Write header to tmpFile
+        ' Write data to tmpFile
+        ' Overwrite original file with tmpFile
 
-        ' Version
-        fsTmp.Write(_version, 0, VERSION_COUNT)
+        Dim tmpFile As String = System.IO.Path.GetTempFileName
 
-        ' Write the plain-text data to the tmp file with the header
-        Dim fsOrig As New FileReader(_path, BUFFER_SIZE)
+        Dim fsTmp As New FileStream(tmpFile, FileMode.Create)
 
-        Dim b() As Byte
+            ' FileName
+            fsTmp.Write(_fileName, 0, FILE_NAME_COUNT)
 
-        ' Read and write blocks until there are no more bytes left
-        While fsOrig.Finished = False
-            b = fsOrig.ReadBlock
-            fsTmp.Write(b, 0, b.Length)
-        End While
+            ' plain-text Hash
+            fsTmp.Write(_hash, 0, HASH_COUNT)
 
-        ' Clean up
-        fsOrig.Close()
-        fsTmp.Close()
+            ' compressed data Hash
+            fsTmp.Write(_hashCompressed, 0, HASH_C_COUNT)
 
-        ' Replace Files
-        System.IO.File.Delete(_path)
-        System.IO.File.Move(tmpPath, _path)
+            ' Part Num
+            fsTmp.Write(_partNum, 0, PART_NUM_COUNT)
+
+            ' Parts Total
+            fsTmp.Write(_partsTotal, 0, PART_TOTAL_COUNT)
+
+            ' Compressed
+            fsTmp.Write(_compressed, 0, COMPRESSED_COUNT)
+
+            ' Version
+            fsTmp.Write(_version, 0, VERSION_COUNT)
+
+            ' Write the plain-text data to the tmp file with the header
+            Dim fsOrig As New FileReader(_path, BUFFER_SIZE)
+
+            Dim b() As Byte
+
+            ' Read and write blocks until there are no more bytes left
+            While fsOrig.Finished = False
+                b = fsOrig.ReadBlock
+                fsTmp.Write(b, 0, b.Length)
+            End While
+
+            ' Clean up
+            fsOrig.Close()
+            fsTmp.Close()
+
+            ' Replace Files
+        My.Computer.FileSystem.MoveFile(tmpFile, _path, True)
+
 
     End Sub
 
@@ -278,21 +287,6 @@ Public Class CryptyHeader
 
         Set(ByVal value As Byte())
             _hashCompressed = value
-        End Set
-    End Property
-
-    ''' <summary>
-    ''' Path of the Crypty File
-    ''' </summary>
-    ''' <value></value>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    Public Property Path As String
-        Get
-            Return _path
-        End Get
-        Set(ByVal value As String)
-            _path = value
         End Set
     End Property
 

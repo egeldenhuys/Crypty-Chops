@@ -48,10 +48,14 @@ Public Class frmMain
             index = cryptyListObj.GetIndex(selItems.Item(i).Name)
 
             cryptyListObj.FileList.Item(index).Encrypt()
-
+            cryptyListObj.FileList.Item(index).RefreshInfo()
         Next
 
         cryptyListObj.refresh()
+
+        lstFiles.Focus()
+        lstFiles.Items(0).Selected = True
+
 
     End Sub
 
@@ -69,10 +73,15 @@ Public Class frmMain
             index = cryptyListObj.GetIndex(selItems.Item(i).Name)
 
             cryptyListObj.FileList.Item(index).Decrypt()
+            cryptyListObj.FileList.Item(index).RefreshInfo()
 
         Next
 
         cryptyListObj.Refresh()
+
+        lstFiles.Focus()
+        lstFiles.Items(0).Selected = True
+
 
     End Sub
 
