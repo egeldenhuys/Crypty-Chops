@@ -26,28 +26,17 @@ Public Class frmMain
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub EncryptFile()
+        HideButtons()
 
-        ' TODO:
-        ' Implement Encryption
-
-        ' False Encryption for each selected file
+        Dim _frmEncrypt As New frmEncrypt
+        SetupForm(_frmEncrypt)
 
         ' Get all the selected items
         Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
-        Dim index As Integer = 0
 
-        ' Encrypt all the selected items
-        For i As Integer = 0 To selItems.Count - 1
-            index = cryptyListObj.GetIndex(selItems.Item(i).Name)
+        Dim cryptyObj As CryptyFile = cryptyListObj.GetObjByName(selItems.Item(0).Name)
 
-            cryptyListObj.FileList.Item(index).Encrypt()
-            cryptyListObj.FileList.Item(index).RefreshInfo()
-        Next
-
-        cryptyListObj.Refresh()
-
-        lstFiles.Focus()
-        lstFiles.Items(0).Selected = True
+        _frmEncrypt.EncryptFile(cryptyObj)
 
     End Sub
 
@@ -123,29 +112,18 @@ Public Class frmMain
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub DecryptFile()
+        HideButtons()
+
         Dim _frmDecrypt As New frmDecrypt
         SetupForm(_frmDecrypt)
 
-        ' TODO:
-        ' Implement Deryption
-
         ' Get all the selected items
         Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
-        Dim index As Integer = 0
 
-        ' Decrypt all the selected items
-        For i As Integer = 0 To selItems.Count - 1
-            index = cryptyListObj.GetIndex(selItems.Item(i).Name)
+        Dim cryptyObj As CryptyFile = cryptyListObj.GetObjByName(selItems.Item(0).Name)
 
-            cryptyListObj.FileList.Item(index).Decrypt()
-            cryptyListObj.FileList.Item(index).RefreshInfo()
+        _frmDecrypt.DecryptFile(cryptyObj)
 
-        Next
-
-        cryptyListObj.Refresh()
-
-        lstFiles.Focus()
-        lstFiles.Items(0).Selected = True
 
     End Sub
 

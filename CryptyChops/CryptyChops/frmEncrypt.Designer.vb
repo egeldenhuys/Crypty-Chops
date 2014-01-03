@@ -33,7 +33,7 @@ Partial Class frmEncrypt
         Me.btnBrowse = New System.Windows.Forms.Button()
         Me.txtPath = New System.Windows.Forms.TextBox()
         Me.txtPass = New System.Windows.Forms.TextBox()
-        Me.chbCompress = New System.Windows.Forms.CheckBox()
+        Me.chkCompress = New System.Windows.Forms.CheckBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.btnEncrypt = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
@@ -157,19 +157,19 @@ Partial Class frmEncrypt
         Me.txtPass.Size = New System.Drawing.Size(263, 20)
         Me.txtPass.TabIndex = 0
         '
-        'chbCompress
+        'chkCompress
         '
-        Me.chbCompress.AutoSize = True
-        Me.chbCompress.Location = New System.Drawing.Point(6, 19)
-        Me.chbCompress.Name = "chbCompress"
-        Me.chbCompress.Size = New System.Drawing.Size(72, 17)
-        Me.chbCompress.TabIndex = 2
-        Me.chbCompress.Text = "Compress"
-        Me.chbCompress.UseVisualStyleBackColor = True
+        Me.chkCompress.AutoSize = True
+        Me.chkCompress.Location = New System.Drawing.Point(6, 19)
+        Me.chkCompress.Name = "chkCompress"
+        Me.chkCompress.Size = New System.Drawing.Size(72, 17)
+        Me.chkCompress.TabIndex = 2
+        Me.chkCompress.Text = "Compress"
+        Me.chkCompress.UseVisualStyleBackColor = True
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.chbCompress)
+        Me.GroupBox3.Controls.Add(Me.chkCompress)
         Me.GroupBox3.Location = New System.Drawing.Point(12, 157)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(280, 41)
@@ -234,7 +234,7 @@ Partial Class frmEncrypt
     Friend WithEvents btnBrowse As System.Windows.Forms.Button
     Friend WithEvents chbFile As System.Windows.Forms.CheckBox
     Friend WithEvents txtPath As System.Windows.Forms.TextBox
-    Friend WithEvents chbCompress As System.Windows.Forms.CheckBox
+    Friend WithEvents chkCompress As System.Windows.Forms.CheckBox
     Friend WithEvents grpFilepath As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents btnEncrypt As System.Windows.Forms.Button

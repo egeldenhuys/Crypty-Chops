@@ -102,6 +102,7 @@ Public Class CryptyFile
 
         ' !! ENCRYPT DATA !!
 
+        RefreshInfo()
         Status = "Encrypted"
     End Sub
 
@@ -183,10 +184,11 @@ Public Class CryptyFile
 
             Status = "Decrypted"
         Else
-            ' hashes do not match, something went wring. hanld here
+            ' hashes do not match, something went wring. Handle here
             Status = "Error"
         End If
 
+        RefreshInfo()
 
     End Sub
 
