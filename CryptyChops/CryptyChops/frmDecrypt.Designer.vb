@@ -75,7 +75,7 @@ Partial Class frmDecrypt
         Me.GroupBox1.Controls.Add(Me.rbtnReverse)
         Me.GroupBox1.Controls.Add(Me.rbtnAes)
         Me.GroupBox1.Controls.Add(Me.rbtnCrypty)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(8, 12)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(118, 116)
         Me.GroupBox1.TabIndex = 7
@@ -170,7 +170,7 @@ Partial Class frmDecrypt
         Me.GroupBox2.Controls.Add(Me.chbFile)
         Me.GroupBox2.Controls.Add(Me.grpFilepath)
         Me.GroupBox2.Controls.Add(Me.txtPass)
-        Me.GroupBox2.Location = New System.Drawing.Point(136, 12)
+        Me.GroupBox2.Location = New System.Drawing.Point(132, 12)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(280, 139)
         Me.GroupBox2.TabIndex = 8

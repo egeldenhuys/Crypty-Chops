@@ -105,7 +105,7 @@ Partial Class frmEncrypt
         Me.GroupBox2.Controls.Add(Me.chbFile)
         Me.GroupBox2.Controls.Add(Me.grpFilepath)
         Me.GroupBox2.Controls.Add(Me.txtPass)
-        Me.GroupBox2.Location = New System.Drawing.Point(142, 12)
+        Me.GroupBox2.Location = New System.Drawing.Point(132, 12)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(280, 139)
         Me.GroupBox2.TabIndex = 1
@@ -170,7 +170,7 @@ Partial Class frmEncrypt
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.chbCompress)
-        Me.GroupBox3.Location = New System.Drawing.Point(18, 157)
+        Me.GroupBox3.Location = New System.Drawing.Point(12, 157)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(280, 41)
         Me.GroupBox3.TabIndex = 4
