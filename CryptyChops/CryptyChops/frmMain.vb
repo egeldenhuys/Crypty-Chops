@@ -153,8 +153,6 @@ Public Class frmMain
     End Sub
 #End Region
 
-
-
 #Region "Button Events"
 
     Private Sub btnEdit_Click(sender As System.Object, e As System.EventArgs) Handles btnEdit.Click
@@ -170,7 +168,7 @@ Public Class frmMain
 
     Private Sub btnDelete_Click(sender As System.Object, e As System.EventArgs) Handles btnDelete.Click
 
-        DecryptFile()
+        DeleteFile()
 
     End Sub
 
