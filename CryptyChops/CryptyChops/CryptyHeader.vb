@@ -41,7 +41,7 @@ Public Class CryptyHeader
     Const VERSION_OFFSET = COMPRESSED_OFFSET + COMPRESSED_COUNT
     Const VERSION_COUNT = 4
 
-    Const DATA_OFFSET = VERSION_OFFSET + VERSION_COUNT
+    Public Const DATA_OFFSET = VERSION_OFFSET + VERSION_COUNT
 #End Region
 
     ''' <summary>
@@ -59,7 +59,7 @@ Public Class CryptyHeader
     ''' Read the values from the header
     ''' </summary>
     ''' <remarks></remarks>
-    Public Sub ReadHeader()
+    Public Sub Read()
         Dim fs As New FileStream(_path, FileMode.Open)
 
         Dim b(FILE_NAME_COUNT - 1) As Byte
@@ -107,59 +107,72 @@ Public Class CryptyHeader
     ''' <remarks></remarks>
     Public Sub Write()
 
+        ' Check values
+
+        If _hashCompressed Is Nothing Then
+            ReDim _hashCompressed(HASH_C_COUNT - 1)
+        End If
+
+        If _partNum Is Nothing Then
+            ReDim _partNum(PART_NUM_COUNT - 1)
+        End If
+
+        If _partsTotal Is Nothing Then
+            ReDim _partsTotal(PART_TOTAL_COUNT - 1)
+        End If
+
+        If _compressed Is Nothing Then
+            ReDim _compressed(COMPRESSED_COUNT - 1)
+        End If
+
         ' Process
         ' Write header to tmpFile
         ' Write data to tmpFile
         ' Overwrite original file with tmpFile
 
-        Dim tmpPath As String = System.IO.Path.GetTempFileName
+        Dim tmpFile As String = System.IO.Path.GetTempFileName
 
-        Dim fsTmp As New FileStream(tmpPath, FileMode.Create)
+        Dim fsTmp As New FileStream(tmpFile, FileMode.Create)
 
-        Try
             ' FileName
             fsTmp.Write(_fileName, 0, FILE_NAME_COUNT)
 
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
+            ' plain-text Hash
+            fsTmp.Write(_hash, 0, HASH_COUNT)
 
-        ' plain-text Hash
-        fsTmp.Write(_hash, 0, HASH_COUNT)
+            ' compressed data Hash
+            fsTmp.Write(_hashCompressed, 0, HASH_C_COUNT)
 
-        ' compressed data Hash
-        fsTmp.Write(_hashCompressed, 0, HASH_C_COUNT)
+            ' Part Num
+            fsTmp.Write(_partNum, 0, PART_NUM_COUNT)
 
-        ' Part Num
-        fsTmp.Write(_partNum, 0, PART_NUM_COUNT)
+            ' Parts Total
+            fsTmp.Write(_partsTotal, 0, PART_TOTAL_COUNT)
 
-        ' Parts Total
-        fsTmp.Write(_partsTotal, 0, PART_TOTAL_COUNT)
+            ' Compressed
+            fsTmp.Write(_compressed, 0, COMPRESSED_COUNT)
 
-        ' Compressed
-        fsTmp.Write(_compressed, 0, COMPRESSED_COUNT)
+            ' Version
+            fsTmp.Write(_version, 0, VERSION_COUNT)
 
-        ' Version
-        fsTmp.Write(_version, 0, VERSION_COUNT)
+            ' Write the plain-text data to the tmp file with the header
+            Dim fsOrig As New FileReader(_path, BUFFER_SIZE)
 
-        ' Write the plain-text data to the tmp file with the header
-        Dim fsOrig As New FileReader(_path, BUFFER_SIZE)
+            Dim b() As Byte
 
-        Dim b() As Byte
+            ' Read and write blocks until there are no more bytes left
+            While fsOrig.Finished = False
+                b = fsOrig.ReadBlock
+                fsTmp.Write(b, 0, b.Length)
+            End While
 
-        ' Read and write blocks until there are no more bytes left
-        While fsOrig.Finished = False
-            b = fsOrig.ReadBlock
-            fsTmp.Write(b, 0, b.Length)
-        End While
+            ' Clean up
+            fsOrig.Close()
+            fsTmp.Close()
 
-        ' Clean up
-        fsOrig.Close()
-        fsTmp.Close()
+            ' Replace Files
+        My.Computer.FileSystem.MoveFile(tmpFile, _path, True)
 
-        ' Replace Files
-        System.IO.File.Delete(_path)
-        System.IO.File.Move(tmpPath, _path)
 
     End Sub
 
@@ -178,7 +191,7 @@ Public Class CryptyHeader
         Dim fReader As New FileReader(_path, BUFFER_SIZE)
 
         ' Skip the header.
-        fReader.fs.Seek(DATA_OFFSET, SeekOrigin.Begin)
+        fReader.fileStream.Seek(DATA_OFFSET, SeekOrigin.Begin)
 
         Dim b() As Byte
 
@@ -278,21 +291,6 @@ Public Class CryptyHeader
     End Property
 
     ''' <summary>
-    ''' Path of the Crypty File
-    ''' </summary>
-    ''' <value></value>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    Public Property Path As String
-        Get
-            Return _path
-        End Get
-        Set(ByVal value As String)
-            _path = value
-        End Set
-    End Property
-
-    ''' <summary>
     ''' The number of this file in the series
     ''' </summary>
     ''' <value></value>
@@ -336,7 +334,7 @@ Public Class CryptyHeader
     ''' <remarks></remarks>
     Public Property Compressed() As Boolean
         Get
-            Return Convert.ToBoolean(_compressed)
+            Return Convert.ToBoolean(_compressed(0))
         End Get
 
         Set(ByVal value As Boolean)

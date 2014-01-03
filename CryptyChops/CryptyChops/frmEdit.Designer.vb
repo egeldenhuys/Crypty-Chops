@@ -23,22 +23,22 @@ Partial Class frmEdit
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.txtName = New System.Windows.Forms.TextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.txtPath = New System.Windows.Forms.TextBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txtName = New System.Windows.Forms.TextBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.rbtnCrypty = New System.Windows.Forms.RadioButton()
-        Me.rbtnNoPass = New System.Windows.Forms.RadioButton()
-        Me.rbtnReverse = New System.Windows.Forms.RadioButton()
         Me.rbtnAES = New System.Windows.Forms.RadioButton()
+        Me.rbtnReverse = New System.Windows.Forms.RadioButton()
+        Me.rbtnNoPass = New System.Windows.Forms.RadioButton()
+        Me.rbtnCrypty = New System.Windows.Forms.RadioButton()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnRemove = New System.Windows.Forms.Button()
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -52,23 +52,6 @@ Partial Class frmEdit
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "File Information"
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.txtName)
-        Me.GroupBox2.Location = New System.Drawing.Point(6, 19)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(285, 52)
-        Me.GroupBox2.TabIndex = 0
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Name"
-        '
-        'txtName
-        '
-        Me.txtName.Location = New System.Drawing.Point(6, 19)
-        Me.txtName.Name = "txtName"
-        Me.txtName.Size = New System.Drawing.Size(273, 20)
-        Me.txtName.TabIndex = 0
         '
         'GroupBox3
         '
@@ -87,6 +70,23 @@ Partial Class frmEdit
         Me.txtPath.Size = New System.Drawing.Size(273, 20)
         Me.txtPath.TabIndex = 0
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.txtName)
+        Me.GroupBox2.Location = New System.Drawing.Point(6, 19)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(285, 52)
+        Me.GroupBox2.TabIndex = 0
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Name"
+        '
+        'txtName
+        '
+        Me.txtName.Location = New System.Drawing.Point(6, 19)
+        Me.txtName.Name = "txtName"
+        Me.txtName.Size = New System.Drawing.Size(273, 20)
+        Me.txtName.TabIndex = 0
+        '
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.rbtnAES)
@@ -100,27 +100,16 @@ Partial Class frmEdit
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Algorithm"
         '
-        'rbtnCrypty
+        'rbtnAES
         '
-        Me.rbtnCrypty.AutoSize = True
-        Me.rbtnCrypty.Location = New System.Drawing.Point(6, 19)
-        Me.rbtnCrypty.Name = "rbtnCrypty"
-        Me.rbtnCrypty.Size = New System.Drawing.Size(93, 17)
-        Me.rbtnCrypty.TabIndex = 2
-        Me.rbtnCrypty.TabStop = True
-        Me.rbtnCrypty.Text = "Crypty-Encrypt"
-        Me.rbtnCrypty.UseVisualStyleBackColor = True
-        '
-        'rbtnNoPass
-        '
-        Me.rbtnNoPass.AutoSize = True
-        Me.rbtnNoPass.Location = New System.Drawing.Point(6, 42)
-        Me.rbtnNoPass.Name = "rbtnNoPass"
-        Me.rbtnNoPass.Size = New System.Drawing.Size(88, 17)
-        Me.rbtnNoPass.TabIndex = 3
-        Me.rbtnNoPass.TabStop = True
-        Me.rbtnNoPass.Text = "No Password"
-        Me.rbtnNoPass.UseVisualStyleBackColor = True
+        Me.rbtnAES.AutoSize = True
+        Me.rbtnAES.Location = New System.Drawing.Point(6, 88)
+        Me.rbtnAES.Name = "rbtnAES"
+        Me.rbtnAES.Size = New System.Drawing.Size(46, 17)
+        Me.rbtnAES.TabIndex = 5
+        Me.rbtnAES.TabStop = True
+        Me.rbtnAES.Text = "AES"
+        Me.rbtnAES.UseVisualStyleBackColor = True
         '
         'rbtnReverse
         '
@@ -133,16 +122,27 @@ Partial Class frmEdit
         Me.rbtnReverse.Text = "Reverse"
         Me.rbtnReverse.UseVisualStyleBackColor = True
         '
-        'rbtnAES
+        'rbtnNoPass
         '
-        Me.rbtnAES.AutoSize = True
-        Me.rbtnAES.Location = New System.Drawing.Point(6, 88)
-        Me.rbtnAES.Name = "rbtnAES"
-        Me.rbtnAES.Size = New System.Drawing.Size(46, 17)
-        Me.rbtnAES.TabIndex = 5
-        Me.rbtnAES.TabStop = True
-        Me.rbtnAES.Text = "AES"
-        Me.rbtnAES.UseVisualStyleBackColor = True
+        Me.rbtnNoPass.AutoSize = True
+        Me.rbtnNoPass.Location = New System.Drawing.Point(6, 42)
+        Me.rbtnNoPass.Name = "rbtnNoPass"
+        Me.rbtnNoPass.Size = New System.Drawing.Size(88, 17)
+        Me.rbtnNoPass.TabIndex = 3
+        Me.rbtnNoPass.TabStop = True
+        Me.rbtnNoPass.Text = "No Password"
+        Me.rbtnNoPass.UseVisualStyleBackColor = True
+        '
+        'rbtnCrypty
+        '
+        Me.rbtnCrypty.AutoSize = True
+        Me.rbtnCrypty.Location = New System.Drawing.Point(6, 19)
+        Me.rbtnCrypty.Name = "rbtnCrypty"
+        Me.rbtnCrypty.Size = New System.Drawing.Size(93, 17)
+        Me.rbtnCrypty.TabIndex = 2
+        Me.rbtnCrypty.TabStop = True
+        Me.rbtnCrypty.Text = "Crypty-Encrypt"
+        Me.rbtnCrypty.UseVisualStyleBackColor = True
         '
         'btnCancel
         '
@@ -206,10 +206,10 @@ Partial Class frmEdit
         Me.Name = "frmEdit"
         Me.Text = "Edit File"
         Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         Me.ResumeLayout(False)

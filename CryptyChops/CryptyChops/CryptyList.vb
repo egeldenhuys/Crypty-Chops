@@ -14,6 +14,28 @@
 
     End Sub
 
+    Public Function GetObjByName(ByVal name As String) As CryptyFile
+
+        Return _fileList.Item(GetIndex(name))
+
+    End Function
+
+    ''' <summary>
+    ''' Returns the index of the CryptyFile with the given name
+    ''' </summary>
+    ''' <param name="name">The name of the item to find</param>
+    ''' <returns></returns>
+    ''' <remarks>Returns -1 if the item was not found</remarks>
+    Public Function GetIndex(name As String) As Integer
+
+        For i As Integer = 0 To _fileList.Count - 1
+            If _fileList.Item(i).Name = name Then
+                Return i
+            End If
+        Next
+
+        Return -1
+    End Function
     ''' <summary>
     ''' Adds the given object to the list
     ''' </summary>
@@ -70,7 +92,7 @@
     ''' Refreshes the ListView control, with the items from the FileList
     ''' </summary>
     ''' <remarks></remarks>
-    Private Sub Refresh()
+    Public Sub Refresh()
 
         ' Remove all items from the ListView
         _listView.Items.Clear()
