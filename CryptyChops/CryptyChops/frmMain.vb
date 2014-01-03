@@ -10,6 +10,7 @@ Public Class frmMain
     Public cryptyListObj As CryptyList
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        Me.Icon = My.Resources.CryptyChops
 
         ' We need to do pass the ListView object in the load function
         ' as it is not initialized before this.
