@@ -1,6 +1,7 @@
 ﻿Public Class frmEdit
 
     ' TODO:
+    ' Implement Remove and Delete
     ' Algorithms
 
     Dim cryptyObj As CryptyFile
@@ -18,10 +19,10 @@
     Public Sub EditCryptyFile(cryptyFileObject As CryptyFile)
         Me.Show()
 
-        txtName.Text = cryptyFileObject.Name
-        txtPath.Text = cryptyFileObject.Path
-
         cryptyObj = cryptyFileObject
+
+        txtName.Text = cryptyObj.Name
+        txtPath.Text = cryptyObj.Path
 
     End Sub
 
@@ -39,8 +40,17 @@
     End Sub
 
     Private Sub btnSave_Click(sender As System.Object, e As System.EventArgs) Handles btnSave.Click
+        Dim index As Integer = frmMain.cryptyListObj.GetIndex(cryptyObj.Name)
+
         cryptyObj.Path = txtPath.Text
         cryptyObj.Name = txtName.Text
+
+        frmMain.cryptyListObj.FileList.Item(index).Path = txtPath.Text
+        frmMain.cryptyListObj.FileList.Item(index).Name = txtName.Text
+
+        frmMain.cryptyListObj.Refresh()
+
+        Me.Close()
 
     End Sub
 End Class
