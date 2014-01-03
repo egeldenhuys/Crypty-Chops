@@ -50,10 +50,6 @@ Partial Class frmMain
         Me.EditToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.RemoveToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.lblStatus = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.btnDecrypt = New System.Windows.Forms.Button()
         Me.btnDelete = New System.Windows.Forms.Button()
@@ -66,7 +62,6 @@ Partial Class frmMain
         Me.panelButtons = New System.Windows.Forms.Panel()
         Me.MenuStrip1.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
-        Me.StatusStrip1.SuspendLayout()
         Me.panelForms.SuspendLayout()
         Me.panelButtons.SuspendLayout()
         Me.SuspendLayout()
@@ -242,34 +237,6 @@ Partial Class frmMain
         Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
         Me.DeleteToolStripMenuItem.Text = "Delete"
         '
-        'ToolStripProgressBar1
-        '
-        Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
-        Me.ToolStripProgressBar1.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.ToolStripProgressBar1.Size = New System.Drawing.Size(110, 18)
-        '
-        'StatusStrip1
-        '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblStatus, Me.ToolStripStatusLabel2, Me.ToolStripProgressBar1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 413)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1219, 24)
-        Me.StatusStrip1.TabIndex = 11
-        Me.StatusStrip1.Text = "StatusStrip1"
-        '
-        'lblStatus
-        '
-        Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(45, 19)
-        Me.lblStatus.Text = "Status: "
-        '
-        'ToolStripStatusLabel2
-        '
-        Me.ToolStripStatusLabel2.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right
-        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(43, 19)
-        Me.ToolStripStatusLabel2.Text = "Ready"
-        '
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.Filter = "All Files (*.*)|*.*"
@@ -384,18 +351,15 @@ Partial Class frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1219, 437)
+        Me.ClientSize = New System.Drawing.Size(1219, 356)
         Me.Controls.Add(Me.panelForms)
         Me.Controls.Add(Me.lstFiles)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.Controls.Add(Me.StatusStrip1)
         Me.Name = "frmMain"
         Me.Text = "Crypty Chops"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ContextMenuStrip1.ResumeLayout(False)
-        Me.StatusStrip1.ResumeLayout(False)
-        Me.StatusStrip1.PerformLayout()
         Me.panelForms.ResumeLayout(False)
         Me.panelButtons.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -433,10 +397,6 @@ Partial Class frmMain
     Friend WithEvents ModifiyToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EditToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RemoveToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripProgressBar1 As System.Windows.Forms.ToolStripProgressBar
-    Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
-    Friend WithEvents lblStatus As System.Windows.Forms.ToolStripStatusLabel
-    Friend WithEvents ToolStripStatusLabel2 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
     Friend WithEvents btnDecrypt As System.Windows.Forms.Button
     Friend WithEvents DeleteToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
