@@ -148,7 +148,7 @@ Partial Class frmEdit
         '
         Me.btnCancel.Image = Global.CryptyChops.My.Resources.Resources.cross
         Me.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCancel.Location = New System.Drawing.Point(8, 288)
+        Me.btnCancel.Location = New System.Drawing.Point(129, 243)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 24)
         Me.btnCancel.TabIndex = 3
@@ -184,7 +184,7 @@ Partial Class frmEdit
         '
         Me.btnSave.Image = Global.CryptyChops.My.Resources.Resources.tick
         Me.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSave.Location = New System.Drawing.Point(239, 288)
+        Me.btnSave.Location = New System.Drawing.Point(362, 243)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 24)
         Me.btnSave.TabIndex = 2
