@@ -274,7 +274,7 @@ Public Class frmMain
     ''' </summary>
     ''' <param name="tmpForm">The form to prepare for the panel</param>
     ''' <remarks></remarks>
-    Private Sub SetupForm(tmpForm As Form)
+    Public Sub SetupForm(tmpForm As Form)
 
         tmpForm.TopLevel = False
 

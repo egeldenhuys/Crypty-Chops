@@ -5,10 +5,6 @@ Public Class frmAdd
 
     Dim tmpFileInfo As FileInfo
 
-    Private Sub this_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        frmMain.ShowButtons()
-    End Sub
-
     Private Sub frmAdd_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
     End Sub
@@ -51,26 +47,46 @@ Public Class frmAdd
     End Sub
 
     Private Sub btnEncrypt_Click(sender As System.Object, e As System.EventArgs) Handles btnEncrypt.Click
-        ' TODO:
-        ' Create a crypty File object and show the dialog for encrypting it.
-        ' Close Form
+        Dim _cryptyFile As CryptyFile = CreateCryptyFile()
+        frmMain.cryptyListObj.Add(_cryptyFile)
+
+        Dim _frmEncrypt As New frmEncrypt
+        frmMain.SetupForm(_frmEncrypt)
+
+        _frmEncrypt.EncryptFile(_cryptyFile)
+
+        Me.Close()
+
     End Sub
 
     Private Sub btnDecrypt_Click(sender As System.Object, e As System.EventArgs) Handles btnDecrypt.Click
-        ' TODO:
-        ' Create a crypty File object and show the dialog for Decrypting it.
-        ' Close Form
+        Dim _cryptyFile As CryptyFile = CreateCryptyFile()
+        frmMain.cryptyListObj.Add(_cryptyFile)
+
+        Dim _frmDecrypt As New frmDecrypt
+        frmMain.SetupForm(_frmDecrypt)
+
+        _frmDecrypt.DecryptFile(_cryptyFile)
+
+        Me.Close()
+
     End Sub
 
     Private Sub btnAdd_Click(sender As System.Object, e As System.EventArgs) Handles btnAdd.Click
+
+        frmMain.cryptyListObj.Add(CreateCryptyFile())
+        frmMain.ShowButtons()
+        Me.Close()
+
+    End Sub
+
+    Private Function CreateCryptyFile() As CryptyFile
 
         Dim tmpItem As New CryptyFile(tmpFileInfo.FullName)
 
         tmpItem.Name = txtName.Text
 
-        frmMain.cryptyListObj.Add(tmpItem)
+        Return tmpItem
 
-        Me.Close()
-
-    End Sub
+    End Function
 End Class

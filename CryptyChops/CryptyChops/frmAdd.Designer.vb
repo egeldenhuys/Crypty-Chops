@@ -105,7 +105,7 @@ Partial Class frmAdd
         '
         Me.btnEncrypt.Image = Global.CryptyChops.My.Resources.Resources.lock
         Me.btnEncrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEncrypt.Location = New System.Drawing.Point(174, 241)
+        Me.btnEncrypt.Location = New System.Drawing.Point(93, 241)
         Me.btnEncrypt.Name = "btnEncrypt"
         Me.btnEncrypt.Size = New System.Drawing.Size(75, 24)
         Me.btnEncrypt.TabIndex = 4
@@ -117,7 +117,7 @@ Partial Class frmAdd
         '
         Me.btnDecrypt.Image = Global.CryptyChops.My.Resources.Resources.lock_unlock
         Me.btnDecrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDecrypt.Location = New System.Drawing.Point(93, 241)
+        Me.btnDecrypt.Location = New System.Drawing.Point(174, 241)
         Me.btnDecrypt.Name = "btnDecrypt"
         Me.btnDecrypt.Size = New System.Drawing.Size(75, 24)
         Me.btnDecrypt.TabIndex = 5
