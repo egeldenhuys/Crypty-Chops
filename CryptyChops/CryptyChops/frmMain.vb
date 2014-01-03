@@ -14,6 +14,7 @@ Public Class frmMain
         ' We need to do pass the ListView object in the load function
         ' as it is not initialized before this.
         cryptyListObj = New CryptyList(lstFiles)
+        FileBtnsVisible(False)
 
     End Sub
 
@@ -325,4 +326,23 @@ Public Class frmMain
 
 #End Region
 
+    Private Sub lstFiles_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles lstFiles.SelectedIndexChanged
+
+        If lstFiles.SelectedIndices.Count = 0 Then
+            FileBtnsVisible(False)
+        Else
+            FileBtnsVisible(True)
+        End If
+
+    End Sub
+
+    Private Sub FileBtnsVisible(value As Boolean)
+        btnEdit.Visible = value
+        btnEncrypt.Visible = value
+        btnDecrypt.Visible = value
+        btnRemove.Visible = value
+        btnDelete.Visible = value
+        btnOpenLoc.Visible = value
+
+    End Sub
 End Class

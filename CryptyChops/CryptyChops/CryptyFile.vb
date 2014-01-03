@@ -191,7 +191,7 @@ Public Class CryptyFile
     End Sub
 
     ''' <summary>
-    ''' Compares to arrays of Byte
+    ''' Compares two arrays of Byte
     ''' </summary>
     ''' <param name="arrayA">The first array</param>
     ''' <param name="arrayB">The second array</param>
