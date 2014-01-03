@@ -49,7 +49,7 @@ Partial Class frmEncrypt
         Me.GroupBox1.Controls.Add(Me.rbtnReverse)
         Me.GroupBox1.Controls.Add(Me.rbtnAes)
         Me.GroupBox1.Controls.Add(Me.rbtnCrypty)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(8, 12)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(118, 116)
         Me.GroupBox1.TabIndex = 0
@@ -105,7 +105,7 @@ Partial Class frmEncrypt
         Me.GroupBox2.Controls.Add(Me.chbFile)
         Me.GroupBox2.Controls.Add(Me.grpFilepath)
         Me.GroupBox2.Controls.Add(Me.txtPass)
-        Me.GroupBox2.Location = New System.Drawing.Point(136, 12)
+        Me.GroupBox2.Location = New System.Drawing.Point(142, 12)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(280, 139)
         Me.GroupBox2.TabIndex = 1
@@ -170,7 +170,7 @@ Partial Class frmEncrypt
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.chbCompress)
-        Me.GroupBox3.Location = New System.Drawing.Point(136, 157)
+        Me.GroupBox3.Location = New System.Drawing.Point(18, 157)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(280, 41)
         Me.GroupBox3.TabIndex = 4
@@ -181,7 +181,7 @@ Partial Class frmEncrypt
         '
         Me.btnEncrypt.Image = Global.CryptyChops.My.Resources.Resources.lock
         Me.btnEncrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEncrypt.Location = New System.Drawing.Point(341, 209)
+        Me.btnEncrypt.Location = New System.Drawing.Point(8, 241)
         Me.btnEncrypt.Name = "btnEncrypt"
         Me.btnEncrypt.Size = New System.Drawing.Size(75, 24)
         Me.btnEncrypt.TabIndex = 5
@@ -193,7 +193,7 @@ Partial Class frmEncrypt
         '
         Me.btnCancel.Image = Global.CryptyChops.My.Resources.Resources.cross
         Me.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCancel.Location = New System.Drawing.Point(12, 209)
+        Me.btnCancel.Location = New System.Drawing.Point(362, 241)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 24)
         Me.btnCancel.TabIndex = 6

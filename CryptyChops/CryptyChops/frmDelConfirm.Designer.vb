@@ -72,9 +72,9 @@ Partial Class frmDelConfirm
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(8, 154)
+        Me.Label1.Location = New System.Drawing.Point(12, 179)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(400, 32)
+        Me.Label1.Size = New System.Drawing.Size(425, 32)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Are you sure you want to delete this file?"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -83,7 +83,7 @@ Partial Class frmDelConfirm
         '
         Me.btnDelete.Image = Global.CryptyChops.My.Resources.Resources.bin
         Me.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDelete.Location = New System.Drawing.Point(319, 189)
+        Me.btnDelete.Location = New System.Drawing.Point(12, 241)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(75, 24)
         Me.btnDelete.TabIndex = 2
@@ -95,7 +95,7 @@ Partial Class frmDelConfirm
         '
         Me.btnCancel.Image = Global.CryptyChops.My.Resources.Resources.cross
         Me.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCancel.Location = New System.Drawing.Point(6, 189)
+        Me.btnCancel.Location = New System.Drawing.Point(362, 241)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 24)
         Me.btnCancel.TabIndex = 3
