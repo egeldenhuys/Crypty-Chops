@@ -1,20 +1,21 @@
 # Crypty Chops
-
-#### Summary:
-This program will ecnrypt and decrypt files using the given key.
+[Documentation - Google Documents](https://drive.google.com/folderview?id=0Bx-d6G8hYwBPWjZ4Mml0WUJ2aUk&usp=sharing)
 
 ### Feature List
+(D) - Documentation has been created for this feature.
 
 #### Functions:
 * **[X] CryptyFile object**
 * **[X] CryptyHeader object**
 * **[X] CryptyList object**
-* [ ] Encryption
-* [ ] Decryption
+* [ ] Encryption (D)
+* [ ] Decryption (D)
 * [ ] Use file as key
-* [ ] Compress files
-* [ ] Encrypt multiple files at a time
-* [ ] Split encrypted files
+* [ ] Compress files (D)
+* [ ] Encrypt multiple files at a time (D)
+* [ ] Split encrypted files (D)
+* [ ] Encrypt temporary files used by Crypty Chops
+* [ ] Encrypt memory of Crypty Chops?
 * Encryption Algorithms
  * [ ] Crypty Encrypt
  * [ ] No Password
