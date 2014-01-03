@@ -55,11 +55,14 @@ Public Class frmMain
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub EditFile()
+        Dim _frmEdit As New frmEdit
+        SetupForm(_frmEdit)
+
         ' Get the name of the selected item
         Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
 
         ' open edit file dialog so user can edit the properties easily.
-        frmEdit.EditCryptyFile(cryptyListObj.GetObjByName(selItems.Item(0).Name))
+        _frmEdit.EditCryptyFile(cryptyListObj.GetObjByName(selItems.Item(0).Name))
 
     End Sub
 
@@ -86,10 +89,13 @@ Public Class frmMain
 
     ' Delete the selected file, opens a new form
     Private Sub DeleteFile()
+        Dim _frmDelConfirm As New frmDelConfirm
+        SetupForm(_frmDelConfirm)
+
         ' Get the name of the selected item
         Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
 
-        frmDelConfirm.DeleteFile(cryptyListObj.GetObjByName(selItems(0).Name))
+        _frmDelConfirm.DeleteFile(cryptyListObj.GetObjByName(selItems(0).Name))
     End Sub
 
     ''' <summary>
@@ -112,6 +118,9 @@ Public Class frmMain
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub DecryptFile()
+        Dim _frmDecrypt As New frmDecrypt
+        SetupForm(_frmDecrypt)
+
         ' TODO:
         ' Implement Deryption
 
@@ -140,6 +149,9 @@ Public Class frmMain
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub AddFile()
+        Dim _frmAdd As New frmAdd
+        SetupForm(_frmAdd)
+
         ' Collect the path
         OpenFileDialog1.ShowDialog()
 
@@ -147,13 +159,11 @@ Public Class frmMain
 
         'If the user does not select a file do not display the next window
         If path <> "" Then
-            frmAdd.ShowFileInfo(path)
+            _frmAdd.ShowFileInfo(path)
         End If
 
     End Sub
 #End Region
-
-
 
 #Region "Button Events"
 
@@ -170,7 +180,7 @@ Public Class frmMain
 
     Private Sub btnDelete_Click(sender As System.Object, e As System.EventArgs) Handles btnDelete.Click
 
-        DecryptFile()
+        DeleteFile()
 
     End Sub
 
@@ -269,6 +279,26 @@ Public Class frmMain
 
     Private Sub AboutToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles AboutToolStripMenuItem.Click
         frmAbout.Show()
+    End Sub
+
+#End Region
+
+#Region "Form Modifiers"
+    ''' <summary>
+    ''' Set form properties and add it to the panel, ready to be displayed
+    ''' </summary>
+    ''' <param name="tmpForm">The form to prepare for the panel</param>
+    ''' <remarks></remarks>
+    Private Sub SetupForm(tmpForm As Form)
+
+        tmpForm.TopLevel = False
+
+        ' We do not want a border, it should look like it is part of the main form.
+        tmpForm.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+
+        ' After we have added it we can use .show() and it will appear in the panel
+        panelForms.Controls.Add(tmpForm)
+
     End Sub
 
 #End Region
