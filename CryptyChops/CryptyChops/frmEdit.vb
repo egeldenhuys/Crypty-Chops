@@ -4,6 +4,10 @@
     ' Implement Remove and Delete
     ' Algorithms
 
+    Private Sub this_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        frmMain.ShowButtons()
+    End Sub
+
     Dim cryptyObj As CryptyFile
 
     ' This form will be used to edit the properties of the CryptyFile

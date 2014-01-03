@@ -55,6 +55,8 @@ Public Class frmMain
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub EditFile()
+        HideButtons()
+
         Dim _frmEdit As New frmEdit
         SetupForm(_frmEdit)
 
@@ -89,6 +91,8 @@ Public Class frmMain
 
     ' Delete the selected file, opens a new form
     Private Sub DeleteFile()
+        HideButtons()
+
         Dim _frmDelConfirm As New frmDelConfirm
         SetupForm(_frmDelConfirm)
 
@@ -149,6 +153,8 @@ Public Class frmMain
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub AddFile()
+        HideButtons()
+
         Dim _frmAdd As New frmAdd
         SetupForm(_frmAdd)
 
@@ -299,6 +305,22 @@ Public Class frmMain
         ' After we have added it we can use .show() and it will appear in the panel
         panelForms.Controls.Add(tmpForm)
 
+    End Sub
+
+    ''' <summary>
+    ''' Hide the control buttons in the panelForms
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Sub HideButtons()
+        panelButtons.Visible = False
+    End Sub
+
+    ''' <summary>
+    ''' Show the control buttons in the panelForms
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Sub ShowButtons()
+        panelButtons.Visible = True
     End Sub
 
 #End Region

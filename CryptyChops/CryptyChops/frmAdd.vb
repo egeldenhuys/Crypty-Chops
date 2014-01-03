@@ -5,6 +5,10 @@ Public Class frmAdd
 
     Dim tmpFileInfo As FileInfo
 
+    Private Sub this_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        frmMain.ShowButtons()
+    End Sub
+
     Private Sub frmAdd_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
     End Sub

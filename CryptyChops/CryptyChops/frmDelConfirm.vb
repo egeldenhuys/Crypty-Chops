@@ -5,6 +5,10 @@ Public Class frmDelConfirm
     Private _cryptyObj As CryptyFile
     ' This form asks the user to confirm wether they want to delete the file from the disk
 
+    Private Sub this_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        frmMain.ShowButtons()
+    End Sub
+
     Private Sub frmDelConfirm_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
     End Sub
@@ -57,4 +61,5 @@ Public Class frmDelConfirm
         Me.Close()
 
     End Sub
+
 End Class
