@@ -1,6 +1,14 @@
 # Crypty Chops
 
+#### Summary:
+This program will ecnrypt and decrypt files using the given key.
+
 #### Feature List:
+* **[X] GUI**
+* **[X] Icons**
+* **[X] CryptyFile object**
+* **[X] CryptyHeader object**
+* **[X] CryptyList object**
 * [ ] Encryption
 * [ ] Decryption
 * [ ] Compress files
@@ -12,7 +20,7 @@
  * [ ] Reverse bytes
  * [ ] AES
 * [ ] Use file as key
-* [X] List of Files for quick encryption/decryption
+* **[X] List of Files for quick encryption/decryption**
  * [ ] Save List
  * [ ] Load List
  * [ ] Set password for list
