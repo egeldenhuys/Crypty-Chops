@@ -14,6 +14,12 @@
 
     End Sub
 
+    Public Function GetObjByName(ByVal name As String) As CryptyFile
+
+        Return _fileList.Item(GetIndex(name))
+
+    End Function
+
     ''' <summary>
     ''' Returns the index of the CryptyFile with the given name
     ''' </summary>

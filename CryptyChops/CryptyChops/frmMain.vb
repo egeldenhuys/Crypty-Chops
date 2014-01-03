@@ -91,7 +91,11 @@ Public Class frmMain
     End Sub
 
     Private Sub btnDelete_Click(sender As System.Object, e As System.EventArgs) Handles btnDelete.Click
-        frmDelConfirm.Show()
+
+        ' Get the name of the selected item
+        Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
+
+        frmDelConfirm.DeleteFile(cryptyListObj.GetObjByName(selItems(0).Name))
 
     End Sub
 
@@ -122,6 +126,17 @@ Public Class frmMain
             Process.Start("explorer.exe", tmpFileInfo.DirectoryName)
 
         Next
+
+    End Sub
+
+    Private Sub btnEdit_Click(sender As System.Object, e As System.EventArgs) Handles btnEdit.Click
+
+        ' Get the name of the selected item
+        Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
+
+        ' open edit file dialog so user can edit the properties easily.
+        frmEdit.EditCryptyFile(cryptyListObj.GetObjByName(selItems.Item(0).Name))
+
 
     End Sub
 End Class

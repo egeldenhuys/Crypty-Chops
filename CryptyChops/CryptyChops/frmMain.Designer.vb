@@ -39,8 +39,8 @@ Partial Class frmMain
         Me.lstFiles = New System.Windows.Forms.ListView()
         Me.StatusColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.SizeColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.PathColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.DateModifiedColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.PathColumn = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.EncryptToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.DecryptToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -172,15 +172,15 @@ Partial Class frmMain
         Me.SizeColumn.Text = "Size"
         Me.SizeColumn.Width = 64
         '
-        'PathColumn
-        '
-        Me.PathColumn.Text = "Path"
-        Me.PathColumn.Width = 203
-        '
         'DateModifiedColumn
         '
         Me.DateModifiedColumn.Text = "Date Modified"
         Me.DateModifiedColumn.Width = 207
+        '
+        'PathColumn
+        '
+        Me.PathColumn.Text = "Path"
+        Me.PathColumn.Width = 203
         '
         'ContextMenuStrip1
         '
