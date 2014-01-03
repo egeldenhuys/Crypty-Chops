@@ -2,10 +2,10 @@
     ' This class stores a List of CryptyFiles and manages a ListView control
 
     Private _listView As ListView
-    Private _fileList As New List(Of CryptyFile)
+    Private _fileList As New List(Of CryptyFile) ' The list of CryptyFiles that are displayed in the ListView
 
     ''' <summary>
-    ''' 
+    ''' Create a new CryptyList object
     ''' </summary>
     ''' <param name="ownerList">The ListView control this object is responsible to manage</param>
     ''' <remarks></remarks>
@@ -14,6 +14,12 @@
 
     End Sub
 
+    ''' <summary>
+    ''' Returns the CryptyFile with the given name
+    ''' </summary>
+    ''' <param name="name">The name of the cryptyFile object to return</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Function GetObjByName(ByVal name As String) As CryptyFile
 
         Return _fileList.Item(GetIndex(name))
@@ -36,6 +42,7 @@
 
         Return -1
     End Function
+
     ''' <summary>
     ''' Adds the given object to the list
     ''' </summary>
@@ -126,6 +133,12 @@
     End Sub
 
 #Region "Properties"
+    ''' <summary>
+    ''' Returns the List(of CryptyFile)
+    ''' </summary>
+    ''' <value></value>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Property FileList() As List(Of CryptyFile)
         Get
             Return _fileList

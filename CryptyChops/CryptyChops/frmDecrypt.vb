@@ -1,14 +1,14 @@
 ﻿Public Class frmDecrypt
+    ' This form is used to collect the information for decrypting the file
 
     Dim _cryptyFile As CryptyFile
 
-    Private Sub this_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        frmMain.ShowButtons()
-    End Sub
-
-    ' This form is used to collect the information for decrypting the file
     Private Sub frmDecrypt_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
+    End Sub
+
+    Private Sub this_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        frmMain.ShowButtons()
     End Sub
 
     Private Sub chbFile_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chbFile.CheckedChanged
@@ -28,7 +28,7 @@
     ''' <summary>
     ''' The entry point for this form
     ''' </summary>
-    ''' <param name="cryptyFile"></param>
+    ''' <param name="cryptyFile">The CryptyFile to set decrypt properties</param>
     ''' <remarks></remarks>
     Public Sub DecryptFile(cryptyFile As CryptyFile)
         Me.Show()

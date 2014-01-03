@@ -1,15 +1,17 @@
 ﻿Imports System.IO
 
 Public Class frmEncrypt
+    ' This form is used to cllect information for encrypting a file
 
     Dim _cryptyFile As CryptyFile
 
-    Private Sub this_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        frmMain.ShowButtons()
+    Private Sub frmEncrypt_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+
     End Sub
 
-    ' This form is used to cllect information for encrypting a file
-    Private Sub frmEncrypt_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+    Private Sub this_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+
+        frmMain.ShowButtons()
 
     End Sub
 
@@ -30,9 +32,10 @@ Public Class frmEncrypt
     ''' <summary>
     ''' Entry point for this form
     ''' </summary>
-    ''' <param name="cryptyFile"></param>
+    ''' <param name="cryptyFile">The cryptyFile to set properties on</param>
     ''' <remarks></remarks>
     Public Sub EncryptFile(cryptyFile As CryptyFile)
+
         Me.Show()
 
         _cryptyFile = cryptyFile
@@ -66,4 +69,5 @@ Public Class frmEncrypt
         Me.Close()
 
     End Sub
+
 End Class

@@ -217,6 +217,7 @@ Public Class CryptyFile
         Return True
 
     End Function
+
     ''' <summary>
     ''' Compress this file
     ''' </summary>

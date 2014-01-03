@@ -1,9 +1,9 @@
 ﻿Imports System.IO
 
 Public Class frmDelConfirm
+    ' This form asks the user to confirm wether they want to delete the file from the disk
 
     Private _cryptyObj As CryptyFile
-    ' This form asks the user to confirm wether they want to delete the file from the disk
 
     Private Sub this_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         frmMain.ShowButtons()
