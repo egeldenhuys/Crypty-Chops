@@ -3,13 +3,8 @@
 Public Class frmDelConfirm
 
     Private _cryptyObj As CryptyFile
-
-
     ' This form asks the user to confirm wether they want to delete the file from the disk
 
-    ' TODO: 
-    ' Display file information.
-    ' Delete file or return a value
     Private Sub frmDelConfirm_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
     End Sub
