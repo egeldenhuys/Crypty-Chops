@@ -205,7 +205,7 @@ Partial Class frmDecrypt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(425, 238)
+        Me.ClientSize = New System.Drawing.Size(449, 277)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnDecrypt)
         Me.Controls.Add(Me.GroupBox3)

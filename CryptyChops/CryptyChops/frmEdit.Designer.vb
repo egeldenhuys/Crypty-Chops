@@ -196,7 +196,7 @@ Partial Class frmEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(325, 324)
+        Me.ClientSize = New System.Drawing.Size(449, 277)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.btnRemove)
         Me.Controls.Add(Me.btnCancel)

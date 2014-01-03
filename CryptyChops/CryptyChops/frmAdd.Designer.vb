@@ -22,9 +22,9 @@ Partial Class frmAdd
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ListViewItem1 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Name")
-        Dim ListViewItem2 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Path")
-        Dim ListViewItem3 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Size (bytes)")
+        Dim ListViewItem7 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Name")
+        Dim ListViewItem8 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Path")
+        Dim ListViewItem9 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Size (bytes)")
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.lstInfo = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -53,7 +53,7 @@ Partial Class frmAdd
         '
         Me.lstInfo.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2})
         Me.lstInfo.FullRowSelect = True
-        Me.lstInfo.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1, ListViewItem2, ListViewItem3})
+        Me.lstInfo.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem7, ListViewItem8, ListViewItem9})
         Me.lstInfo.LabelEdit = True
         Me.lstInfo.Location = New System.Drawing.Point(6, 19)
         Me.lstInfo.Name = "lstInfo"
@@ -141,7 +141,7 @@ Partial Class frmAdd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(450, 234)
+        Me.ClientSize = New System.Drawing.Size(449, 277)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnDecrypt)
         Me.Controls.Add(Me.btnEncrypt)

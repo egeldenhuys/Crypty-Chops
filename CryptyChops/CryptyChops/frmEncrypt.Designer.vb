@@ -28,12 +28,12 @@ Partial Class frmEncrypt
         Me.rbtnAes = New System.Windows.Forms.RadioButton()
         Me.rbtnCrypty = New System.Windows.Forms.RadioButton()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.chbFile = New System.Windows.Forms.CheckBox()
+        Me.grpFilepath = New System.Windows.Forms.GroupBox()
+        Me.btnBrowse = New System.Windows.Forms.Button()
+        Me.txtPath = New System.Windows.Forms.TextBox()
         Me.txtPass = New System.Windows.Forms.TextBox()
         Me.chbCompress = New System.Windows.Forms.CheckBox()
-        Me.chbFile = New System.Windows.Forms.CheckBox()
-        Me.txtPath = New System.Windows.Forms.TextBox()
-        Me.btnBrowse = New System.Windows.Forms.Button()
-        Me.grpFilepath = New System.Windows.Forms.GroupBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.btnEncrypt = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
@@ -112,6 +112,44 @@ Partial Class frmEncrypt
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Password"
         '
+        'chbFile
+        '
+        Me.chbFile.AutoSize = True
+        Me.chbFile.Location = New System.Drawing.Point(6, 56)
+        Me.chbFile.Name = "chbFile"
+        Me.chbFile.Size = New System.Drawing.Size(127, 17)
+        Me.chbFile.TabIndex = 3
+        Me.chbFile.Text = "Use File as Password"
+        Me.chbFile.UseVisualStyleBackColor = True
+        '
+        'grpFilepath
+        '
+        Me.grpFilepath.Controls.Add(Me.btnBrowse)
+        Me.grpFilepath.Controls.Add(Me.txtPath)
+        Me.grpFilepath.Enabled = False
+        Me.grpFilepath.Location = New System.Drawing.Point(6, 79)
+        Me.grpFilepath.Name = "grpFilepath"
+        Me.grpFilepath.Size = New System.Drawing.Size(269, 51)
+        Me.grpFilepath.TabIndex = 4
+        Me.grpFilepath.TabStop = False
+        Me.grpFilepath.Text = "File path"
+        '
+        'btnBrowse
+        '
+        Me.btnBrowse.Location = New System.Drawing.Point(237, 16)
+        Me.btnBrowse.Name = "btnBrowse"
+        Me.btnBrowse.Size = New System.Drawing.Size(26, 24)
+        Me.btnBrowse.TabIndex = 1
+        Me.btnBrowse.Text = "..."
+        Me.btnBrowse.UseVisualStyleBackColor = True
+        '
+        'txtPath
+        '
+        Me.txtPath.Location = New System.Drawing.Point(6, 19)
+        Me.txtPath.Name = "txtPath"
+        Me.txtPath.Size = New System.Drawing.Size(225, 20)
+        Me.txtPath.TabIndex = 0
+        '
         'txtPass
         '
         Me.txtPass.Location = New System.Drawing.Point(6, 19)
@@ -128,44 +166,6 @@ Partial Class frmEncrypt
         Me.chbCompress.TabIndex = 2
         Me.chbCompress.Text = "Compress"
         Me.chbCompress.UseVisualStyleBackColor = True
-        '
-        'chbFile
-        '
-        Me.chbFile.AutoSize = True
-        Me.chbFile.Location = New System.Drawing.Point(6, 56)
-        Me.chbFile.Name = "chbFile"
-        Me.chbFile.Size = New System.Drawing.Size(127, 17)
-        Me.chbFile.TabIndex = 3
-        Me.chbFile.Text = "Use File as Password"
-        Me.chbFile.UseVisualStyleBackColor = True
-        '
-        'txtPath
-        '
-        Me.txtPath.Location = New System.Drawing.Point(6, 19)
-        Me.txtPath.Name = "txtPath"
-        Me.txtPath.Size = New System.Drawing.Size(225, 20)
-        Me.txtPath.TabIndex = 0
-        '
-        'btnBrowse
-        '
-        Me.btnBrowse.Location = New System.Drawing.Point(237, 16)
-        Me.btnBrowse.Name = "btnBrowse"
-        Me.btnBrowse.Size = New System.Drawing.Size(26, 24)
-        Me.btnBrowse.TabIndex = 1
-        Me.btnBrowse.Text = "..."
-        Me.btnBrowse.UseVisualStyleBackColor = True
-        '
-        'grpFilepath
-        '
-        Me.grpFilepath.Controls.Add(Me.btnBrowse)
-        Me.grpFilepath.Controls.Add(Me.txtPath)
-        Me.grpFilepath.Enabled = False
-        Me.grpFilepath.Location = New System.Drawing.Point(6, 79)
-        Me.grpFilepath.Name = "grpFilepath"
-        Me.grpFilepath.Size = New System.Drawing.Size(269, 51)
-        Me.grpFilepath.TabIndex = 4
-        Me.grpFilepath.TabStop = False
-        Me.grpFilepath.Text = "File path"
         '
         'GroupBox3
         '
@@ -205,7 +205,7 @@ Partial Class frmEncrypt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(425, 238)
+        Me.ClientSize = New System.Drawing.Size(449, 277)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnEncrypt)
         Me.Controls.Add(Me.GroupBox3)
