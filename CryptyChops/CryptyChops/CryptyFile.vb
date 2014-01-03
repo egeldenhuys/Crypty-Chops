@@ -76,20 +76,14 @@ Public Class CryptyFile
         ' Set the original name in the Header
         Header.FileName = _fileInfo.Name
 
-        ' Open FileStream of original data file (Plain-text)
-        Dim fsOrig As New FileStream(_path, FileMode.Open)
 
         ' Hash the original data
-        Dim SHA1obj As New SHA1CryptoServiceProvider
-        Header.Hash = SHA1obj.ComputeHash(fsOrig)
-
-        fsOrig.Close()
+        Header.Hash = GetSHA1(_path)
 
         ' Compress the original data
         If _compress = True Then
             Header.Compressed = True
-            ' !! COMPRESS DATA !!
-            ' _path is now the compressed data
+            CompressData()
 
             ' Hash the compressed data
             Header.HashCompressed = GetSHA1(_path)
@@ -122,12 +116,12 @@ Public Class CryptyFile
         ' Compare the hash of the tmpFile2 with header.Hash
         ' If they match replace the original file
 
-        ' !! Decrypt Data !!
+        ' !! DECRYPT DATA !!
 
         ' Get header values
         Header.Read()
 
-        ' Move data to tmpFile
+        ' Move data to a tmpFile so why can get the hash
         Dim tmpFile As String = IO.Path.GetTempFileName
 
         Dim fReader As New FileReader(_path, BUFFER_SIZE)
@@ -135,56 +129,29 @@ Public Class CryptyFile
         ' Move the position of the FileReader to past the header bytes
         fReader.fileStream.Seek(CryptyHeader.DATA_OFFSET, SeekOrigin.Begin)
 
-        Dim fsTmp As New FileStream(tmpFile, FileMode.Create)
-
-        Dim b() As Byte
-
-        ' Copy the data from the original file to the tmp file
-        While fReader.Finished = False
-            b = fReader.ReadBlock
-            fsTmp.Write(b, 0, b.Length)
-        End While
-
-        fsTmp.Close()
-        fReader.Close()
+        fReader.ReplaceFile(tmpFile)
 
         If Header.Compressed = True Then
-            ' Compare the Compressed Hash from the header with the has of the compressed data
+
+            ' Compare hash of compressed data
             If CompareByteArray(Header.HashCompressed, GetSHA1(tmpFile)) = True Then
 
-                ' Hashes match, handle it here
-
-                ' !! EXTRACT tmpFile -> tmpFile
+                ExtractData()
             Else
-                ' hashes do not match, something went wring. hanld here
-
                 Status = "Error"
 
             End If
         End If
 
-        ' At this point tmpFile should be the original data.
-
-        ' Compare hashses again
+        ' Compare hash of original data
         If CompareByteArray(Header.Hash, GetSHA1(tmpFile)) = True Then
 
-            ' Hashes match, handle it here
-
-            ' We can now replace the original file with the tmpFile
+            ' Replace the original file with the tmpFile by using the FileReader class
             fReader = New FileReader(tmpFile, BUFFER_SIZE)
-            Dim fsOrig As New FileStream(_path, FileMode.Truncate)
-
-            While fReader.Finished = False
-                b = fReader.ReadBlock
-                fsOrig.Write(b, 0, b.Length)
-            End While
-
-            fReader.Close()
-            fsOrig.Close()
+            fReader.ReplaceFile(_path)
 
             Status = "Decrypted"
         Else
-            ' hashes do not match, something went wring. Handle here
             Status = "Error"
         End If
 

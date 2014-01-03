@@ -54,6 +54,27 @@ Public Class FileReader
     End Sub
 
     ''' <summary>
+    ''' Replace the file by reading blocks of byte from the source file to the dest file. Overwriting it.
+    ''' </summary>
+    ''' <param name="DestFile">The path of the destination file to be overwritten</param>
+    ''' <remarks>Closes the fileStream when finished</remarks>
+    Public Sub ReplaceFile(DestFile As String)
+
+        Dim fSource As New FileStream(DestFile, FileMode.Truncate)
+        Dim b() As Byte
+
+        ' Keep reading blocks from the source to the destination
+        While Finished = False
+            b = ReadBlock()
+            fSource.Write(b, 0, b.Length)
+        End While
+
+        Close()
+        fSource.Close()
+
+    End Sub
+
+    ''' <summary>
     ''' Read and return a block of bytes. The number of bytes read is the same as the Buffer Size
     ''' </summary>
     ''' <returns></returns>
