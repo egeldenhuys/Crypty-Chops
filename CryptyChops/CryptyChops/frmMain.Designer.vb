@@ -63,9 +63,12 @@ Partial Class frmMain
         Me.btnEdit = New System.Windows.Forms.Button()
         Me.btnEncrypt = New System.Windows.Forms.Button()
         Me.panelForms = New System.Windows.Forms.Panel()
+        Me.panelButtons = New System.Windows.Forms.Panel()
         Me.MenuStrip1.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
+        Me.panelForms.SuspendLayout()
+        Me.panelButtons.SuspendLayout()
         Me.SuspendLayout()
         '
         'ExitToolStripMenuItem
@@ -275,7 +278,7 @@ Partial Class frmMain
         '
         Me.btnDecrypt.Image = Global.CryptyChops.My.Resources.Resources.lock_unlock
         Me.btnDecrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDecrypt.Location = New System.Drawing.Point(12, 377)
+        Me.btnDecrypt.Location = New System.Drawing.Point(3, 93)
         Me.btnDecrypt.Name = "btnDecrypt"
         Me.btnDecrypt.Size = New System.Drawing.Size(75, 23)
         Me.btnDecrypt.TabIndex = 14
@@ -287,7 +290,7 @@ Partial Class frmMain
         '
         Me.btnDelete.Image = Global.CryptyChops.My.Resources.Resources.bin
         Me.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDelete.Location = New System.Drawing.Point(174, 377)
+        Me.btnDelete.Location = New System.Drawing.Point(3, 152)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(91, 24)
         Me.btnDelete.TabIndex = 9
@@ -299,7 +302,7 @@ Partial Class frmMain
         '
         Me.btnAdd.Image = Global.CryptyChops.My.Resources.Resources.plus
         Me.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAdd.Location = New System.Drawing.Point(93, 348)
+        Me.btnAdd.Location = New System.Drawing.Point(3, 3)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(75, 24)
         Me.btnAdd.TabIndex = 3
@@ -311,9 +314,9 @@ Partial Class frmMain
         '
         Me.btnOpenLoc.Image = Global.CryptyChops.My.Resources.Resources.folder_horizontal_open
         Me.btnOpenLoc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnOpenLoc.Location = New System.Drawing.Point(271, 348)
+        Me.btnOpenLoc.Location = New System.Drawing.Point(3, 182)
         Me.btnOpenLoc.Name = "btnOpenLoc"
-        Me.btnOpenLoc.Size = New System.Drawing.Size(121, 24)
+        Me.btnOpenLoc.Size = New System.Drawing.Size(130, 24)
         Me.btnOpenLoc.TabIndex = 8
         Me.btnOpenLoc.Text = "Open File Location"
         Me.btnOpenLoc.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -323,9 +326,9 @@ Partial Class frmMain
         '
         Me.btnRemove.Image = Global.CryptyChops.My.Resources.Resources.minus
         Me.btnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnRemove.Location = New System.Drawing.Point(174, 348)
+        Me.btnRemove.Location = New System.Drawing.Point(3, 122)
         Me.btnRemove.Name = "btnRemove"
-        Me.btnRemove.Size = New System.Drawing.Size(91, 24)
+        Me.btnRemove.Size = New System.Drawing.Size(98, 24)
         Me.btnRemove.TabIndex = 4
         Me.btnRemove.Text = "Remove File"
         Me.btnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -335,7 +338,7 @@ Partial Class frmMain
         '
         Me.btnEdit.Image = Global.CryptyChops.My.Resources.Resources.pencil
         Me.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEdit.Location = New System.Drawing.Point(93, 377)
+        Me.btnEdit.Location = New System.Drawing.Point(3, 33)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(75, 24)
         Me.btnEdit.TabIndex = 5
@@ -347,7 +350,7 @@ Partial Class frmMain
         '
         Me.btnEncrypt.Image = Global.CryptyChops.My.Resources.Resources.lock
         Me.btnEncrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEncrypt.Location = New System.Drawing.Point(12, 348)
+        Me.btnEncrypt.Location = New System.Drawing.Point(3, 63)
         Me.btnEncrypt.Name = "btnEncrypt"
         Me.btnEncrypt.Size = New System.Drawing.Size(75, 24)
         Me.btnEncrypt.TabIndex = 6
@@ -357,10 +360,25 @@ Partial Class frmMain
         '
         'panelForms
         '
+        Me.panelForms.Controls.Add(Me.panelButtons)
         Me.panelForms.Location = New System.Drawing.Point(744, 27)
         Me.panelForms.Name = "panelForms"
         Me.panelForms.Size = New System.Drawing.Size(465, 315)
         Me.panelForms.TabIndex = 15
+        '
+        'panelButtons
+        '
+        Me.panelButtons.Controls.Add(Me.btnEncrypt)
+        Me.panelButtons.Controls.Add(Me.btnAdd)
+        Me.panelButtons.Controls.Add(Me.btnDelete)
+        Me.panelButtons.Controls.Add(Me.btnOpenLoc)
+        Me.panelButtons.Controls.Add(Me.btnDecrypt)
+        Me.panelButtons.Controls.Add(Me.btnEdit)
+        Me.panelButtons.Controls.Add(Me.btnRemove)
+        Me.panelButtons.Location = New System.Drawing.Point(3, 3)
+        Me.panelButtons.Name = "panelButtons"
+        Me.panelButtons.Size = New System.Drawing.Size(158, 221)
+        Me.panelButtons.TabIndex = 16
         '
         'frmMain
         '
@@ -368,16 +386,9 @@ Partial Class frmMain
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1219, 437)
         Me.Controls.Add(Me.panelForms)
-        Me.Controls.Add(Me.btnDecrypt)
-        Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.lstFiles)
-        Me.Controls.Add(Me.btnAdd)
-        Me.Controls.Add(Me.btnOpenLoc)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.Controls.Add(Me.btnRemove)
-        Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.StatusStrip1)
-        Me.Controls.Add(Me.btnEncrypt)
         Me.Name = "frmMain"
         Me.Text = "Crypty Chops"
         Me.MenuStrip1.ResumeLayout(False)
@@ -385,6 +396,8 @@ Partial Class frmMain
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
+        Me.panelForms.ResumeLayout(False)
+        Me.panelButtons.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -429,5 +442,6 @@ Partial Class frmMain
     Friend WithEvents DeleteToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DeleteToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents panelForms As System.Windows.Forms.Panel
+    Friend WithEvents panelButtons As System.Windows.Forms.Panel
 
 End Class
