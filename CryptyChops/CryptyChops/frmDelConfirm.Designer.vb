@@ -22,11 +22,11 @@ Partial Class frmDelConfirm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ListViewItem6 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Name")
-        Dim ListViewItem7 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Path")
-        Dim ListViewItem8 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Size")
-        Dim ListViewItem9 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Status")
-        Dim ListViewItem10 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Date Modified")
+        Dim ListViewItem1 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Name")
+        Dim ListViewItem2 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Path")
+        Dim ListViewItem3 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Size")
+        Dim ListViewItem4 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Status")
+        Dim ListViewItem5 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Date Modified")
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.lstInfo = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -51,7 +51,7 @@ Partial Class frmDelConfirm
         '
         Me.lstInfo.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2})
         Me.lstInfo.FullRowSelect = True
-        Me.lstInfo.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem6, ListViewItem7, ListViewItem8, ListViewItem9, ListViewItem10})
+        Me.lstInfo.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1, ListViewItem2, ListViewItem3, ListViewItem4, ListViewItem5})
         Me.lstInfo.Location = New System.Drawing.Point(6, 19)
         Me.lstInfo.Name = "lstInfo"
         Me.lstInfo.Size = New System.Drawing.Size(376, 114)
@@ -72,9 +72,9 @@ Partial Class frmDelConfirm
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(8, 154)
+        Me.Label1.Location = New System.Drawing.Point(12, 179)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(400, 32)
+        Me.Label1.Size = New System.Drawing.Size(425, 32)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Are you sure you want to delete this file?"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -83,7 +83,7 @@ Partial Class frmDelConfirm
         '
         Me.btnDelete.Image = Global.CryptyChops.My.Resources.Resources.bin
         Me.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDelete.Location = New System.Drawing.Point(319, 189)
+        Me.btnDelete.Location = New System.Drawing.Point(12, 241)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(75, 24)
         Me.btnDelete.TabIndex = 2
@@ -95,7 +95,7 @@ Partial Class frmDelConfirm
         '
         Me.btnCancel.Image = Global.CryptyChops.My.Resources.Resources.cross
         Me.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCancel.Location = New System.Drawing.Point(6, 189)
+        Me.btnCancel.Location = New System.Drawing.Point(362, 241)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 24)
         Me.btnCancel.TabIndex = 3
@@ -107,7 +107,7 @@ Partial Class frmDelConfirm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(412, 221)
+        Me.ClientSize = New System.Drawing.Size(449, 277)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.Label1)

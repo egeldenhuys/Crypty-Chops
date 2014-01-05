@@ -93,7 +93,7 @@ Partial Class frmEdit
         Me.GroupBox4.Controls.Add(Me.rbtnReverse)
         Me.GroupBox4.Controls.Add(Me.rbtnNoPass)
         Me.GroupBox4.Controls.Add(Me.rbtnCrypty)
-        Me.GroupBox4.Location = New System.Drawing.Point(12, 159)
+        Me.GroupBox4.Location = New System.Drawing.Point(326, 25)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(111, 116)
         Me.GroupBox4.TabIndex = 1
@@ -148,7 +148,7 @@ Partial Class frmEdit
         '
         Me.btnCancel.Image = Global.CryptyChops.My.Resources.Resources.cross
         Me.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCancel.Location = New System.Drawing.Point(8, 288)
+        Me.btnCancel.Location = New System.Drawing.Point(362, 243)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 24)
         Me.btnCancel.TabIndex = 3
@@ -160,7 +160,7 @@ Partial Class frmEdit
         '
         Me.btnRemove.Image = Global.CryptyChops.My.Resources.Resources.minus
         Me.btnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnRemove.Location = New System.Drawing.Point(203, 159)
+        Me.btnRemove.Location = New System.Drawing.Point(12, 159)
         Me.btnRemove.Name = "btnRemove"
         Me.btnRemove.Size = New System.Drawing.Size(110, 24)
         Me.btnRemove.TabIndex = 4
@@ -172,7 +172,7 @@ Partial Class frmEdit
         '
         Me.btnDelete.Image = Global.CryptyChops.My.Resources.Resources.bin
         Me.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDelete.Location = New System.Drawing.Point(203, 189)
+        Me.btnDelete.Location = New System.Drawing.Point(11, 189)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(111, 24)
         Me.btnDelete.TabIndex = 5
@@ -184,7 +184,7 @@ Partial Class frmEdit
         '
         Me.btnSave.Image = Global.CryptyChops.My.Resources.Resources.tick
         Me.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSave.Location = New System.Drawing.Point(239, 288)
+        Me.btnSave.Location = New System.Drawing.Point(12, 243)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 24)
         Me.btnSave.TabIndex = 2
@@ -196,7 +196,7 @@ Partial Class frmEdit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(325, 324)
+        Me.ClientSize = New System.Drawing.Size(449, 277)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.btnRemove)
         Me.Controls.Add(Me.btnCancel)

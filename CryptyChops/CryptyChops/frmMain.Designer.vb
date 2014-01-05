@@ -50,10 +50,6 @@ Partial Class frmMain
         Me.EditToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.RemoveToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.lblStatus = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.btnDecrypt = New System.Windows.Forms.Button()
         Me.btnDelete = New System.Windows.Forms.Button()
@@ -62,21 +58,24 @@ Partial Class frmMain
         Me.btnRemove = New System.Windows.Forms.Button()
         Me.btnEdit = New System.Windows.Forms.Button()
         Me.btnEncrypt = New System.Windows.Forms.Button()
+        Me.panelForms = New System.Windows.Forms.Panel()
+        Me.panelButtons = New System.Windows.Forms.Panel()
         Me.MenuStrip1.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
-        Me.StatusStrip1.SuspendLayout()
+        Me.panelForms.SuspendLayout()
+        Me.panelButtons.SuspendLayout()
         Me.SuspendLayout()
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'RemoveToolStripMenuItem
         '
         Me.RemoveToolStripMenuItem.Name = "RemoveToolStripMenuItem"
-        Me.RemoveToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.RemoveToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
         Me.RemoveToolStripMenuItem.Text = "Remove"
         '
         'HelpToolStripMenuItem
@@ -89,50 +88,50 @@ Partial Class frmMain
         'ViewHelpToolStripMenuItem
         '
         Me.ViewHelpToolStripMenuItem.Name = "ViewHelpToolStripMenuItem"
-        Me.ViewHelpToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ViewHelpToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.ViewHelpToolStripMenuItem.Text = "View Help"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'EditToolStripMenuItem
         '
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
         Me.EditToolStripMenuItem.Text = "Edit"
         '
         'DecryptToolStripMenuItem
         '
         Me.DecryptToolStripMenuItem.Name = "DecryptToolStripMenuItem"
-        Me.DecryptToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DecryptToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.DecryptToolStripMenuItem.Text = "Decrypt"
         '
         'ModifyToolStripMenuItem
         '
         Me.ModifyToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditToolStripMenuItem, Me.RemoveToolStripMenuItem, Me.DeleteToolStripMenuItem1})
         Me.ModifyToolStripMenuItem.Name = "ModifyToolStripMenuItem"
-        Me.ModifyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ModifyToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.ModifyToolStripMenuItem.Text = "Modify"
         '
         'DeleteToolStripMenuItem1
         '
         Me.DeleteToolStripMenuItem1.Name = "DeleteToolStripMenuItem1"
-        Me.DeleteToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.DeleteToolStripMenuItem1.Size = New System.Drawing.Size(117, 22)
         Me.DeleteToolStripMenuItem1.Text = "Delete"
         '
         'AddToolStripMenuItem
         '
         Me.AddToolStripMenuItem.Name = "AddToolStripMenuItem"
-        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.AddToolStripMenuItem.Text = "Add"
         '
         'EncryptToolStripMenuItem
         '
         Me.EncryptToolStripMenuItem.Name = "EncryptToolStripMenuItem"
-        Me.EncryptToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.EncryptToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.EncryptToolStripMenuItem.Text = "Encrypt"
         '
         'FileToolStripMenuItem
@@ -152,7 +151,7 @@ Partial Class frmMain
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(738, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1219, 24)
         Me.MenuStrip1.TabIndex = 13
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -161,7 +160,6 @@ Partial Class frmMain
         Me.lstFiles.Activation = System.Windows.Forms.ItemActivation.OneClick
         Me.lstFiles.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.FileNameColumn, Me.StatusColumn, Me.SizeColumn, Me.DateModifiedColumn, Me.PathColumn})
         Me.lstFiles.ContextMenuStrip = Me.ContextMenuStrip1
-        Me.lstFiles.Dock = System.Windows.Forms.DockStyle.Top
         Me.lstFiles.FullRowSelect = True
         Me.lstFiles.GridLines = True
         Me.lstFiles.Location = New System.Drawing.Point(0, 24)
@@ -224,48 +222,20 @@ Partial Class frmMain
         'EditToolStripMenuItem1
         '
         Me.EditToolStripMenuItem1.Name = "EditToolStripMenuItem1"
-        Me.EditToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.EditToolStripMenuItem1.Size = New System.Drawing.Size(117, 22)
         Me.EditToolStripMenuItem1.Text = "Edit"
         '
         'RemoveToolStripMenuItem1
         '
         Me.RemoveToolStripMenuItem1.Name = "RemoveToolStripMenuItem1"
-        Me.RemoveToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.RemoveToolStripMenuItem1.Size = New System.Drawing.Size(117, 22)
         Me.RemoveToolStripMenuItem1.Text = "Remove"
         '
         'DeleteToolStripMenuItem
         '
         Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
-        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
         Me.DeleteToolStripMenuItem.Text = "Delete"
-        '
-        'ToolStripProgressBar1
-        '
-        Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
-        Me.ToolStripProgressBar1.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.ToolStripProgressBar1.Size = New System.Drawing.Size(110, 18)
-        '
-        'StatusStrip1
-        '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblStatus, Me.ToolStripStatusLabel2, Me.ToolStripProgressBar1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 413)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(738, 24)
-        Me.StatusStrip1.TabIndex = 11
-        Me.StatusStrip1.Text = "StatusStrip1"
-        '
-        'lblStatus
-        '
-        Me.lblStatus.Name = "lblStatus"
-        Me.lblStatus.Size = New System.Drawing.Size(45, 19)
-        Me.lblStatus.Text = "Status: "
-        '
-        'ToolStripStatusLabel2
-        '
-        Me.ToolStripStatusLabel2.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right
-        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(43, 19)
-        Me.ToolStripStatusLabel2.Text = "Ready"
         '
         'OpenFileDialog1
         '
@@ -275,7 +245,7 @@ Partial Class frmMain
         '
         Me.btnDecrypt.Image = Global.CryptyChops.My.Resources.Resources.lock_unlock
         Me.btnDecrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDecrypt.Location = New System.Drawing.Point(12, 377)
+        Me.btnDecrypt.Location = New System.Drawing.Point(3, 77)
         Me.btnDecrypt.Name = "btnDecrypt"
         Me.btnDecrypt.Size = New System.Drawing.Size(75, 23)
         Me.btnDecrypt.TabIndex = 14
@@ -287,9 +257,9 @@ Partial Class frmMain
         '
         Me.btnDelete.Image = Global.CryptyChops.My.Resources.Resources.bin
         Me.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDelete.Location = New System.Drawing.Point(174, 377)
+        Me.btnDelete.Location = New System.Drawing.Point(3, 184)
         Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(91, 24)
+        Me.btnDelete.Size = New System.Drawing.Size(85, 24)
         Me.btnDelete.TabIndex = 9
         Me.btnDelete.Text = "Delete File"
         Me.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -299,7 +269,7 @@ Partial Class frmMain
         '
         Me.btnAdd.Image = Global.CryptyChops.My.Resources.Resources.plus
         Me.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAdd.Location = New System.Drawing.Point(93, 348)
+        Me.btnAdd.Location = New System.Drawing.Point(3, 3)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(75, 24)
         Me.btnAdd.TabIndex = 3
@@ -311,9 +281,9 @@ Partial Class frmMain
         '
         Me.btnOpenLoc.Image = Global.CryptyChops.My.Resources.Resources.folder_horizontal_open
         Me.btnOpenLoc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnOpenLoc.Location = New System.Drawing.Point(271, 348)
+        Me.btnOpenLoc.Location = New System.Drawing.Point(3, 282)
         Me.btnOpenLoc.Name = "btnOpenLoc"
-        Me.btnOpenLoc.Size = New System.Drawing.Size(121, 24)
+        Me.btnOpenLoc.Size = New System.Drawing.Size(130, 24)
         Me.btnOpenLoc.TabIndex = 8
         Me.btnOpenLoc.Text = "Open File Location"
         Me.btnOpenLoc.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -323,9 +293,9 @@ Partial Class frmMain
         '
         Me.btnRemove.Image = Global.CryptyChops.My.Resources.Resources.minus
         Me.btnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnRemove.Location = New System.Drawing.Point(174, 348)
+        Me.btnRemove.Location = New System.Drawing.Point(3, 154)
         Me.btnRemove.Name = "btnRemove"
-        Me.btnRemove.Size = New System.Drawing.Size(91, 24)
+        Me.btnRemove.Size = New System.Drawing.Size(93, 24)
         Me.btnRemove.TabIndex = 4
         Me.btnRemove.Text = "Remove File"
         Me.btnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -335,9 +305,9 @@ Partial Class frmMain
         '
         Me.btnEdit.Image = Global.CryptyChops.My.Resources.Resources.pencil
         Me.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEdit.Location = New System.Drawing.Point(93, 377)
+        Me.btnEdit.Location = New System.Drawing.Point(3, 124)
         Me.btnEdit.Name = "btnEdit"
-        Me.btnEdit.Size = New System.Drawing.Size(75, 24)
+        Me.btnEdit.Size = New System.Drawing.Size(72, 24)
         Me.btnEdit.TabIndex = 5
         Me.btnEdit.Text = "Edit File"
         Me.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -347,7 +317,7 @@ Partial Class frmMain
         '
         Me.btnEncrypt.Image = Global.CryptyChops.My.Resources.Resources.lock
         Me.btnEncrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEncrypt.Location = New System.Drawing.Point(12, 348)
+        Me.btnEncrypt.Location = New System.Drawing.Point(3, 47)
         Me.btnEncrypt.Name = "btnEncrypt"
         Me.btnEncrypt.Size = New System.Drawing.Size(75, 24)
         Me.btnEncrypt.TabIndex = 6
@@ -355,28 +325,43 @@ Partial Class frmMain
         Me.btnEncrypt.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnEncrypt.UseVisualStyleBackColor = True
         '
+        'panelForms
+        '
+        Me.panelForms.Controls.Add(Me.panelButtons)
+        Me.panelForms.Location = New System.Drawing.Point(744, 27)
+        Me.panelForms.Name = "panelForms"
+        Me.panelForms.Size = New System.Drawing.Size(465, 315)
+        Me.panelForms.TabIndex = 15
+        '
+        'panelButtons
+        '
+        Me.panelButtons.Controls.Add(Me.btnEncrypt)
+        Me.panelButtons.Controls.Add(Me.btnEdit)
+        Me.panelButtons.Controls.Add(Me.btnAdd)
+        Me.panelButtons.Controls.Add(Me.btnDelete)
+        Me.panelButtons.Controls.Add(Me.btnOpenLoc)
+        Me.panelButtons.Controls.Add(Me.btnRemove)
+        Me.panelButtons.Controls.Add(Me.btnDecrypt)
+        Me.panelButtons.Location = New System.Drawing.Point(3, 3)
+        Me.panelButtons.Name = "panelButtons"
+        Me.panelButtons.Size = New System.Drawing.Size(158, 309)
+        Me.panelButtons.TabIndex = 16
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(738, 437)
-        Me.Controls.Add(Me.btnDecrypt)
-        Me.Controls.Add(Me.btnDelete)
+        Me.ClientSize = New System.Drawing.Size(1219, 356)
+        Me.Controls.Add(Me.panelForms)
         Me.Controls.Add(Me.lstFiles)
-        Me.Controls.Add(Me.btnAdd)
-        Me.Controls.Add(Me.btnOpenLoc)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.Controls.Add(Me.btnRemove)
-        Me.Controls.Add(Me.btnEdit)
-        Me.Controls.Add(Me.StatusStrip1)
-        Me.Controls.Add(Me.btnEncrypt)
         Me.Name = "frmMain"
         Me.Text = "Crypty Chops"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ContextMenuStrip1.ResumeLayout(False)
-        Me.StatusStrip1.ResumeLayout(False)
-        Me.StatusStrip1.PerformLayout()
+        Me.panelForms.ResumeLayout(False)
+        Me.panelButtons.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -412,13 +397,11 @@ Partial Class frmMain
     Friend WithEvents ModifiyToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EditToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RemoveToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripProgressBar1 As System.Windows.Forms.ToolStripProgressBar
-    Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
-    Friend WithEvents lblStatus As System.Windows.Forms.ToolStripStatusLabel
-    Friend WithEvents ToolStripStatusLabel2 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
     Friend WithEvents btnDecrypt As System.Windows.Forms.Button
     Friend WithEvents DeleteToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DeleteToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents panelForms As System.Windows.Forms.Panel
+    Friend WithEvents panelButtons As System.Windows.Forms.Panel
 
 End Class

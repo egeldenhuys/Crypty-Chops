@@ -4,7 +4,7 @@ Public Class FileReader
 
     ' This class is used to read blocks of bytes from a file
 
-    ' Usage:
+    '---------------------- EXAMPLE ---------------------------
 
     ''Dim fReader As New FileReader("C:\MyFile.exe", 1024)
 
@@ -19,13 +19,14 @@ Public Class FileReader
 
     '' Close the file
     'fReader.Close()
+    '--------------------------------------------------------
 
-    Private _bufferSize As Integer = 1024
-    Private _finished As Boolean = False
-    Private _bytesleft As Long
-    Private _path As String
+    Private _bufferSize As Integer = 1024 ' How many bytes to read at one time and store in memory
+    Private _finished As Boolean = False ' Indicates if all bytes has been read
+    Private _bytesleft As Long ' How many bytes we still have to read
+    Private _path As String ' The path of the file we are reading
 
-    Public fileStream As FileStream
+    Public fileStream As FileStream ' fileStream is made public for the ability to use functions such as .seek()
 
     ''' <summary>
     ''' Create a new
@@ -52,6 +53,32 @@ Public Class FileReader
 
     End Sub
 
+    ''' <summary>
+    ''' Replace the file by reading blocks of byte from the source file to the dest file. Overwriting it.
+    ''' </summary>
+    ''' <param name="DestFile">The path of the destination file to be overwritten</param>
+    ''' <remarks>Closes the fileStream when finished</remarks>
+    Public Sub ReplaceFile(DestFile As String)
+
+        Dim fSource As New FileStream(DestFile, FileMode.Truncate)
+        Dim b() As Byte
+
+        ' Keep reading blocks from the source to the destination
+        While Finished = False
+            b = ReadBlock()
+            fSource.Write(b, 0, b.Length)
+        End While
+
+        Close()
+        fSource.Close()
+
+    End Sub
+
+    ''' <summary>
+    ''' Read and return a block of bytes. The number of bytes read is the same as the Buffer Size
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Function ReadBlock() As Byte()
         Dim n As Integer = 0 ' Integer to store how many bytes was read
 

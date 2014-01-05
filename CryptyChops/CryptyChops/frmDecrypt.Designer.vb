@@ -31,15 +31,12 @@ Partial Class frmDecrypt
         Me.rbtnAes = New System.Windows.Forms.RadioButton()
         Me.rbtnCrypty = New System.Windows.Forms.RadioButton()
         Me.grpFilepath = New System.Windows.Forms.GroupBox()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.chbCompress = New System.Windows.Forms.CheckBox()
         Me.txtPass = New System.Windows.Forms.TextBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.btnDecrypt = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.grpFilepath.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -75,7 +72,7 @@ Partial Class frmDecrypt
         Me.GroupBox1.Controls.Add(Me.rbtnReverse)
         Me.GroupBox1.Controls.Add(Me.rbtnAes)
         Me.GroupBox1.Controls.Add(Me.rbtnCrypty)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(8, 12)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(118, 116)
         Me.GroupBox1.TabIndex = 7
@@ -138,26 +135,6 @@ Partial Class frmDecrypt
         Me.grpFilepath.TabStop = False
         Me.grpFilepath.Text = "File path"
         '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.chbCompress)
-        Me.GroupBox3.Location = New System.Drawing.Point(136, 157)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(280, 41)
-        Me.GroupBox3.TabIndex = 9
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Other Options"
-        '
-        'chbCompress
-        '
-        Me.chbCompress.AutoSize = True
-        Me.chbCompress.Location = New System.Drawing.Point(6, 19)
-        Me.chbCompress.Name = "chbCompress"
-        Me.chbCompress.Size = New System.Drawing.Size(72, 17)
-        Me.chbCompress.TabIndex = 2
-        Me.chbCompress.Text = "Compress"
-        Me.chbCompress.UseVisualStyleBackColor = True
-        '
         'txtPass
         '
         Me.txtPass.Location = New System.Drawing.Point(6, 19)
@@ -170,7 +147,7 @@ Partial Class frmDecrypt
         Me.GroupBox2.Controls.Add(Me.chbFile)
         Me.GroupBox2.Controls.Add(Me.grpFilepath)
         Me.GroupBox2.Controls.Add(Me.txtPass)
-        Me.GroupBox2.Location = New System.Drawing.Point(136, 12)
+        Me.GroupBox2.Location = New System.Drawing.Point(132, 12)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(280, 139)
         Me.GroupBox2.TabIndex = 8
@@ -181,7 +158,7 @@ Partial Class frmDecrypt
         '
         Me.btnDecrypt.Image = Global.CryptyChops.My.Resources.Resources.lock_unlock
         Me.btnDecrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDecrypt.Location = New System.Drawing.Point(341, 209)
+        Me.btnDecrypt.Location = New System.Drawing.Point(8, 241)
         Me.btnDecrypt.Name = "btnDecrypt"
         Me.btnDecrypt.Size = New System.Drawing.Size(75, 24)
         Me.btnDecrypt.TabIndex = 10
@@ -193,7 +170,7 @@ Partial Class frmDecrypt
         '
         Me.btnCancel.Image = Global.CryptyChops.My.Resources.Resources.cross
         Me.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCancel.Location = New System.Drawing.Point(12, 209)
+        Me.btnCancel.Location = New System.Drawing.Point(362, 241)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 24)
         Me.btnCancel.TabIndex = 11
@@ -205,10 +182,9 @@ Partial Class frmDecrypt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(425, 238)
+        Me.ClientSize = New System.Drawing.Size(449, 277)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnDecrypt)
-        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.GroupBox2)
         Me.Name = "frmDecrypt"
@@ -217,8 +193,6 @@ Partial Class frmDecrypt
         Me.GroupBox1.PerformLayout()
         Me.grpFilepath.ResumeLayout(False)
         Me.grpFilepath.PerformLayout()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
@@ -234,8 +208,6 @@ Partial Class frmDecrypt
     Friend WithEvents rbtnCrypty As System.Windows.Forms.RadioButton
     Friend WithEvents grpFilepath As System.Windows.Forms.GroupBox
     Friend WithEvents btnDecrypt As System.Windows.Forms.Button
-    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents chbCompress As System.Windows.Forms.CheckBox
     Friend WithEvents txtPass As System.Windows.Forms.TextBox
     Friend WithEvents btnCancel As System.Windows.Forms.Button
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox

@@ -93,7 +93,7 @@ Partial Class frmAdd
         '
         Me.btnAdd.Image = Global.CryptyChops.My.Resources.Resources.tick
         Me.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAdd.Location = New System.Drawing.Point(363, 199)
+        Me.btnAdd.Location = New System.Drawing.Point(12, 241)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(75, 24)
         Me.btnAdd.TabIndex = 3
@@ -105,7 +105,7 @@ Partial Class frmAdd
         '
         Me.btnEncrypt.Image = Global.CryptyChops.My.Resources.Resources.lock
         Me.btnEncrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEncrypt.Location = New System.Drawing.Point(282, 199)
+        Me.btnEncrypt.Location = New System.Drawing.Point(93, 241)
         Me.btnEncrypt.Name = "btnEncrypt"
         Me.btnEncrypt.Size = New System.Drawing.Size(75, 24)
         Me.btnEncrypt.TabIndex = 4
@@ -117,7 +117,7 @@ Partial Class frmAdd
         '
         Me.btnDecrypt.Image = Global.CryptyChops.My.Resources.Resources.lock_unlock
         Me.btnDecrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDecrypt.Location = New System.Drawing.Point(201, 199)
+        Me.btnDecrypt.Location = New System.Drawing.Point(174, 241)
         Me.btnDecrypt.Name = "btnDecrypt"
         Me.btnDecrypt.Size = New System.Drawing.Size(75, 24)
         Me.btnDecrypt.TabIndex = 5
@@ -129,7 +129,7 @@ Partial Class frmAdd
         '
         Me.btnCancel.Image = Global.CryptyChops.My.Resources.Resources.cross
         Me.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCancel.Location = New System.Drawing.Point(12, 199)
+        Me.btnCancel.Location = New System.Drawing.Point(362, 241)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 24)
         Me.btnCancel.TabIndex = 6
@@ -141,7 +141,7 @@ Partial Class frmAdd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(450, 234)
+        Me.ClientSize = New System.Drawing.Size(449, 277)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.btnDecrypt)
         Me.Controls.Add(Me.btnEncrypt)

@@ -102,7 +102,7 @@ Public Class CryptyHeader
     End Sub
 
     ''' <summary>
-    ''' Create a header for the Crypty File
+    ''' Write the header to the file
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub Write()

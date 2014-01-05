@@ -10,10 +10,13 @@ Public Class frmMain
     Public cryptyListObj As CryptyList
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        Me.Icon = My.Resources.CryptyChops
 
         ' We need to do pass the ListView object in the load function
         ' as it is not initialized before this.
         cryptyListObj = New CryptyList(lstFiles)
+
+        FileBtnsVisible(False)
 
     End Sub
 
@@ -25,28 +28,17 @@ Public Class frmMain
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub EncryptFile()
+        HideButtons()
 
-        ' TODO:
-        ' Implement Encryption
-
-        ' False Encryption for each selected file
+        Dim _frmEncrypt As New frmEncrypt
+        SetupForm(_frmEncrypt)
 
         ' Get all the selected items
         Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
-        Dim index As Integer = 0
 
-        ' Encrypt all the selected items
-        For i As Integer = 0 To selItems.Count - 1
-            index = cryptyListObj.GetIndex(selItems.Item(i).Name)
+        Dim cryptyObj As CryptyFile = cryptyListObj.GetObjByName(selItems.Item(0).Name)
 
-            cryptyListObj.FileList.Item(index).Encrypt()
-            cryptyListObj.FileList.Item(index).RefreshInfo()
-        Next
-
-        cryptyListObj.Refresh()
-
-        lstFiles.Focus()
-        lstFiles.Items(0).Selected = True
+        _frmEncrypt.EncryptFile(cryptyObj)
 
     End Sub
 
@@ -55,11 +47,16 @@ Public Class frmMain
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub EditFile()
+        HideButtons()
+
+        Dim _frmEdit As New frmEdit
+        SetupForm(_frmEdit)
+
         ' Get the name of the selected item
         Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
 
         ' open edit file dialog so user can edit the properties easily.
-        frmEdit.EditCryptyFile(cryptyListObj.GetObjByName(selItems.Item(0).Name))
+        _frmEdit.EditCryptyFile(cryptyListObj.GetObjByName(selItems.Item(0).Name))
 
     End Sub
 
@@ -86,10 +83,15 @@ Public Class frmMain
 
     ' Delete the selected file, opens a new form
     Private Sub DeleteFile()
+        HideButtons()
+
+        Dim _frmDelConfirm As New frmDelConfirm
+        SetupForm(_frmDelConfirm)
+
         ' Get the name of the selected item
         Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
 
-        frmDelConfirm.DeleteFile(cryptyListObj.GetObjByName(selItems(0).Name))
+        _frmDelConfirm.DeleteFile(cryptyListObj.GetObjByName(selItems(0).Name))
     End Sub
 
     ''' <summary>
@@ -112,26 +114,18 @@ Public Class frmMain
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub DecryptFile()
-        ' TODO:
-        ' Implement Deryption
+        HideButtons()
+
+        Dim _frmDecrypt As New frmDecrypt
+        SetupForm(_frmDecrypt)
 
         ' Get all the selected items
         Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
-        Dim index As Integer = 0
 
-        ' Decrypt all the selected items
-        For i As Integer = 0 To selItems.Count - 1
-            index = cryptyListObj.GetIndex(selItems.Item(i).Name)
+        Dim cryptyObj As CryptyFile = cryptyListObj.GetObjByName(selItems.Item(0).Name)
 
-            cryptyListObj.FileList.Item(index).Decrypt()
-            cryptyListObj.FileList.Item(index).RefreshInfo()
+        _frmDecrypt.DecryptFile(cryptyObj)
 
-        Next
-
-        cryptyListObj.Refresh()
-
-        lstFiles.Focus()
-        lstFiles.Items(0).Selected = True
 
     End Sub
 
@@ -140,14 +134,25 @@ Public Class frmMain
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub AddFile()
+        HideButtons()
+
+        Dim _frmAdd As New frmAdd
+        SetupForm(_frmAdd)
+
+        ' This is needed otherwise the previous path is passed even if they press cancel
+        OpenFileDialog1.FileName = ""
+
         ' Collect the path
         OpenFileDialog1.ShowDialog()
+
 
         Dim path As String = OpenFileDialog1.FileName
 
         'If the user does not select a file do not display the next window
         If path <> "" Then
-            frmAdd.ShowFileInfo(path)
+            _frmAdd.ShowFileInfo(path)
+        Else
+            ShowButtons()
         End If
 
     End Sub
@@ -271,4 +276,67 @@ Public Class frmMain
 
 #End Region
 
+#Region "Form Modifiers"
+    ''' <summary>
+    ''' Set form properties and add it to the panel, ready to be displayed
+    ''' </summary>
+    ''' <param name="tmpForm">The form to prepare for the panel</param>
+    ''' <remarks></remarks>
+    Public Sub SetupForm(tmpForm As Form)
+
+        tmpForm.TopLevel = False
+
+        ' We do not want a border, it should look like it is part of the main form.
+        tmpForm.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+
+        ' After we have added it we can use .show() and it will appear in the panel
+        panelForms.Controls.Add(tmpForm)
+
+    End Sub
+
+    ''' <summary>
+    ''' Hide the control buttons in the panelForms
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Sub HideButtons()
+        panelButtons.Visible = False
+    End Sub
+
+    ''' <summary>
+    ''' Show the control buttons in the panelForms
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Sub ShowButtons()
+        panelButtons.Visible = True
+    End Sub
+
+#End Region
+
+    Private Sub lstFiles_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles lstFiles.SelectedIndexChanged
+
+        ' Show buttons only when a file is selected
+
+        If lstFiles.SelectedIndices.Count = 0 Then
+            FileBtnsVisible(False)
+        Else
+            FileBtnsVisible(True)
+        End If
+
+    End Sub
+
+    ''' <summary>
+    ''' Set the visibility of the file manu=ipulation buttons
+    ''' </summary>
+    ''' <param name="value">True/False</param>
+    ''' <remarks></remarks>
+    Private Sub FileBtnsVisible(value As Boolean)
+
+        btnEdit.Visible = value
+        btnEncrypt.Visible = value
+        btnDecrypt.Visible = value
+        btnRemove.Visible = value
+        btnDelete.Visible = value
+        btnOpenLoc.Visible = value
+
+    End Sub
 End Class

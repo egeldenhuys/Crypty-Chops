@@ -1,27 +1,35 @@
 ﻿Public Class frmEdit
+    ' This form will be used to edit the properties of the CryptyFile
 
     ' TODO:
-    ' Algorithms
+    ' Implement Remove and Delete
 
     Dim cryptyObj As CryptyFile
 
-    ' This form will be used to edit the properties of the CryptyFile
     Private Sub frmEdit_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub this_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+
+        frmMain.ShowButtons()
 
     End Sub
 
     ''' <summary>
     ''' Entry point for this form
     ''' </summary>
-    ''' <param name="cryptyFileObject"></param>
+    ''' <param name="cryptyFileObject">The cryptyFile to edit</param>
     ''' <remarks></remarks>
     Public Sub EditCryptyFile(cryptyFileObject As CryptyFile)
         Me.Show()
 
-        txtName.Text = cryptyFileObject.Name
-        txtPath.Text = cryptyFileObject.Path
-
+        ' Save the object for later use
         cryptyObj = cryptyFileObject
+
+        ' Display the file details for the user
+        txtName.Text = cryptyObj.Name
+        txtPath.Text = cryptyObj.Path
 
     End Sub
 
@@ -39,8 +47,19 @@
     End Sub
 
     Private Sub btnSave_Click(sender As System.Object, e As System.EventArgs) Handles btnSave.Click
+
+        ' Update the object properties
+        Dim index As Integer = frmMain.cryptyListObj.GetIndex(cryptyObj.Name)
+
         cryptyObj.Path = txtPath.Text
         cryptyObj.Name = txtName.Text
+
+        frmMain.cryptyListObj.FileList.Item(index).Path = cryptyObj.Path
+        frmMain.cryptyListObj.FileList.Item(index).Name = cryptyObj.Name
+
+        frmMain.cryptyListObj.Refresh()
+
+        Me.Close()
 
     End Sub
 End Class
