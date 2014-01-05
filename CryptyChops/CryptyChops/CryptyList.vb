@@ -75,7 +75,6 @@
             End If
         Next
 
-        ' Add all items from the fileList to the ListView
         Refresh()
 
     End Sub
