@@ -4,29 +4,43 @@
 ### Feature List
 (D) - Documentation has been created for this feature.
 
-#### Functions:
-* **[X] CryptyFile object**
-* **[X] CryptyHeader object**
-* **[X] CryptyList object**
+#### Basic Functions:
 * [ ] Encryption (D)
 * [ ] Decryption (D)
+
+#### Extra Encryption Features:
 * [ ] Use file as key
 * [ ] Compress files (D)
 * [ ] Encrypt multiple files at a time (D)
 * [ ] Split encrypted files (D)
+
+#### Internal Structure
+* **[X] CryptyFile class**
+* **[X] CryptyHeader class**
+* **[X] CryptyList class**
+* **[X] FileReader class**
+* [ ] Compression
+* [ ] Cryptography
+
+#### Security:
 * [ ] Encrypt temporary files used by Crypty Chops
 * [ ] Encrypt memory of Crypty Chops?
-* Encryption Algorithms
- * [ ] Crypty Encrypt
- * [ ] No Password
- * [ ] Reverse bytes
- * [ ] AES
-* **[X] List of Files for quick encryption/decryption**
- * [ ] Save List
- * [ ] Load List
- * [ ] Set password for list
- * [ ] Encrypt List
- * [ ] Decrypt List
+
+#### Encryption Algorithms:
+* [ ] Crypty Encrypt
+* [ ] No Password
+* [ ] Reverse bytes
+* [ ] AES
+ 
+#### File List:
+* **[X] Add files**
+* **[X] remove files**
+* **[X] Display files**
+* [ ] Save List
+* [ ] Load List
+* [ ] Set password for list
+* [ ] Encrypt List
+* [ ] Decrypt List
 
 #### GUI:
 * **[X] Main GUI forms**
@@ -34,10 +48,11 @@
 * [ ] Status strip to display function information
 * [ ] Options
 * [ ] System tray icon
+* [ ] Tooltip
 
 #### Ease of use:
 * [ ] Command line interface
-* [ ] Short cut keys
+* [ ] Shortcut keys
 * [ ] Check for updates
 * [ ] User documentation
 * [ ] Online help
