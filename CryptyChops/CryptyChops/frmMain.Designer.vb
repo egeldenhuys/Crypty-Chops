@@ -23,6 +23,7 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RemoveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -70,13 +71,13 @@ Partial Class frmMain
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'RemoveToolStripMenuItem
         '
         Me.RemoveToolStripMenuItem.Name = "RemoveToolStripMenuItem"
-        Me.RemoveToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.RemoveToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
         Me.RemoveToolStripMenuItem.Text = "Remove"
         '
         'HelpToolStripMenuItem
@@ -89,50 +90,50 @@ Partial Class frmMain
         'ViewHelpToolStripMenuItem
         '
         Me.ViewHelpToolStripMenuItem.Name = "ViewHelpToolStripMenuItem"
-        Me.ViewHelpToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ViewHelpToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.ViewHelpToolStripMenuItem.Text = "View Help"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'EditToolStripMenuItem
         '
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
         Me.EditToolStripMenuItem.Text = "Edit"
         '
         'DecryptToolStripMenuItem
         '
         Me.DecryptToolStripMenuItem.Name = "DecryptToolStripMenuItem"
-        Me.DecryptToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DecryptToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.DecryptToolStripMenuItem.Text = "Decrypt"
         '
         'ModifyToolStripMenuItem
         '
         Me.ModifyToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditToolStripMenuItem, Me.RemoveToolStripMenuItem, Me.DeleteToolStripMenuItem1})
         Me.ModifyToolStripMenuItem.Name = "ModifyToolStripMenuItem"
-        Me.ModifyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ModifyToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.ModifyToolStripMenuItem.Text = "Modify"
         '
         'DeleteToolStripMenuItem1
         '
         Me.DeleteToolStripMenuItem1.Name = "DeleteToolStripMenuItem1"
-        Me.DeleteToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.DeleteToolStripMenuItem1.Size = New System.Drawing.Size(117, 22)
         Me.DeleteToolStripMenuItem1.Text = "Delete"
         '
         'AddToolStripMenuItem
         '
         Me.AddToolStripMenuItem.Name = "AddToolStripMenuItem"
-        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.AddToolStripMenuItem.Text = "Add"
         '
         'EncryptToolStripMenuItem
         '
         Me.EncryptToolStripMenuItem.Name = "EncryptToolStripMenuItem"
-        Me.EncryptToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.EncryptToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.EncryptToolStripMenuItem.Text = "Encrypt"
         '
         'FileToolStripMenuItem
@@ -224,19 +225,19 @@ Partial Class frmMain
         'EditToolStripMenuItem1
         '
         Me.EditToolStripMenuItem1.Name = "EditToolStripMenuItem1"
-        Me.EditToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.EditToolStripMenuItem1.Size = New System.Drawing.Size(117, 22)
         Me.EditToolStripMenuItem1.Text = "Edit"
         '
         'RemoveToolStripMenuItem1
         '
         Me.RemoveToolStripMenuItem1.Name = "RemoveToolStripMenuItem1"
-        Me.RemoveToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.RemoveToolStripMenuItem1.Size = New System.Drawing.Size(117, 22)
         Me.RemoveToolStripMenuItem1.Text = "Remove"
         '
         'DeleteToolStripMenuItem
         '
         Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
-        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
         Me.DeleteToolStripMenuItem.Text = "Delete"
         '
         'ToolStripProgressBar1
@@ -370,6 +371,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.btnEncrypt)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmMain"
         Me.Text = "Crypty Chops"
         Me.MenuStrip1.ResumeLayout(False)
