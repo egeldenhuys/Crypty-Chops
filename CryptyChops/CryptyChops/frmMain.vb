@@ -6,8 +6,10 @@ Public Class frmMain
 
     ' TODO:
     ' Help
+    ' Option to close to tray
 
     Public cryptyListObj As CryptyList
+    Dim closeToTray As Boolean = True ' Should the program be displayed as a system tray icon when the user closes it?
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
@@ -267,6 +269,67 @@ Public Class frmMain
 
     Private Sub AboutToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles AboutToolStripMenuItem.Click
         frmAbout.Show()
+    End Sub
+
+#End Region
+
+#Region "Tray Icon"
+
+    ''' <summary>
+    ''' Show the program and remove system tray icon
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub TrayShowForm()
+        Me.Show()
+
+        ' Show the form when the user double clicks on the notify icon. 
+
+        ' Set the WindowState to normal if the form is minimized.
+        If (Me.WindowState = FormWindowState.Minimized) Then _
+            Me.WindowState = FormWindowState.Normal
+
+        ' Activate the form.
+        Me.Activate()
+
+        trayIcon.Visible = False
+
+    End Sub
+    Private Sub trayIcon_DoubleClick(Sender As Object, e As EventArgs) Handles trayIcon.DoubleClick
+
+        TrayShowForm()
+    End Sub
+
+    Private Sub ShowToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ShowToolStripMenuItem.Click
+        TrayShowForm()
+
+    End Sub
+
+    Private Sub ExitToolStripMenuItem1_Click(sender As System.Object, e As System.EventArgs) Handles ExitToolStripMenuItem1.Click
+
+        ' Set it to false, as we want the program to exit and not minimize to tray again.
+        closeToTray = False
+
+        Me.Close()
+
+    End Sub
+
+    Private Sub frmMain_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+
+        If closeToTray = True Then
+
+            ' Minimize the window
+            Me.WindowState = FormWindowState.Minimized
+
+            ' Make the window invisible (Hide it in the task bar)
+            Me.Visible = False
+
+
+            trayIcon.Visible = True
+
+            ' prevents the program from exiting
+            e.Cancel = True
+        End If
+
     End Sub
 
 #End Region
