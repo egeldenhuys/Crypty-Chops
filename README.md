@@ -25,6 +25,7 @@
 #### Security:
 * [ ] Encrypt temporary files used by Crypty Chops
 * [ ] Encrypt memory of Crypty Chops?
+* [ ] Encrypt the file list when saved to disk.
 
 #### Encryption Algorithms:
 * [ ] Crypty Encrypt
@@ -48,7 +49,7 @@
 * [ ] Status strip to display function information
 * [ ] Options
 * [ ] System tray icon
-* [ ] Tooltip
+* [ ] Tooltips
 
 #### Ease of use:
 * [ ] Command line interface
