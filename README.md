@@ -46,14 +46,16 @@
 * [ ] Options
 * [ ] System tray icon
 * [ ] Tooltips
+* [ ] Drag and drop files to add to the list
+* [ ] Online help
 
-#### Ease of use:
+#### Other:
 * [ ] Command line interface
 * [ ] Shortcut keys
 * [ ] Check for updates
 * [ ] User documentation
-* [ ] Online help
-* [ ] Drag and drop files to add to the list
+
+
 
 ### Attributions
 Icons by [Yusuke Kamiyamane](http://p.yusukekamiyamane.com/). Licensed under a [Creative Commons Attribution 3.0 License](http://creativecommons.org/licenses/by/3.0/).
