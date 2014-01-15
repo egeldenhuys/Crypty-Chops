@@ -4,9 +4,11 @@
 ### Feature List
 (D) - Documentation has been created for this feature.
 
-#### Basic Functions:
-* [ ] Encryption (D)
-* [ ] Decryption (D)
+#### Encryption Algorithms:
+* [ ] Crypty Encrypt
+* [ ] No Password
+* [ ] Reverse bytes
+* [ ] AES
 
 #### Extra Encryption Features:
 * [ ] Use file as key
@@ -27,12 +29,6 @@
 * [ ] Encrypt memory of Crypty Chops?
 * [ ] Encrypt the file list when saved to disk.
 
-#### Encryption Algorithms:
-* [ ] Crypty Encrypt
-* [ ] No Password
-* [ ] Reverse bytes
-* [ ] AES
- 
 #### File List:
 * **[X] Add files**
 * **[X] remove files**
