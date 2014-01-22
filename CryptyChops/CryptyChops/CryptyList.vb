@@ -48,7 +48,7 @@
     ''' </summary>
     ''' <param name="item">The CryptyFile object to add to the list</param>
     ''' <remarks></remarks>
-    Public Sub Add(item As CryptyFile)
+    Public Sub Add(ByVal item As CryptyFile)
 
         ' Add the item to the list
         _fileList.Add(item)

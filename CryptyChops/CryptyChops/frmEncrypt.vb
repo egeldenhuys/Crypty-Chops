@@ -58,7 +58,7 @@ Public Class frmEncrypt
         ' The status is set by the object when encrypted
         _cryptyFile.Encrypt()
 
-        ' Show the user thath the file ahs been compressed
+        ' Show the user that the file has been compressed
         If _cryptyFile.Status = "Encrypted" Then
             If _cryptyFile.Compress = True Then
                 _cryptyFile.Status = "Encrypted (C)"
@@ -70,4 +70,7 @@ Public Class frmEncrypt
 
     End Sub
 
+    Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        Me.Close()
+    End Sub
 End Class

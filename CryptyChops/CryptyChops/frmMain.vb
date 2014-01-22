@@ -325,7 +325,7 @@ Public Class frmMain
     End Sub
 
     ''' <summary>
-    ''' Set the visibility of the file manu=ipulation buttons
+    ''' Set the visibility of the file manipulation buttons
     ''' </summary>
     ''' <param name="value">True/False</param>
     ''' <remarks></remarks>

@@ -83,7 +83,7 @@ Public Class CryptyFile
         ' Compress the original data
         If _compress = True Then
             Header.Compressed = True
-            CompressData()
+            CompressData(_fileInfo.FullName)
 
             ' Hash the compressed data
             Header.HashCompressed = GetSHA1(_path)
@@ -189,10 +189,24 @@ Public Class CryptyFile
     ''' Compress this file
     ''' </summary>
     ''' <remarks></remarks>
-    Public Sub CompressData()
+    Public Sub CompressData(ByVal filePath As String)
 
-        ' TODO:
-        ' Implement Compression
+        Dim compressionProcess As New Process
+        Dim compressionProcArgs As ProcessStartInfo = New ProcessStartInfo()
+
+        Dim fileDestination As String = """" & _fileInfo.DirectoryName & "\" & _fileInfo.Name & ".7z"""
+        With compressionProcess.StartInfo
+            .FileName = "7za920\7za.exe"
+            .Arguments = "a " & fileDestination & " """ & filePath & """"
+            .UseShellExecute = False
+            .CreateNoWindow = False
+            .RedirectStandardInput = False
+            .RedirectStandardOutput = False
+            .RedirectStandardError = False
+        End With
+
+        compressionProcess.Start()
+
     End Sub
 
     ''' <summary>
