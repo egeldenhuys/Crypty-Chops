@@ -5,9 +5,9 @@
 (D) - Documentation has been created for this feature.
 
 #### Encryption Algorithms:
-* [ ] Crypty Encrypt
+* **[X] Crypty Encrypt**
 * [ ] No Password
-* [ ] Reverse bytes
+* **[X] Reverse bytes**
 * [ ] AES
 
 #### Extra Encryption Features:
@@ -21,7 +21,7 @@
 * **[X] CryptyHeader class**
 * **[X] CryptyList class**
 * **[X] FileReader class**
-* [ ] Compression
+* **[X] Compression**
 * [ ] Cryptography
 
 #### Security:
