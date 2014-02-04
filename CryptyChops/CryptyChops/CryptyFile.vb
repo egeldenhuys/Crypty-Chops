@@ -24,7 +24,7 @@ Public Class CryptyFile
     ''' </summary>
     ''' <param name="path">The path of the crypty File</param>
     ''' <remarks></remarks>
-    Public Sub New(path As String)
+    Public Sub New(ByVal path As String)
         Me.Path = path
         _header = New CryptyHeader(path)
 
@@ -44,7 +44,7 @@ Public Class CryptyFile
     ''' <param name="path">The path of the file to hash</param>
     ''' <returns>Byte array of the Hash</returns>
     ''' <remarks></remarks>
-    Public Function GetSHA1(path As String) As Byte()
+    Public Function GetSHA1(ByVal path As String) As Byte()
         Dim sha1Obj As New SHA1CryptoServiceProvider
         Dim bytes() As Byte
 
@@ -63,7 +63,7 @@ Public Class CryptyFile
     ''' Encrypt this file with the key property
     ''' </summary>
     ''' <remarks></remarks>
-    Public Sub Encrypt()
+    Public Sub Encrypt(ByVal algorithm As String)
         ' Process:
 
         ' Hash original data
@@ -94,7 +94,17 @@ Public Class CryptyFile
         ' Write header to the file at _path
         Header.Write()
 
-        ' !! ENCRYPT DATA !!
+        '' Select which algorithm to use
+        Select Case algorithm
+            Case "AES"
+                Encrypt("AES")
+            Case "Crypty"
+                Encrypt("Crypty")
+            Case "No Pass"
+                Encrypt("No Pass")
+            Case "Reverse"
+                Encrypt("Reverse")
+        End Select
 
         RefreshInfo()
         Status = "Encrypted"
@@ -166,7 +176,7 @@ Public Class CryptyFile
     ''' <param name="arrayB">The second array</param>
     ''' <returns>True if the array values are the same, otherwise False</returns>
     ''' <remarks></remarks>
-    Private Function CompareByteArray(arrayA() As Byte, arrayB() As Byte) As Boolean
+    Private Function CompareByteArray(ByVal arrayA() As Byte, ByVal arrayB() As Byte) As Boolean
 
         ' If they are not the same length, the cannot be the same
         If arrayA.Length <> arrayB.Length Then
@@ -190,9 +200,9 @@ Public Class CryptyFile
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub CompressData()
+        Dim compressor As New Compression(_path, _path)
 
-        ' TODO:
-        ' Implement Compression
+        compressor.Compress()
     End Sub
 
     ''' <summary>

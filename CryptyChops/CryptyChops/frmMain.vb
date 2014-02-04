@@ -7,6 +7,10 @@ Public Class frmMain
     ' TODO:
     ' Help
 
+    '' Robert -
+    '' Added saving file which is called on frmMain closing. Should the file be encrypted?
+    '' Added File loading on startup. Requires work.
+
     Public cryptyListObj As CryptyList
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
@@ -17,6 +21,8 @@ Public Class frmMain
         cryptyListObj = New CryptyList(lstFiles)
 
         FileBtnsVisible(False)
+
+        cryptyListObj.LoadList()
 
     End Sub
 
@@ -81,7 +87,7 @@ Public Class frmMain
 
     End Sub
 
-    ' Delete the selected file, opens a new form
+    '' Delete the selected file, opens a new form
     Private Sub DeleteFile()
         HideButtons()
 
@@ -325,7 +331,7 @@ Public Class frmMain
     End Sub
 
     ''' <summary>
-    ''' Set the visibility of the file manu=ipulation buttons
+    ''' Set the visibility of the file manuipulation buttons
     ''' </summary>
     ''' <param name="value">True/False</param>
     ''' <remarks></remarks>
@@ -337,6 +343,12 @@ Public Class frmMain
         btnRemove.Visible = value
         btnDelete.Visible = value
         btnOpenLoc.Visible = value
+
+    End Sub
+
+    Private Sub frmMain_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+
+        cryptyListObj.SaveList()
 
     End Sub
 End Class
