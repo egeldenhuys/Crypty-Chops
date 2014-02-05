@@ -35,6 +35,7 @@ Partial Class frmDecrypt
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.btnDecrypt = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
+        Me.lblError = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.grpFilepath.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -176,11 +177,24 @@ Partial Class frmDecrypt
         Me.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnCancel.UseVisualStyleBackColor = True
         '
+        'lblError
+        '
+        Me.lblError.AutoSize = True
+        Me.lblError.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblError.ForeColor = System.Drawing.Color.Red
+        Me.lblError.Location = New System.Drawing.Point(134, 154)
+        Me.lblError.Name = "lblError"
+        Me.lblError.Size = New System.Drawing.Size(145, 20)
+        Me.lblError.TabIndex = 12
+        Me.lblError.Text = "Incorrect Password"
+        Me.lblError.Visible = False
+        '
         'frmDecrypt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(449, 277)
+        Me.Controls.Add(Me.lblError)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnDecrypt)
         Me.Controls.Add(Me.btnCancel)
@@ -194,6 +208,7 @@ Partial Class frmDecrypt
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents txtPath As System.Windows.Forms.TextBox
@@ -209,4 +224,5 @@ Partial Class frmDecrypt
     Friend WithEvents txtPass As System.Windows.Forms.TextBox
     Friend WithEvents btnCancel As System.Windows.Forms.Button
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents lblError As System.Windows.Forms.Label
 End Class

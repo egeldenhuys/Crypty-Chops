@@ -58,13 +58,14 @@
         _cryptyFile.Decrypt()
 
         If _cryptyFile.Status.ToLower = "error" Then
-            MsgBox("You fool")
+            lblError.Visible = True
         Else
+            Me.Close()
             frmMain.cryptyListObj.Refresh()
         End If
 
 
-        Me.Close()
+
 
     End Sub
 
@@ -77,4 +78,7 @@
 
     End Sub
 
+    Private Sub txtPass_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPass.TextChanged
+        lblError.Visible = False
+    End Sub
 End Class

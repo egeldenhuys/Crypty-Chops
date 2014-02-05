@@ -146,7 +146,7 @@ Public Class CryptyFile
 
                     ExtractData()
                 Else
-                    Status = "Error"
+                    _status = "Error"
 
                 End If
             End If
@@ -158,15 +158,14 @@ Public Class CryptyFile
                 fReader = New FileReader(tmpFile, BUFFER_SIZE)
                 fReader.ReplaceFile(_path)
 
-                Status = "Decrypted"
+                _status = "Decrypted"
             Else
-                Status = "Error"
+                _status = "Error"
                 My.Computer.FileSystem.MoveFile(backupPath, _path, True)
             End If
 
-            Status = "Decrypted"
         Else
-            Status = "Error"
+            _status = "Error"
         End If
 
         RefreshInfo()
