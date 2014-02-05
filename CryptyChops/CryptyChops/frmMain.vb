@@ -165,11 +165,21 @@ Public Class frmMain
         'If the user does not select a file do not display the next window
         If path <> "" Then
             Dim tmpFileInfo As New FileInfo(path)
+
+            'Test permissions
+
+            Try
+                Dim fs As New FileStream(path, FileMode.Open)
+                fs.Close()
+
             ' Create a new CryptyFile based on the given path
             Dim tmpItem As New CryptyFile(tmpFileInfo.FullName)
 
             tmpItem.Name = tmpFileInfo.Name
-            cryptyListObj.Add(tmpItem)
+                cryptyListObj.Add(tmpItem)
+            Catch ex As Exception
+                MsgBox("You need to run Crypty Chops as a administrator to encrypt that file")
+            End Try
         End If
 
     End Sub
