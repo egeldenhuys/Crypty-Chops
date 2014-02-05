@@ -67,7 +67,7 @@ Public Class CryptyFile
     Public Sub Encrypt()
 
         ' Set the original name in the Header
-        Header.FileName = _fileInfo.Name
+        'Header.FileName = _fileInfo.Name
 
         ' Hash the original data
         Header.Hash = GetSHA1(_path)
@@ -168,7 +168,6 @@ Public Class CryptyFile
         Else
             Status = "Error"
         End If
-
 
         RefreshInfo()
 
