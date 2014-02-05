@@ -35,6 +35,7 @@ Partial Class frmDecrypt
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.btnDecrypt = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
+        Me.lblError = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.grpFilepath.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -50,6 +51,7 @@ Partial Class frmDecrypt
         'chbFile
         '
         Me.chbFile.AutoSize = True
+        Me.chbFile.Enabled = False
         Me.chbFile.Location = New System.Drawing.Point(6, 56)
         Me.chbFile.Name = "chbFile"
         Me.chbFile.Size = New System.Drawing.Size(127, 17)
@@ -86,7 +88,6 @@ Partial Class frmDecrypt
         Me.rbtnNoPass.Name = "rbtnNoPass"
         Me.rbtnNoPass.Size = New System.Drawing.Size(88, 17)
         Me.rbtnNoPass.TabIndex = 3
-        Me.rbtnNoPass.TabStop = True
         Me.rbtnNoPass.Text = "No Password"
         Me.rbtnNoPass.UseVisualStyleBackColor = True
         '
@@ -97,7 +98,6 @@ Partial Class frmDecrypt
         Me.rbtnReverse.Name = "rbtnReverse"
         Me.rbtnReverse.Size = New System.Drawing.Size(65, 17)
         Me.rbtnReverse.TabIndex = 2
-        Me.rbtnReverse.TabStop = True
         Me.rbtnReverse.Text = "Reverse"
         Me.rbtnReverse.UseVisualStyleBackColor = True
         '
@@ -108,13 +108,13 @@ Partial Class frmDecrypt
         Me.rbtnAes.Name = "rbtnAes"
         Me.rbtnAes.Size = New System.Drawing.Size(46, 17)
         Me.rbtnAes.TabIndex = 1
-        Me.rbtnAes.TabStop = True
         Me.rbtnAes.Text = "AES"
         Me.rbtnAes.UseVisualStyleBackColor = True
         '
         'rbtnCrypty
         '
         Me.rbtnCrypty.AutoSize = True
+        Me.rbtnCrypty.Checked = True
         Me.rbtnCrypty.Location = New System.Drawing.Point(6, 19)
         Me.rbtnCrypty.Name = "rbtnCrypty"
         Me.rbtnCrypty.Size = New System.Drawing.Size(93, 17)
@@ -178,11 +178,24 @@ Partial Class frmDecrypt
         Me.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnCancel.UseVisualStyleBackColor = True
         '
+        'lblError
+        '
+        Me.lblError.AutoSize = True
+        Me.lblError.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblError.ForeColor = System.Drawing.Color.Red
+        Me.lblError.Location = New System.Drawing.Point(134, 154)
+        Me.lblError.Name = "lblError"
+        Me.lblError.Size = New System.Drawing.Size(145, 20)
+        Me.lblError.TabIndex = 12
+        Me.lblError.Text = "Incorrect Password"
+        Me.lblError.Visible = False
+        '
         'frmDecrypt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(449, 277)
+        Me.Controls.Add(Me.lblError)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.btnDecrypt)
         Me.Controls.Add(Me.btnCancel)
@@ -196,6 +209,7 @@ Partial Class frmDecrypt
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents txtPath As System.Windows.Forms.TextBox
@@ -211,4 +225,5 @@ Partial Class frmDecrypt
     Friend WithEvents txtPass As System.Windows.Forms.TextBox
     Friend WithEvents btnCancel As System.Windows.Forms.Button
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents lblError As System.Windows.Forms.Label
 End Class

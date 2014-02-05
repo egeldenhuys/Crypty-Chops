@@ -68,7 +68,7 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\CryptyChops.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\CryptyChops %282%29.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -94,6 +94,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compression.vb" />
     <Compile Include="Cryptography.vb" />
     <Compile Include="CryptyFile.vb" />
     <Compile Include="CryptyHeader.vb" />
@@ -268,6 +269,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CryptyChops.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CryptyChops %282%29.ico" />
+    <None Include="Resources\CryptyChops %282%29.ico" />
+    <None Include="Resources\CCLogo.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -17,6 +17,7 @@ Public Class CryptyFile
     Private _path As String
     Private _header As CryptyHeader
     Private _compress As Boolean
+    Public algorithm As String
 
     Const BUFFER_SIZE As Integer = 1024
     ''' <summary>
@@ -24,7 +25,7 @@ Public Class CryptyFile
     ''' </summary>
     ''' <param name="path">The path of the crypty File</param>
     ''' <remarks></remarks>
-    Public Sub New(path As String)
+    Public Sub New(ByVal path As String)
         Me.Path = path
         _header = New CryptyHeader(path)
 
@@ -44,7 +45,7 @@ Public Class CryptyFile
     ''' <param name="path">The path of the file to hash</param>
     ''' <returns>Byte array of the Hash</returns>
     ''' <remarks></remarks>
-    Public Function GetSHA1(path As String) As Byte()
+    Public Function GetSHA1(ByVal path As String) As Byte()
         Dim sha1Obj As New SHA1CryptoServiceProvider
         Dim bytes() As Byte
 
@@ -64,18 +65,9 @@ Public Class CryptyFile
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub Encrypt()
-        ' Process:
-
-        ' Hash original data
-        ' Compress if Compress = true
-        ' Hash compressed data
-        ' Set header values
-        ' Write header to file
-        ' Encrypt File.
 
         ' Set the original name in the Header
-        Header.FileName = _fileInfo.Name
-
+        'Header.FileName = _fileInfo.Name
 
         ' Hash the original data
         Header.Hash = GetSHA1(_path)
@@ -91,10 +83,22 @@ Public Class CryptyFile
             Header.Compressed = False
         End If
 
-        ' Write header to the file at _path
-        Header.Write()
+        ' Encrypt the data
 
-        ' !! ENCRYPT DATA !!
+        Select Case algorithm.ToLower
+            Case "crypty encrypt"
+                ' Write header to the file at _path
+                Header.Write()
+
+                CryptyEncrypt()
+
+            Case "no password"
+                Header.Write()
+            Case "reverse"
+                ReverseEncrypt()
+            Case "aes"
+                Header.Write()
+        End Select
 
         RefreshInfo()
         Status = "Encrypted"
@@ -105,23 +109,26 @@ Public Class CryptyFile
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub Decrypt()
-        ' Process:
 
-        ' Decrypt Data
-        ' Move data to tmpFile
-        ' Get hash of tmpFile
-        ' If Header.compressed = true then 
-        '   Compare hash of tmpData with header.CompressedHash
-        '       If the hash matches then extract the tmpFile, -> tmpFile2
-        ' Compare the hash of the tmpFile2 with header.Hash
-        ' If they match replace the original file
+        ' Create backup
 
-        ' !! DECRYPT DATA !!
+        Dim backupPath As String = System.IO.Path.GetTempFileName
+
+        My.Computer.FileSystem.CopyFile(_path, backupPath, True)
+
+        Select Case algorithm.ToLower
+            Case "crypty encrypt"
+                CryptyEncrypt()
+            Case "no password"
+            Case "reverse"
+                ReverseEncrypt()
+            Case "aes"
+        End Select
 
         ' Get header values
         Header.Read()
 
-        ' Move data to a tmpFile so why can get the hash
+        ' Move data to a tmpFile so we can get the hash
         Dim tmpFile As String = IO.Path.GetTempFileName
 
         Dim fReader As New FileReader(_path, BUFFER_SIZE)
@@ -131,28 +138,34 @@ Public Class CryptyFile
 
         fReader.ReplaceFile(tmpFile)
 
-        If Header.Compressed = True Then
+        If algorithm <> "reverse" Then
+            If Header.Compressed = True Then
 
-            ' Compare hash of compressed data
-            If CompareByteArray(Header.HashCompressed, GetSHA1(tmpFile)) = True Then
+                ' Compare hash of compressed data
+                If CompareByteArray(Header.HashCompressed, GetSHA1(tmpFile)) = True Then
 
-                ExtractData()
-            Else
-                Status = "Error"
+                    ExtractData()
+                Else
+                    _status = "Error"
 
+                End If
             End If
-        End If
 
-        ' Compare hash of original data
-        If CompareByteArray(Header.Hash, GetSHA1(tmpFile)) = True Then
+            ' Compare hash of original data
+            If CompareByteArray(Header.Hash, GetSHA1(tmpFile)) = True Then
 
-            ' Replace the original file with the tmpFile by using the FileReader class
-            fReader = New FileReader(tmpFile, BUFFER_SIZE)
-            fReader.ReplaceFile(_path)
+                ' Replace the original file with the tmpFile by using the FileReader class
+                fReader = New FileReader(tmpFile, BUFFER_SIZE)
+                fReader.ReplaceFile(_path)
 
-            Status = "Decrypted"
+                _status = "Decrypted"
+            Else
+                _status = "Error"
+                My.Computer.FileSystem.MoveFile(backupPath, _path, True)
+            End If
+
         Else
-            Status = "Error"
+            _status = "Error"
         End If
 
         RefreshInfo()
@@ -166,7 +179,7 @@ Public Class CryptyFile
     ''' <param name="arrayB">The second array</param>
     ''' <returns>True if the array values are the same, otherwise False</returns>
     ''' <remarks></remarks>
-    Private Function CompareByteArray(arrayA() As Byte, arrayB() As Byte) As Boolean
+    Private Function CompareByteArray(ByVal arrayA() As Byte, ByVal arrayB() As Byte) As Boolean
 
         ' If they are not the same length, the cannot be the same
         If arrayA.Length <> arrayB.Length Then
@@ -190,9 +203,9 @@ Public Class CryptyFile
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub CompressData()
+        Dim compressor As New Compression(_path)
 
-        ' TODO:
-        ' Implement Compression
+        compressor.Compress()
     End Sub
 
     ''' <summary>
@@ -204,6 +217,89 @@ Public Class CryptyFile
         ' TODO:
         ' Implement Extraction
     End Sub
+
+    Private Sub CryptyEncrypt()
+        ' Create new instance of the cryptogtaphy class for encrypting
+        Dim cryptyObj As New Cryptography.CryptyEncrypt
+
+        ' For hashing the password to be used as the key
+        Dim hasher As New System.Security.Cryptography.SHA1Managed
+
+        ' Set the key for encryption
+        cryptyObj.key = hasher.ComputeHash(System.Text.UnicodeEncoding.UTF8.GetBytes(_key))
+
+        ' original plaintext file stream
+        Dim fReaderOrig As New FileReader(_path, BUFFER_SIZE)
+
+        ' tmp path for encrypted file
+        Dim tmpPath As String = System.IO.Path.GetTempFileName()
+
+        ' Encrypted file stream
+        Dim fStreamCrypt As New FileStream(tmpPath, FileMode.Truncate, FileAccess.Write)
+
+        Dim b() As Byte ' byte array for storing encrypted bytes
+
+        While fReaderOrig.Finished = False
+
+            ' Get bytes from original file
+            b = fReaderOrig.ReadBlock()
+
+            ' Encrypt the bytes
+            b = cryptyObj.ApplyAlgorithm(b)
+
+            ' Write the bytes to the tmp file
+            fStreamCrypt.Write(b, 0, b.Length)
+
+        End While
+
+        fStreamCrypt.Close()
+        fReaderOrig.Close()
+
+        ' Replace the original file
+        Dim fReaderTmp As New FileReader(tmpPath, BUFFER_SIZE)
+        fReaderTmp.ReplaceFile(_path)
+        fReaderTmp.Close()
+    End Sub
+
+
+    Private Sub ReverseEncrypt()
+        ' Create new instance of the cryptogtaphy class for encrypting
+        Dim cryptyObj As New Cryptography.Reverse
+
+        ' original plaintext file stream
+        Dim fReaderOrig As New FileReader(_path, BUFFER_SIZE)
+
+        ' tmp path for encrypted file
+        Dim tmpPath As String = System.IO.Path.GetTempFileName()
+
+        ' Encrypted file stream
+        Dim fStreamCrypt As New FileStream(tmpPath, FileMode.Truncate, FileAccess.Write)
+
+        Dim b() As Byte ' byte array for storing encrypted bytes
+
+        While fReaderOrig.Finished = False
+
+            ' Get bytes from original file
+            b = fReaderOrig.ReadBlock()
+
+            ' Encrypt the bytes
+            b = cryptyObj.ApplyAlgorithm(b)
+
+            ' Write the bytes to the tmp file
+            fStreamCrypt.Write(b, 0, b.Length)
+
+        End While
+
+        fStreamCrypt.Close()
+        fReaderOrig.Close()
+
+        ' Replace the original file
+        Dim fReaderTmp As New FileReader(tmpPath, BUFFER_SIZE)
+        fReaderTmp.ReplaceFile(_path)
+        fReaderTmp.Close()
+
+    End Sub
+
 
 #Region "Properties"
 
@@ -309,6 +405,7 @@ Public Class CryptyFile
 
             ' Get FileInfo
             _fileInfo = New FileInfo(_path)
+            _name = _fileInfo.Name
 
         End Set
     End Property

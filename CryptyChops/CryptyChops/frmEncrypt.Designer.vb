@@ -63,7 +63,6 @@ Partial Class frmEncrypt
         Me.rbtnNoPass.Name = "rbtnNoPass"
         Me.rbtnNoPass.Size = New System.Drawing.Size(88, 17)
         Me.rbtnNoPass.TabIndex = 3
-        Me.rbtnNoPass.TabStop = True
         Me.rbtnNoPass.Text = "No Password"
         Me.rbtnNoPass.UseVisualStyleBackColor = True
         '
@@ -74,7 +73,6 @@ Partial Class frmEncrypt
         Me.rbtnReverse.Name = "rbtnReverse"
         Me.rbtnReverse.Size = New System.Drawing.Size(65, 17)
         Me.rbtnReverse.TabIndex = 2
-        Me.rbtnReverse.TabStop = True
         Me.rbtnReverse.Text = "Reverse"
         Me.rbtnReverse.UseVisualStyleBackColor = True
         '
@@ -85,13 +83,13 @@ Partial Class frmEncrypt
         Me.rbtnAes.Name = "rbtnAes"
         Me.rbtnAes.Size = New System.Drawing.Size(46, 17)
         Me.rbtnAes.TabIndex = 1
-        Me.rbtnAes.TabStop = True
         Me.rbtnAes.Text = "AES"
         Me.rbtnAes.UseVisualStyleBackColor = True
         '
         'rbtnCrypty
         '
         Me.rbtnCrypty.AutoSize = True
+        Me.rbtnCrypty.Checked = True
         Me.rbtnCrypty.Location = New System.Drawing.Point(6, 19)
         Me.rbtnCrypty.Name = "rbtnCrypty"
         Me.rbtnCrypty.Size = New System.Drawing.Size(93, 17)
@@ -115,6 +113,7 @@ Partial Class frmEncrypt
         'chbFile
         '
         Me.chbFile.AutoSize = True
+        Me.chbFile.Enabled = False
         Me.chbFile.Location = New System.Drawing.Point(6, 56)
         Me.chbFile.Name = "chbFile"
         Me.chbFile.Size = New System.Drawing.Size(127, 17)
@@ -170,12 +169,14 @@ Partial Class frmEncrypt
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.chkCompress)
+        Me.GroupBox3.Enabled = False
         Me.GroupBox3.Location = New System.Drawing.Point(12, 157)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(280, 41)
         Me.GroupBox3.TabIndex = 4
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Other Options"
+        Me.GroupBox3.Visible = False
         '
         'btnEncrypt
         '

@@ -8,7 +8,7 @@ Public Class CryptyHeader
     ' TODO:
     ' Return the properties as strings and integers. Convert Bytes to appropriate types
 
-    Private _fileName() As Byte
+    'Private _fileName() As Byte
     Private _hash() As Byte
     Private _hashCompressed() As Byte
     Private _path As String
@@ -21,10 +21,10 @@ Public Class CryptyHeader
 
 #Region "Header Constants"
 
-    Const FILE_NAME_OFFSET = 0
-    Const FILE_NAME_COUNT = 64
+    'Const FILE_NAME_OFFSET = 0
+    'Const FILE_NAME_COUNT = 64
 
-    Const HASH_OFFSET = FILE_NAME_OFFSET + FILE_NAME_COUNT
+    Const HASH_OFFSET = 0
     Const HASH_COUNT = 20
 
     Const HASH_C_OFFSET = HASH_OFFSET + HASH_COUNT
@@ -61,11 +61,12 @@ Public Class CryptyHeader
     ''' <remarks></remarks>
     Public Sub Read()
         Dim fs As New FileStream(_path, FileMode.Open)
+        Dim b() As Byte
 
-        Dim b(FILE_NAME_COUNT - 1) As Byte
-        ' File Name
-        fs.Read(b, 0, FILE_NAME_COUNT)
-        _fileName = b
+        'Dim b(FILE_NAME_COUNT - 1) As Byte
+        '' File Name
+        'fs.Read(b, 0, FILE_NAME_COUNT)
+        '_fileName = b
 
         ReDim b(HASH_COUNT - 1)
         ' plain-text data hash
@@ -135,7 +136,7 @@ Public Class CryptyHeader
         Dim fsTmp As New FileStream(tmpFile, FileMode.Create)
 
             ' FileName
-            fsTmp.Write(_fileName, 0, FILE_NAME_COUNT)
+        'fsTmp.Write(_fileName, 0, FILE_NAME_COUNT)
 
             ' plain-text Hash
             fsTmp.Write(_hash, 0, HASH_COUNT)
@@ -240,20 +241,20 @@ Public Class CryptyHeader
     ''' <value></value>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Property FileName() As String
-        Get
-            Return BitConverter.ToString(_fileName)
-        End Get
+    'Public Property FileName() As String
+    '    Get
+    '        Return BitConverter.ToString(_fileName)
+    '    End Get
 
-        Set(ByVal value As String)
-            _fileName = Encoding.UTF8.GetBytes(value)
+    '    Set(ByVal value As String)
+    '        _fileName = Encoding.UTF8.GetBytes(value)
 
-            ' Resize the array to make it the correct length again
-            ReDim Preserve _fileName(FILE_NAME_COUNT - 1)
+    '        ' Resize the array to make it the correct length again
+    '        ReDim Preserve _fileName(FILE_NAME_COUNT - 1)
 
-        End Set
+    '    End Set
 
-    End Property
+    'End Property
 
     ''' <summary>
     ''' Hash of the plain-text data

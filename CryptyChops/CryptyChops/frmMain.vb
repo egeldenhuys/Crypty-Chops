@@ -10,13 +10,34 @@ Public Class frmMain
     Public cryptyListObj As CryptyList
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        Me.Icon = My.Resources.CryptyChops
+        Try
+            Me.Icon = My.Resources.CryptyChops__2_
 
-        ' We need to do pass the ListView object in the load function
-        ' as it is not initialized before this.
-        cryptyListObj = New CryptyList(lstFiles)
+            ' We need to do pass the ListView object in the load function
+            ' as it is not initialized before this.
+            cryptyListObj = New CryptyList(lstFiles)
 
-        FileBtnsVisible(False)
+            FileBtnsVisible(False)
+
+
+            cryptyListObj.LoadList()
+        Catch ex As Exception
+
+            'MsgBox(ex.Message)
+        End Try
+
+
+        Try
+            If Directory.Exists(CurDir() & "\7za920") Then ' If the compression folder hasn't been moved
+                If (Not Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\Crypt-Chops")) Then ' If there's no Crypty-Chops folder in the roaming folder
+                    Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\Crypty-Chops\Compression") ' Create the Crypty-Chops folder
+                    Directory.Move(CurDir() & "\7za920", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\Crypty-Chops\Compression")
+                End If
+            End If
+        Catch ex As Exception
+            'MsgBox(ex.Message)
+        End Try
+
 
     End Sub
 
@@ -28,17 +49,23 @@ Public Class frmMain
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub EncryptFile()
+
         HideButtons()
+        Try
+            Dim _frmEncrypt As New frmEncrypt
+            SetupForm(_frmEncrypt)
 
-        Dim _frmEncrypt As New frmEncrypt
-        SetupForm(_frmEncrypt)
+            ' Get all the selected items
+            Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
 
-        ' Get all the selected items
-        Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
+            Dim cryptyObj As CryptyFile = cryptyListObj.GetObjByName(selItems.Item(0).Name)
 
-        Dim cryptyObj As CryptyFile = cryptyListObj.GetObjByName(selItems.Item(0).Name)
+            _frmEncrypt.EncryptFile(cryptyObj)
+        Catch ex As Exception
 
-        _frmEncrypt.EncryptFile(cryptyObj)
+        End Try
+
+
 
     End Sub
 
@@ -81,8 +108,8 @@ Public Class frmMain
 
     End Sub
 
-    ' Delete the selected file, opens a new form
-    Private Sub DeleteFile()
+    '' Delete the selected file, opens a new form
+    Public Sub DeleteFile()
         HideButtons()
 
         Dim _frmDelConfirm As New frmDelConfirm
@@ -91,14 +118,20 @@ Public Class frmMain
         ' Get the name of the selected item
         Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
 
-        _frmDelConfirm.DeleteFile(cryptyListObj.GetObjByName(selItems(0).Name))
+        Try
+            _frmDelConfirm.DeleteFile(cryptyListObj.GetObjByName(selItems(0).Name))
+        Catch ex As Exception
+
+        End Try
+
+
     End Sub
 
     ''' <summary>
     ''' Remove the selcted file
     ''' </summary>
     ''' <remarks></remarks>
-    Private Sub RemoveFile()
+    Public Sub RemoveFile()
         ' Get the name of the selected item
         Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
 
@@ -122,9 +155,13 @@ Public Class frmMain
         ' Get all the selected items
         Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
 
-        Dim cryptyObj As CryptyFile = cryptyListObj.GetObjByName(selItems.Item(0).Name)
+        Try
+            Dim cryptyObj As CryptyFile = cryptyListObj.GetObjByName(selItems.Item(0).Name)
 
-        _frmDecrypt.DecryptFile(cryptyObj)
+            _frmDecrypt.DecryptFile(cryptyObj)
+        Catch ex As Exception
+            MsgBox("Couldn't do that")
+        End Try
 
 
     End Sub
@@ -134,10 +171,6 @@ Public Class frmMain
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub AddFile()
-        HideButtons()
-
-        Dim _frmAdd As New frmAdd
-        SetupForm(_frmAdd)
 
         ' This is needed otherwise the previous path is passed even if they press cancel
         OpenFileDialog1.FileName = ""
@@ -145,14 +178,26 @@ Public Class frmMain
         ' Collect the path
         OpenFileDialog1.ShowDialog()
 
-
         Dim path As String = OpenFileDialog1.FileName
 
         'If the user does not select a file do not display the next window
         If path <> "" Then
-            _frmAdd.ShowFileInfo(path)
-        Else
-            ShowButtons()
+            Dim tmpFileInfo As New FileInfo(path)
+
+            'Test permissions
+
+            Try
+                Dim fs As New FileStream(path, FileMode.Open)
+                fs.Close()
+
+            ' Create a new CryptyFile based on the given path
+            Dim tmpItem As New CryptyFile(tmpFileInfo.FullName)
+
+            tmpItem.Name = tmpFileInfo.Name
+                cryptyListObj.Add(tmpItem)
+            Catch ex As Exception
+                MsgBox("You need to run Crypty Chops as a administrator to encrypt that file")
+            End Try
         End If
 
     End Sub
@@ -325,7 +370,7 @@ Public Class frmMain
     End Sub
 
     ''' <summary>
-    ''' Set the visibility of the file manu=ipulation buttons
+    ''' Set the visibility of the file manuipulation buttons
     ''' </summary>
     ''' <param name="value">True/False</param>
     ''' <remarks></remarks>
@@ -339,4 +384,11 @@ Public Class frmMain
         btnOpenLoc.Visible = value
 
     End Sub
+
+    Private Sub frmMain_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+
+        cryptyListObj.SaveList()
+
+    End Sub
+
 End Class

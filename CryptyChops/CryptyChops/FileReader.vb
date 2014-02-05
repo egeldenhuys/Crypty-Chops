@@ -58,9 +58,9 @@ Public Class FileReader
     ''' </summary>
     ''' <param name="DestFile">The path of the destination file to be overwritten</param>
     ''' <remarks>Closes the fileStream when finished</remarks>
-    Public Sub ReplaceFile(DestFile As String)
+    Public Sub ReplaceFile(ByVal destFile As String)
 
-        Dim fSource As New FileStream(DestFile, FileMode.Truncate)
+        Dim fSource As New FileStream(destFile, FileMode.Truncate)
         Dim b() As Byte
 
         ' Keep reading blocks from the source to the destination
@@ -72,6 +72,22 @@ Public Class FileReader
         Close()
         fSource.Close()
 
+    End Sub
+
+    ''' <summary>
+    ''' Write a byte array to a file that will be created
+    ''' </summary>
+    ''' <param name="destFile">Where the file will be created.</param>
+    ''' <param name="bytes">The array of bytes to be written.</param>
+    ''' <remarks></remarks>
+    Public Sub CreateFile(ByVal destFile As String, ByVal bytes() As Byte)
+        Dim fSource As New FileStream(destFile, FileMode.CreateNew)
+
+        For i As Integer = 0 To bytes.Length - 1
+            fSource.Write(bytes, 0, bytes.Length - 1)
+        Next
+
+        fSource.Close()
     End Sub
 
     ''' <summary>
@@ -149,7 +165,7 @@ Public Class FileReader
     End Property
 
     ''' <summary>
-    ''' How many bytes still ahve to be read
+    ''' How many bytes still have to be read
     ''' </summary>
     ''' <value></value>
     ''' <returns></returns>

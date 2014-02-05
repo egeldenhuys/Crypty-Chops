@@ -1,4 +1,6 @@
-﻿Public Class frmEdit
+﻿Imports System.IO
+
+Public Class frmEdit
     ' This form will be used to edit the properties of the CryptyFile
 
     ' TODO:
@@ -6,11 +8,11 @@
 
     Dim cryptyObj As CryptyFile
 
-    Private Sub frmEdit_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+    Private Sub frmEdit_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
     End Sub
 
-    Private Sub this_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub this_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
 
         frmMain.ShowButtons()
 
@@ -21,7 +23,7 @@
     ''' </summary>
     ''' <param name="cryptyFileObject">The cryptyFile to edit</param>
     ''' <remarks></remarks>
-    Public Sub EditCryptyFile(cryptyFileObject As CryptyFile)
+    Public Sub EditCryptyFile(ByVal cryptyFileObject As CryptyFile)
         Me.Show()
 
         ' Save the object for later use
@@ -33,33 +35,56 @@
 
     End Sub
 
-    Private Sub btnRemove_Click(sender As System.Object, e As System.EventArgs) Handles btnRemove.Click
-
-    End Sub
-
-    Private Sub btnDelete_Click(sender As System.Object, e As System.EventArgs) Handles btnDelete.Click
-
-    End Sub
-
-    Private Sub btnCancel_Click(sender As System.Object, e As System.EventArgs) Handles btnCancel.Click
+    Private Sub btnRemove_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRemove.Click
+        frmMain.RemoveFile()
+        frmMain.HideButtons()
         Me.Close()
 
     End Sub
 
-    Private Sub btnSave_Click(sender As System.Object, e As System.EventArgs) Handles btnSave.Click
+    Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
+        frmMain.DeleteFile()
+        frmMain.HideButtons()
+        Me.Close()
+
+
+    End Sub
+
+    Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        Me.Close()
+
+    End Sub
+
+    Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
 
         ' Update the object properties
         Dim index As Integer = frmMain.cryptyListObj.GetIndex(cryptyObj.Name)
 
-        cryptyObj.Path = txtPath.Text
-        cryptyObj.Name = txtName.Text
+        If My.Computer.FileSystem.FileExists(txtPath.Text) Then
 
-        frmMain.cryptyListObj.FileList.Item(index).Path = cryptyObj.Path
-        frmMain.cryptyListObj.FileList.Item(index).Name = cryptyObj.Name
+            Try
+                Dim fs As New FileStream(txtPath.Text, FileMode.Open)
+                fs.Close()
 
-        frmMain.cryptyListObj.Refresh()
+            
+            cryptyObj.Path = txtPath.Text
+            cryptyObj.Name = txtName.Text
 
-        Me.Close()
+            frmMain.cryptyListObj.FileList.Item(index).Path = cryptyObj.Path
+
+            frmMain.cryptyListObj.FileList.Item(index).Name = cryptyObj.Name
+
+            frmMain.cryptyListObj.Refresh()
+
+                Me.Close()
+
+            Catch ex As Exception
+                MsgBox("You need to run Crypty Chops as an administrator to encrypt this file")
+            End Try
+        Else
+            MsgBox("File does not exist")
+        End If
+
 
     End Sub
 End Class

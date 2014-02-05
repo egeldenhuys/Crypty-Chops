@@ -355,6 +355,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.panelForms)
         Me.Controls.Add(Me.lstFiles)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "frmMain"
         Me.Text = "Crypty Chops"
         Me.MenuStrip1.ResumeLayout(False)
