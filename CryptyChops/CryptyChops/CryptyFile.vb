@@ -110,6 +110,12 @@ Public Class CryptyFile
     ''' <remarks></remarks>
     Public Sub Decrypt()
 
+        ' Create backup
+
+        Dim backupPath As String = System.IO.Path.GetTempFileName
+
+        My.Computer.FileSystem.CopyFile(_path, backupPath, True)
+
         Select Case algorithm.ToLower
             Case "crypty encrypt"
                 CryptyEncrypt()
@@ -155,6 +161,7 @@ Public Class CryptyFile
                 Status = "Decrypted"
             Else
                 Status = "Error"
+                My.Computer.FileSystem.MoveFile(backupPath, _path, True)
             End If
 
             Status = "Decrypted"
