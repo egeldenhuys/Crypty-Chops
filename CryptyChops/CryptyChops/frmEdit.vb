@@ -51,15 +51,24 @@
         ' Update the object properties
         Dim index As Integer = frmMain.cryptyListObj.GetIndex(cryptyObj.Name)
 
-        cryptyObj.Path = txtPath.Text
-        cryptyObj.Name = txtName.Text
+        If My.Computer.FileSystem.FileExists(txtPath.Text) Then
 
-        frmMain.cryptyListObj.FileList.Item(index).Path = cryptyObj.Path
-        frmMain.cryptyListObj.FileList.Item(index).Name = cryptyObj.Name
 
-        frmMain.cryptyListObj.Refresh()
+            cryptyObj.Path = txtPath.Text
+            cryptyObj.Name = txtName.Text
 
-        Me.Close()
+            frmMain.cryptyListObj.FileList.Item(index).Path = cryptyObj.Path
+
+            frmMain.cryptyListObj.FileList.Item(index).Name = cryptyObj.Name
+
+            frmMain.cryptyListObj.Refresh()
+
+            Me.Close()
+
+        Else
+            MsgBox("File does not exist")
+        End If
+
 
     End Sub
 End Class

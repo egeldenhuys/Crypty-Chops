@@ -405,6 +405,7 @@ Public Class CryptyFile
 
             ' Get FileInfo
             _fileInfo = New FileInfo(_path)
+            _name = _fileInfo.Name
 
         End Set
     End Property

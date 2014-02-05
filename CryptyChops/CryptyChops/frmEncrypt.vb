@@ -71,7 +71,7 @@ Public Class frmEncrypt
                 _cryptyFile.Status = "Encrypted (C)"
             End If
         Else
-            MsgBox("You Fool! Read the manual.")
+            MsgBox("Error")
         End If
 
         frmMain.cryptyListObj.Refresh()
