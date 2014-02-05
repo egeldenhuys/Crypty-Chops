@@ -7,27 +7,13 @@ Public Class Cryptography
 
     Public Class Reverse
 
-        Public Shared Sub ApplyAlgortihm(ByVal bytes() As Byte, ByVal destPath As String)
-            Dim fReader As New FileReader(destPath, BUFFER_SIZE)
-            ''Dim fsDest As New FileStream(destPath, FileMode.Create)
-            ''Dim bytes() As Byte
+        Public Function ApplyAlgorithm(ByVal rawBytes() As Byte) As Byte()
 
-            ' read all blocks until no bytes left
-            ''While readerSource.Finished = False
-            ''bytes = readerSource.ReadBlock()
+            Array.Reverse(rawBytes)
 
-            Array.Reverse(bytes)
+            Return rawBytes
 
-            fReader.CreateFile(destPath, bytes)
-            fReader.Close()
-
-            ''readerSource.ReplaceFile(destPath)
-            ''fsDest.Write(bytes, 0, 1024)
-            ''End While
-
-            ''readerSource.Close()
-
-        End Sub
+        End Function
 
     End Class
 
@@ -54,7 +40,7 @@ Public Class Cryptography
                 End If
             Next
 
-            fReader.CreateFile(destPath, encryptedBytes)
+            ' fReader.CreateFile(destPath, encryptedBytes)
             fReader.Close()
 
             ''End While
@@ -86,7 +72,7 @@ Public Class Cryptography
                 End If
             Next
 
-            fReader.CreateFile(destPath, decryptedBytes)
+            'fReader.CreateFile(destPath, decryptedBytes)
             fReader.Close()
 
             ''End While
@@ -101,37 +87,36 @@ Public Class Cryptography
 
     Public Class CryptyEncrypt
 
-        Public Shared Function ApplyAlgortihm(ByVal rawBytes() As Byte, ByVal key() As Byte, ByVal destPath As String) As Byte()
+        Public key() As Byte
+        Public keyIndex As Integer = 0
 
-            Dim fReader As New FileReader(destPath, BUFFER_SIZE)
+        Public Function ApplyAlgorithm(ByVal rawBytes() As Byte) As Byte()
 
-            ''Dim reader As New FileReader(sourcePath, 1024)
-            ''Dim rawBytes() As Byte
-            Dim keyCounter As Integer = 0
+            Dim cryptBytes(rawBytes.Length - 1) As Byte ' Array to store the encrypted bytes
 
-            ''While reader.Finished = False
-            ''rawBytes = reader.ReadBlock()
-            ''End While
+            Dim bytesLeft As Long = rawBytes.Length ' How many bytes we still have to read
 
-            Dim encryptedBytes(rawBytes.Length - 1) As Byte
-
+            ' XOR each of the bytes in the block with a byte from they key.
             For i As Integer = 0 To rawBytes.Length - 1
-                encryptedBytes(i) = rawBytes(i) Xor key(keyCounter)
-                keyCounter += 1
 
-                If keyCounter > key.Length Then
-                    keyCounter = 0
+                ' Perform XOR
+                cryptBytes(i) = rawBytes(i) Xor key(keyIndex)
+
+                ' Check to see if we need to reset the keycount
+                If keyIndex = key.GetUpperBound(0) Then
+                    keyIndex = 0
+
+                    Dim hasher As New System.Security.Cryptography.SHA1Managed
+                    key = hasher.ComputeHash(key)
+                Else
+                    keyIndex += 1
                 End If
+
             Next
 
-            fReader.CreateFile(destPath, encryptedBytes)
-            fReader.Close()
-
-            ''reader.ReplaceFile(destPath)
-
-            ''reader.Close()
-
+            Return cryptBytes
         End Function
+
 
     End Class
 End Class

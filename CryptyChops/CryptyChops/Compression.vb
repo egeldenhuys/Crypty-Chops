@@ -10,13 +10,12 @@ Public Class Compression
     ''' Create a new compression object
     ''' </summary>
     ''' <param name="path">Path to the uncompressed file.</param>
-    ''' <param name="dest">Where the newly compressed file with be saved.</param>
     ''' <remarks></remarks>
-    Public Sub New(ByVal path As String, ByVal dest As String)
+    Public Sub New(ByVal path As String)
         _path = path
-        _destPath = dest
     End Sub
 
+    Dim fInfo As FileInfo
     Dim proc As New Process
     Dim arguments As ProcessStartInfo = New ProcessStartInfo()
 
@@ -25,11 +24,20 @@ Public Class Compression
     ''' </summary>
     ''' <remarks></remarks>
     Sub Compress()
-        _destPath = """" & _destPath & "\test2.7z"""
+
+        fInfo = New FileInfo(_path)
+        Dim newFileName As String = System.IO.Path.GetFileNameWithoutExtension(_path)
+
+        Dim destPath As String = """" & fInfo.DirectoryName & "\" & newFileName & ".7z"""
+
         With proc.StartInfo
-            .FileName = "7za920\7za.exe"
-            .Arguments = "a " & _destPath & " """ & _path & """"
-            .CreateNoWindow = False
+            If (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\Crypt-Chops\7za920")) Then
+                .FileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\Crypt-Chops\7za920\7za.exe"
+            Else
+                .FileName = CurDir() & "\7za920\7za.exe"
+            End If
+            .Arguments = "a " & destPath & " """ & _path & """"
+            .CreateNoWindow = True
         End With
 
         proc.Start()

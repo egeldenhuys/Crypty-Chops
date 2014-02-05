@@ -1,10 +1,10 @@
 ﻿Imports System.IO
 
 Public Class frmEncrypt
-
-    ' This form is used to collect information for encrypting a file
+    ' This form is used to cllect information for encrypting a file
 
     Dim _cryptyFile As CryptyFile
+    Private _algorithm As String = "crypty encrypt"
 
     Private Sub frmEncrypt_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
@@ -50,43 +50,49 @@ Public Class frmEncrypt
 
         _cryptyFile.Key = txtPass.Text
 
+        If _algorithm = "" Then
+            _algorithm = "crypty encrypt"
+        End If
+
+        _cryptyFile.algorithm = _algorithm
+
         If chkCompress.Checked = True Then
             _cryptyFile.Compress = True
         Else
             _cryptyFile.Compress = False
         End If
 
-        '' Which encryption method to use
-        Dim method As String
-        If rbtnAes.Checked = True Then
-            method = "AES"
-        ElseIf rbtnCrypty.Checked = True Then
-            method = "Crypty"
-        ElseIf rbtnNoPass.Checked = True Then
-            method = "No Pass"
-        ElseIf rbtnReverse.Checked = True Then
-            method = "Reverse"
-        Else
-            method = "None"
-        End If
-
         ' The status is set by the object when encrypted
-        _cryptyFile.Encrypt(method)
+        _cryptyFile.Encrypt()
 
         ' Show the user that the file has been compressed
         If _cryptyFile.Status = "Encrypted" Then
             If _cryptyFile.Compress = True Then
                 _cryptyFile.Status = "Encrypted (C)"
             End If
+        Else
+            MsgBox("You Fool! Read the manual.")
         End If
 
         frmMain.cryptyListObj.Refresh()
         Me.Close()
+
+    End Sub
+
+
+    Private Sub rbtnReverse_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rbtnReverse.CheckedChanged, rbtnNoPass.CheckedChanged, rbtnCrypty.CheckedChanged, rbtnAes.CheckedChanged
+        Dim rbtn As RadioButton = CType(sender, RadioButton)
+
+        If rbtn.Checked = True Then
+            _algorithm = rbtn.Text
+        End If
+
     End Sub
 
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        frmMain.ShowButtons()
+
         Me.Close()
 
-        frmMain.ShowButtons()
     End Sub
 End Class

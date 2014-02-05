@@ -24,6 +24,19 @@ Public Class frmMain
 
         cryptyListObj.LoadList()
 
+
+        Try
+            If Directory.Exists(CurDir() & "\7za920") Then ' If the compression folder hasn't been moved
+                If (Not Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\Crypt-Chops")) Then ' If there's no Crypty-Chops folder in the roaming folder
+                    Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\Crypty-Chops\Compression") ' Create the Crypty-Chops folder
+                    Directory.Move(CurDir() & "\7za920", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\Crypty-Chops\Compression")
+                End If
+            End If
+        Catch ex As Exception
+
+        End Try
+
+
     End Sub
 
     
@@ -128,9 +141,13 @@ Public Class frmMain
         ' Get all the selected items
         Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
 
-        Dim cryptyObj As CryptyFile = cryptyListObj.GetObjByName(selItems.Item(0).Name)
+        Try
+            Dim cryptyObj As CryptyFile = cryptyListObj.GetObjByName(selItems.Item(0).Name)
 
-        _frmDecrypt.DecryptFile(cryptyObj)
+            _frmDecrypt.DecryptFile(cryptyObj)
+        Catch ex As Exception
+            MsgBox("Couldn't do that")
+        End Try
 
 
     End Sub
@@ -351,4 +368,5 @@ Public Class frmMain
         cryptyListObj.SaveList()
 
     End Sub
+
 End Class

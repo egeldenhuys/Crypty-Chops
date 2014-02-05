@@ -80,15 +80,15 @@ Public Class FileReader
     ''' <param name="destFile">Where the file will be created.</param>
     ''' <param name="bytes">The array of bytes to be written.</param>
     ''' <remarks></remarks>
-    Public Sub CreateFile(ByVal destFile As String, ByVal bytes() As Byte)
-        Dim fSource As New FileStream(destFile, FileMode.CreateNew)
+    'Public Sub CreateFile(ByVal destFile As String, ByVal bytes() As Byte, ByVal fMode As FileMode)
+    '    Dim fSource As New FileStream(destFile, FileMode.CreateNew)
 
-        For i As Integer = 0 To bytes.Length - 1
-            fSource.Write(bytes, 0, bytes.Length - 1)
-        Next
+    '    For i As Integer = 0 To bytes.Length - 1
+    '        fSource.Write(bytes, 0, bytes.Length - 1)
+    '    Next
 
-        fSource.Close()
-    End Sub
+    '    fSource.Close()
+    'End Sub
 
     ''' <summary>
     ''' Read and return a block of bytes. The number of bytes read is the same as the Buffer Size

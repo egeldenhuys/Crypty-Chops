@@ -139,7 +139,7 @@ Public Class CryptyList
     ''' <remarks></remarks>
     Public Sub SaveList()
         '' CCFL = Crypty Chops File List
-        Dim str As StringBuilder
+        Dim str As New StringBuilder
 
 
         FileOpen(1, "List.ccfl", OpenMode.Output)
@@ -161,6 +161,7 @@ Public Class CryptyList
     Public Sub LoadList()
 
         If IO.File.Exists("List.ccfl") Then
+
 
             FileOpen(1, "List.ccfl", OpenMode.Input)
 
