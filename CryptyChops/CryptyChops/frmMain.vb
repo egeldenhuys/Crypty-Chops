@@ -10,15 +10,21 @@ Public Class frmMain
     Public cryptyListObj As CryptyList
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        Me.Icon = My.Resources.CryptyChops__2_
+        Try
+            Me.Icon = My.Resources.CryptyChops__2_
 
-        ' We need to do pass the ListView object in the load function
-        ' as it is not initialized before this.
-        cryptyListObj = New CryptyList(lstFiles)
+            ' We need to do pass the ListView object in the load function
+            ' as it is not initialized before this.
+            cryptyListObj = New CryptyList(lstFiles)
 
-        FileBtnsVisible(False)
+            FileBtnsVisible(False)
 
-        cryptyListObj.LoadList()
+
+            cryptyListObj.LoadList()
+        Catch ex As Exception
+
+            'MsgBox(ex.Message)
+        End Try
 
 
         Try
@@ -29,7 +35,7 @@ Public Class frmMain
                 End If
             End If
         Catch ex As Exception
-
+            'MsgBox(ex.Message)
         End Try
 
 

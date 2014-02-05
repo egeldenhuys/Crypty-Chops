@@ -51,6 +51,7 @@ Partial Class frmDecrypt
         'chbFile
         '
         Me.chbFile.AutoSize = True
+        Me.chbFile.Enabled = False
         Me.chbFile.Location = New System.Drawing.Point(6, 56)
         Me.chbFile.Name = "chbFile"
         Me.chbFile.Size = New System.Drawing.Size(127, 17)
