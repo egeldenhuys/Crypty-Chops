@@ -1,4 +1,5 @@
 ﻿Imports System.Text
+Imports System.IO
 
 Public Class CryptyList
     ' This class stores a List of CryptyFiles and manages a ListView control
@@ -139,18 +140,12 @@ Public Class CryptyList
     ''' <remarks></remarks>
     Public Sub SaveList()
         '' CCFL = Crypty Chops File List
-        Dim str As New StringBuilder
 
-
-        FileOpen(1, "List.ccfl", OpenMode.Output)
+        FileOpen(1, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\Crypty-Chops\FileList.ccfl", OpenMode.Output)
 
         If _listView.Items.Count > 0 Then
             For i As Integer = 0 To _listView.Items.Count - 1 '' Iterate through the file list and print each path to a textfile.
-                str.Append(_fileList(i).FileInfo.FullName)
-
-                Dim bytes() As Byte = System.Text.UnicodeEncoding.UTF8.GetBytes(str.ToString())
-
-
+                PrintLine(1, _fileList.Item(i).Path)
             Next
         End If
 
@@ -160,10 +155,9 @@ Public Class CryptyList
 
     Public Sub LoadList()
 
-        If IO.File.Exists("List.ccfl") Then
+        If IO.File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\Crypty-Chops\FileList.ccfl") Then
 
-
-            FileOpen(1, "List.ccfl", OpenMode.Input)
+            FileOpen(1, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\Crypty-Chops\FileList.ccfl", OpenMode.Input)
 
             While Not EOF(1)
                 Try
@@ -179,7 +173,7 @@ Public Class CryptyList
 
             Refresh()
         Else
-            FileOpen(1, "List.ccfl", OpenMode.Output)
+            FileOpen(1, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\Crypty-Chops\FileList.ccfl", OpenMode.Output)
             FileClose(1)
         End If
 

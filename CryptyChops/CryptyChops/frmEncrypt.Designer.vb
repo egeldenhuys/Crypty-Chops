@@ -168,12 +168,14 @@ Partial Class frmEncrypt
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.chkCompress)
+        Me.GroupBox3.Enabled = False
         Me.GroupBox3.Location = New System.Drawing.Point(12, 157)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(280, 41)
         Me.GroupBox3.TabIndex = 4
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Other Options"
+        Me.GroupBox3.Visible = False
         '
         'btnEncrypt
         '
