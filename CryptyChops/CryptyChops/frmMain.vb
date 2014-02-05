@@ -7,14 +7,10 @@ Public Class frmMain
     ' TODO:
     ' Help
 
-    '' Robert -
-    '' Added saving file which is called on frmMain closing. Should the file be encrypted?
-    '' Added File loading on startup. Requires work.
-
     Public cryptyListObj As CryptyList
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        Me.Icon = My.Resources.CryptyChops
+        Me.Icon = My.Resources.CryptyChops__2_
 
         ' We need to do pass the ListView object in the load function
         ' as it is not initialized before this.
