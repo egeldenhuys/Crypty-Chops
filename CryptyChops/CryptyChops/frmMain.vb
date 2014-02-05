@@ -157,10 +157,6 @@ Public Class frmMain
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub AddFile()
-        HideButtons()
-
-        Dim _frmAdd As New frmAdd
-        SetupForm(_frmAdd)
 
         ' This is needed otherwise the previous path is passed even if they press cancel
         OpenFileDialog1.FileName = ""
@@ -168,14 +164,16 @@ Public Class frmMain
         ' Collect the path
         OpenFileDialog1.ShowDialog()
 
-
         Dim path As String = OpenFileDialog1.FileName
 
         'If the user does not select a file do not display the next window
         If path <> "" Then
-            _frmAdd.ShowFileInfo(path)
-        Else
-            ShowButtons()
+            Dim tmpFileInfo As New FileInfo(path)
+            ' Create a new CryptyFile based on the given path
+            Dim tmpItem As New CryptyFile(tmpFileInfo.FullName)
+
+            tmpItem.Name = tmpFileInfo.Name
+            cryptyListObj.Add(tmpItem)
         End If
 
     End Sub
