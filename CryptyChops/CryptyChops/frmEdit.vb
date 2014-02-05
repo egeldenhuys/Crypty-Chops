@@ -36,10 +36,17 @@ Public Class frmEdit
     End Sub
 
     Private Sub btnRemove_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRemove.Click
+        frmMain.RemoveFile()
+        frmMain.HideButtons()
+        Me.Close()
 
     End Sub
 
     Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
+        frmMain.DeleteFile()
+        frmMain.HideButtons()
+        Me.Close()
+
 
     End Sub
 

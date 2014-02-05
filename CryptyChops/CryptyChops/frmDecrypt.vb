@@ -57,11 +57,19 @@
 
         _cryptyFile.Decrypt()
 
-        If _cryptyFile.Status.ToLower = "error" Then
-            lblError.Visible = True
+        If _algorithm.ToLower <> "reverse" Then
+
+            If _cryptyFile.Status.ToLower = "error" Then
+                lblError.Visible = True
+            Else
+                Me.Close()
+                'frmMain.cryptyListObj.Refresh()
+            End If
+
         Else
+            _cryptyFile.Status = "reversed"
             Me.Close()
-            frmMain.cryptyListObj.Refresh()
+            'frmMain.cryptyListObj.Refresh()
         End If
 
 

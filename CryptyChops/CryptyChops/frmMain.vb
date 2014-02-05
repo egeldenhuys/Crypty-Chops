@@ -49,17 +49,23 @@ Public Class frmMain
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub EncryptFile()
+
         HideButtons()
+        Try
+            Dim _frmEncrypt As New frmEncrypt
+            SetupForm(_frmEncrypt)
 
-        Dim _frmEncrypt As New frmEncrypt
-        SetupForm(_frmEncrypt)
+            ' Get all the selected items
+            Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
 
-        ' Get all the selected items
-        Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
+            Dim cryptyObj As CryptyFile = cryptyListObj.GetObjByName(selItems.Item(0).Name)
 
-        Dim cryptyObj As CryptyFile = cryptyListObj.GetObjByName(selItems.Item(0).Name)
+            _frmEncrypt.EncryptFile(cryptyObj)
+        Catch ex As Exception
 
-        _frmEncrypt.EncryptFile(cryptyObj)
+        End Try
+
+
 
     End Sub
 
@@ -103,7 +109,7 @@ Public Class frmMain
     End Sub
 
     '' Delete the selected file, opens a new form
-    Private Sub DeleteFile()
+    Public Sub DeleteFile()
         HideButtons()
 
         Dim _frmDelConfirm As New frmDelConfirm
@@ -112,14 +118,20 @@ Public Class frmMain
         ' Get the name of the selected item
         Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
 
-        _frmDelConfirm.DeleteFile(cryptyListObj.GetObjByName(selItems(0).Name))
+        Try
+            _frmDelConfirm.DeleteFile(cryptyListObj.GetObjByName(selItems(0).Name))
+        Catch ex As Exception
+
+        End Try
+
+
     End Sub
 
     ''' <summary>
     ''' Remove the selcted file
     ''' </summary>
     ''' <remarks></remarks>
-    Private Sub RemoveFile()
+    Public Sub RemoveFile()
         ' Get the name of the selected item
         Dim selItems As New ListView.SelectedListViewItemCollection(lstFiles)
 
