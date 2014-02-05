@@ -7,6 +7,10 @@ Public Class frmMain
     ' TODO:
     ' Help
 
+    '' Robert -
+    '' Added saving file which is called on frmMain closing. Should the file be encrypted?
+    '' Added File loading on startup. Requires work.
+
     Public cryptyListObj As CryptyList
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
@@ -18,6 +22,8 @@ Public Class frmMain
 
         FileBtnsVisible(False)
 
+        cryptyListObj.LoadList()
+
     End Sub
 
     
@@ -28,6 +34,7 @@ Public Class frmMain
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub EncryptFile()
+
         HideButtons()
 
         Dim _frmEncrypt As New frmEncrypt
@@ -81,7 +88,7 @@ Public Class frmMain
 
     End Sub
 
-    ' Delete the selected file, opens a new form
+    '' Delete the selected file, opens a new form
     Private Sub DeleteFile()
         HideButtons()
 
@@ -134,10 +141,7 @@ Public Class frmMain
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub AddFile()
-        HideButtons()
 
-        Dim _frmAdd As New frmAdd
-        SetupForm(_frmAdd)
 
         ' This is needed otherwise the previous path is passed even if they press cancel
         OpenFileDialog1.FileName = ""
@@ -150,9 +154,14 @@ Public Class frmMain
 
         'If the user does not select a file do not display the next window
         If path <> "" Then
-            _frmAdd.ShowFileInfo(path)
-        Else
-            ShowButtons()
+
+            Dim tmpFileInfo As New FileInfo(path)
+
+            ' Create a new CryptyFile based on the given path
+            Dim tmpItem As New CryptyFile(tmpFileInfo.FullName)
+            tmpItem.Name = tmpFileInfo.Name
+            cryptyListObj.Add(tmpItem)
+
         End If
 
     End Sub
@@ -325,7 +334,7 @@ Public Class frmMain
     End Sub
 
     ''' <summary>
-    ''' Set the visibility of the file manu=ipulation buttons
+    ''' Set the visibility of the file manuipulation buttons
     ''' </summary>
     ''' <param name="value">True/False</param>
     ''' <remarks></remarks>
@@ -337,6 +346,12 @@ Public Class frmMain
         btnRemove.Visible = value
         btnDelete.Visible = value
         btnOpenLoc.Visible = value
+
+    End Sub
+
+    Private Sub frmMain_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+
+        cryptyListObj.SaveList()
 
     End Sub
 End Class

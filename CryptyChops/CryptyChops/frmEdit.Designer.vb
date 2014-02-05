@@ -73,6 +73,7 @@ Partial Class frmEdit
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.txtName)
+        Me.GroupBox2.Enabled = False
         Me.GroupBox2.Location = New System.Drawing.Point(6, 19)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(285, 52)

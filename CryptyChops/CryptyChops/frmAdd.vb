@@ -15,7 +15,7 @@ Public Class frmAdd
     ''' <param name="path"></param>
     ''' <remarks></remarks>
     Public Sub ShowFileInfo(ByVal path As String)
-        Me.Show()
+        'Me.Show()
 
         tmpFileInfo = New FileInfo(path)
 

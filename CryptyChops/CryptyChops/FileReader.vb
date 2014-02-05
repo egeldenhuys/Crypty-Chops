@@ -58,9 +58,9 @@ Public Class FileReader
     ''' </summary>
     ''' <param name="DestFile">The path of the destination file to be overwritten</param>
     ''' <remarks>Closes the fileStream when finished</remarks>
-    Public Sub ReplaceFile(DestFile As String)
+    Public Sub ReplaceFile(ByVal destFile As String)
 
-        Dim fSource As New FileStream(DestFile, FileMode.Truncate)
+        Dim fSource As New FileStream(destFile, FileMode.Truncate)
         Dim b() As Byte
 
         ' Keep reading blocks from the source to the destination
@@ -149,7 +149,7 @@ Public Class FileReader
     End Property
 
     ''' <summary>
-    ''' How many bytes still ahve to be read
+    ''' How many bytes still have to be read
     ''' </summary>
     ''' <value></value>
     ''' <returns></returns>

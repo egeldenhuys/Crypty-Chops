@@ -1,4 +1,6 @@
-﻿Public Class CryptyList
+﻿Imports System.Text
+
+Public Class CryptyList
     ' This class stores a List of CryptyFiles and manages a ListView control
 
     Private _listView As ListView
@@ -9,7 +11,7 @@
     ''' </summary>
     ''' <param name="ownerList">The ListView control this object is responsible to manage</param>
     ''' <remarks></remarks>
-    Sub New(ownerList As ListView)
+    Sub New(ByVal ownerList As ListView)
         _listView = ownerList
 
     End Sub
@@ -32,7 +34,7 @@
     ''' <param name="name">The name of the item to find</param>
     ''' <returns></returns>
     ''' <remarks>Returns -1 if the item was not found</remarks>
-    Public Function GetIndex(name As String) As Integer
+    Public Function GetIndex(ByVal name As String) As Integer
 
         For i As Integer = 0 To _fileList.Count - 1
             If _fileList.Item(i).Name = name Then
@@ -48,7 +50,7 @@
     ''' </summary>
     ''' <param name="item">The CryptyFile object to add to the list</param>
     ''' <remarks></remarks>
-    Public Sub Add(item As CryptyFile)
+    Public Sub Add(ByVal item As CryptyFile)
 
         ' Add the item to the list
         _fileList.Add(item)
@@ -63,7 +65,7 @@
     ''' </summary>
     ''' <param name="itemName">The name (identifier) of the item to remove</param>
     ''' <remarks></remarks>
-    Public Sub Remove(itemName As String)
+    Public Sub Remove(ByVal itemName As String)
 
         ' Remove the item from the List
         For i As Integer = 0 To _fileList.Count - 1
@@ -84,7 +86,7 @@
     ''' </summary>
     ''' <param name="index">The index of the item in the list to remove</param>
     ''' <remarks></remarks>
-    Public Sub Remove(index As Integer)
+    Public Sub Remove(ByVal index As Integer)
 
         ' Remove the item from the List
         _fileList.RemoveAt(index)
@@ -128,6 +130,58 @@
             ' Add the item to the ListView
             _listView.Items.Add(tmpItem)
         Next
+
+    End Sub
+
+    ''' <summary>
+    ''' Saves the listView items to a file which is then encrypted
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Sub SaveList()
+        '' CCFL = Crypty Chops File List
+        Dim str As New StringBuilder
+
+
+        FileOpen(1, "List.ccfl", OpenMode.Output)
+
+        If _listView.Items.Count > 0 Then
+            For i As Integer = 0 To _listView.Items.Count - 1 '' Iterate through the file list and print each path to a textfile.
+                str.Append(_fileList(i).FileInfo.FullName)
+
+                Dim bytes() As Byte = System.Text.UnicodeEncoding.UTF8.GetBytes(str.ToString())
+
+
+            Next
+        End If
+
+        FileClose(1)
+
+    End Sub
+
+    Public Sub LoadList()
+
+        If IO.File.Exists("List.ccfl") Then
+
+
+            FileOpen(1, "List.ccfl", OpenMode.Input)
+
+            While Not EOF(1)
+                Try
+                    Dim item As New CryptyFile(LineInput(1))
+
+                    frmMain.cryptyListObj.Add(item)
+                Catch ex As Exception
+                    MsgBox("Couldn't load file list")
+                End Try
+            End While
+
+            FileClose(1)
+
+            Refresh()
+        Else
+            FileOpen(1, "List.ccfl", OpenMode.Output)
+            FileClose(1)
+        End If
 
     End Sub
 

@@ -94,6 +94,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compression.vb" />
     <Compile Include="Cryptography.vb" />
     <Compile Include="CryptyFile.vb" />
     <Compile Include="CryptyHeader.vb" />
