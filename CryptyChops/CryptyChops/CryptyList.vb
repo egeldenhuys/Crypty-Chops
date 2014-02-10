@@ -140,7 +140,11 @@ Public Class CryptyList
     ''' <remarks></remarks>
     Public Sub SaveList()
         '' CCFL = Crypty Chops File List
-
+        
+        If IO.Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\Crypty-Chops") = False Then
+            My.Computer.FileSystem.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\Crypty-Chops")
+        End If
+        
         FileOpen(1, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\Crypty-Chops\FileList.ccfl", OpenMode.Output)
 
         If _listView.Items.Count > 0 Then
@@ -172,9 +176,7 @@ Public Class CryptyList
             FileClose(1)
 
             Refresh()
-        Else
-            FileOpen(1, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\Crypty-Chops\FileList.ccfl", OpenMode.Output)
-            FileClose(1)
+
         End If
 
     End Sub
