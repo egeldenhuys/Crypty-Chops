@@ -1,3 +1,7 @@
+I want to thank [Robert Gracey](https://github.com/Robert-Gracey) for all the effort and work he has put
+into this project. You were a great team member and I enjoyed working with you mate!
+
+---
 # Crypty Chops
 [Documentation - Google Documents](https://drive.google.com/folderview?id=0Bx-d6G8hYwBPWjZ4Mml0WUJ2aUk&usp=sharing)
 
